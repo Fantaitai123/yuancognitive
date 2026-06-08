@@ -1009,21 +1009,1141 @@ function filterCases(cat,btn){
   document.querySelectorAll('.case-filter').forEach(function(b){b.style.background='#fff';b.style.color='var(--ink)';b.classList.remove('active')});
   btn.style.background='var(--primary)';btn.style.color='#fff';btn.classList.add('active');
 }
+
+var articleData=[
+{t:'孩子为什么不愿意学习',a:'从自我决定理论来看，孩子的内在学习动机需要三个基本心理需求的同时满足：自主感（我能选择）、胜任感（我能做好）、连接感（我做的事与我在乎的人有关）。当学习变成被强迫的任务时，自主感丧失；当内容难度不匹配时，胜任感缺失；当学习与负面情绪捆绑时，连接感断裂。',b:'1.给孩子在学习中提供选择权，哪怕只是先做哪一科。2.将大任务分解为可达成的小单元。3.建立固定学习时间和空间减少意志力消耗。4.家长管理好自己的焦虑，不传递给孩子。5.定期家庭会议让孩子参与解决方案制定。',c:'家庭成长系统课（模块2）',d:'学习规划表'},
+{t:'孩子没有学习动力怎么办',a:'学习动力不是天生的，是在良好的家庭系统和科学方法中逐步培养的。缺乏动力的核心往往是孩子没有体验到学习带来的内在满足感，只体验到了压力和挫败。外部奖励在短期内有效但长期会削弱内在动机——当奖励停止时行为也停止。',b:'1.用成长型思维替代固定型思维，表扬努力和策略而非聪明。2.帮孩子找到学习与生活的关联理解意义。3.减少外部奖励保护内在动机。4.示范终身学习的态度。5.给孩子适度挑战在最近发展区内获得成功体验。',c:'元认知学习力课程',d:'学习规划表、目标管理表'},
+{t:'如何培养孩子自主学习能力',a:'自主学习不是不需要帮助，而是孩子能够主动规划、执行、监控和调整自己的学习过程。这是一个渐进的过程，需要家长从陪伴到逐步放手的系统转变。维果茨基的支架理论告诉我们：在孩子的最近发展区内提供支持，然后随着能力提升逐步撤除支持。',b:'第一阶段给孩子建立基本学习习惯和固定流程。第二阶段逐步让孩子自己制定简单计划家长从执行者转为检查者。第三阶段孩子成为主要负责人家长转为顾问角色。关键工具包括学习规划表、番茄工作法、定期反思对话。',c:'元认知学习力课程',d:'学习规划表、时间管理表'},
+{t:'孩子厌学的十大原因',a:'厌学不是单一原因造成的。可能原因包括：学业压力过大超出承受能力、学习内容与兴趣脱节、校园霸凌或社交排斥、与老师关系紧张、家庭期望过高或过低、学习方法不当导致持续挫败、睡眠不足导致身心疲惫、没有体验到学习的意义、过度使用电子产品导致注意力碎片化、未被发现的学习障碍。',b:'首先耐心倾听孩子的感受不急于给解决方案。其次排查具体原因：是某个学科还是所有学科？是学校环境还是家庭因素？然后针对性调整：如果是能力问题补基础，如果是关系问题修复连接，如果是压力问题先减负。持续超过一个月建议专业评估。',c:'建议预约家庭成长咨询',d:'情绪记录表'},
+{t:'如何激发孩子内驱力',a:'内驱力来自三大核心需求的满足。自主感：我能自己做选择和决定。胜任感：我能做好这件事并且看到进步。连接感：我所做的事与我在乎的人和事有关联。当这三个需求同时被满足时，内在动机自然产生。相反如果被控制、总是失败、与生活脱节，动机就会熄灭。',b:'提供选择而非命令。设置恰到好处的挑战。把学习内容与孩子的兴趣和生活联系起来。使用描述性肯定而非评价性表扬。避免把学习变成交易。给孩子空间去探索和犯错。',c:'家庭成长系统课',d:'成长目标表'},
+{t:'孩子总要催怎么办',a:'催促看似在帮孩子，实际上在剥夺孩子发展自我管理能力的机会。当家长承担了提醒的责任，孩子就学会了只在被提醒时才行动。这是心理学上的责任转移现象。催促还传递了一个隐含信息：我不相信你能自己做好。',b:'用视觉时间表和固定流程替代口头催促。使用计时器让孩子看见时间的流逝。让孩子体验不行动的自然结果而非人为惩罚。当孩子主动完成时立即给予具体肯定强化自发性行为。从短时段的小自律开始逐步延长。',c:'专注力训练课程',d:'学习规划表、习惯养成表'},
+{t:'如何让孩子主动完成作业',a:'作业战争的核心是控制权的争夺。当孩子觉得作业是别人要他做的事时，自然会抗拒。转变的关键是把作业的主动权还给孩子，让家长从监督者转变为支持者。',b:'建立固定的作业时间和地点形成自动化习惯。开始前用5分钟一起规划今晚任务清单。用番茄工作法分段完成。家长在旁边安静做自己的事而非盯着。完成后让孩子享受自由时间作为自然奖励。遇到困难先问你觉得可以怎么解决。',c:'专注力训练课程',d:'学习规划表'},
+{t:'学习动力不足的根源',a:'从家庭系统角度看学习动力——孩子的问题往往折射出家庭系统的特征。父母的焦虑通过镜像神经元直接影响孩子的情绪状态。家庭中未解决的冲突会让孩子用不学习来表达。父母教育理念不一致会让孩子左右为难。',b:'从改变家庭互动模式入手而非只盯着孩子的问题。父母首先管理好自己的情绪和焦虑。统一教育理念建立一致的家庭规则。创造安全的学习氛围允许犯错。定期家庭会议建立开放的沟通渠道。',c:'家庭成长系统课',d:'家庭会议模板'},
+{t:'奖励和惩罚为什么失效',a:'行为主义的外部激励在短期内有效，但长期来看会削弱内在动机。奖励把学习变成了交易，惩罚教会的是逃避而非改正。当外部控制被移除时，被控制的行为也会消失。这不是说奖励和惩罚完全不可以用，而是说不能作为主要的教育手段。',b:'用自然后果代替人为惩罚。用具体的描述性肯定代替物质奖励。帮助孩子体验学习本身的满足感和成就感。区分能力和努力给予不同的反馈。建立家庭规则而非临时性的奖惩。',c:'家庭成长系统课',d:'家庭规则表'},
+{t:'如何培养成长型思维',a:'卡罗尔·德韦克的研究表明相信能力可以通过努力提升的孩子比相信能力是固定的孩子表现更好、更愿意接受挑战。固定型思维的孩子害怕失败因为失败等于我不聪明。成长型思维的孩子把失败看作学习机会。',b:'表扬努力、策略和坚持而非聪明。把失败重新定义为学习的机会。教孩子理解大脑像肌肉一样可以锻炼。用暂未而非不能。家长展示自己正在学习和成长的事情。避免在别人面前给孩子贴聪明或不聪明的标签。',c:'情绪管理课程',d:'成长目标表'},
+{t:'如何提高学习兴趣',a:'学习兴趣不是天生的，是在积极的体验中逐渐形成的。关键是让孩子把学习与快乐而非压力关联在一起。兴趣的发展需要三个条件：接触的机会、正向的体验、自主的探索空间。',b:'让孩子接触多样化的学习内容和方式。发现孩子的兴趣点并把学习内容与兴趣连接。创造低压力高成就感的学习体验。保护孩子的好奇心不要因提问过多而熄灭。允许孩子深入学习感兴趣的内容而非强制广度。',c:'元认知学习力课程',d:'学习规划表'},
+{t:'孩子总说不想学怎么办',a:'不想学通常有具体原因而非单纯的懒惰。需要区别对待不同情况：可能是某个学科遇到困难、可能是与老师关系紧张、可能是被同学嘲笑、可能是觉得学习内容没有意义。',b:'先接纳孩子的感受不急于反驳。具体了解不想学的是什么。针对具体原因解决而非笼统地逼孩子学。降低短期要求重建学习信心。帮助孩子找到哪怕一个微小的学习成功的体验。',c:'家庭成长系统课',d:'情绪记录表'},
+{t:'为什么聪明孩子不努力',a:'聪明但不努力的背后通常是固定型思维在作祟。聪明的孩子往往被过度表扬聪明，于是他们害怕任何可能证明自己不聪明的挑战。不努力成了一种保护策略：如果我不努力但成绩还可以说明我聪明；如果我努力了还考不好那就说明我不聪明了。',b:'停止表扬聪明，改为表扬具体的努力和策略。给孩子挑战性任务并支持他完成。分享你曾努力克服困难的经历。创造一个允许犯错和失败的安全环境。帮孩子理解努力本身就是一种能力。',c:'元认知学习力课程',d:'成长目标表'},
+{t:'孩子没有目标怎么办',a:'目标感逐步发展的。没有目标可能是因为没体验过完成目标的满足感、目标都是别人定的而非自己的、或者害怕失败所以不敢设定目标。帮孩子建立目标感需要从小目标开始积累成功体验。',b:'从一周的小目标开始而非大而空的理想。帮孩子发现自己的兴趣和优势。用榜样故事启发而非说教。允许孩子探索和改变方向。完成目标后的庆祝仪式强化成就感。',c:'元认知学习力课程',d:'目标管理表'},
+{t:'培养学习习惯的方法',a:'习惯的形成依赖三个要素：触发信号、行为本身、即时奖励。建立学习习惯需要创造稳定的触发环境、降低行为启动的难度、提供完成后的满足感。大脑形成自动化通常需要21-66天的重复。',b:'固定时间地点降低决策疲劳。从微小习惯开始比如每天只学5分钟。使用习惯追踪表可视化进步。完成后的小仪式作为即时奖励。一次只培养一个好习惯不贪多。',c:'专注力训练课程',d:'习惯养成表'},
+{t:'学习动力与家庭关系',a:'家庭关系质量是学习动力的重要影响因子。当亲子关系紧张时孩子的情绪资源被消耗在处理关系压力上可用于学习的心理能量就会减少。依恋理论告诉我们安全的情感连接是孩子探索世界的基础。',b:'先修复关系再谈学习。每天保证至少15分钟无目的的陪伴时间。学习相关对话不超过日常沟通的30%。不在学习问题上批评孩子的为人只讨论具体行为。让孩子感受到无条件的接纳而非表现好了才被爱。',c:'亲子沟通课程',d:'家庭会议模板'},
+{t:'学习动力与自信心关系',a:'自信心和学习动力之间是双向循环。自信心高的孩子更愿意接受学习挑战因为失败不会威胁自我价值。而学习上的成功体验又会进一步增强自信心。反之如果自信心低孩子会回避挑战以保护脆弱的自我形象。',b:'帮助孩子建立自信不通过空洞夸奖而通过真实的成功体验。给孩子难度适中的任务让他体验到我能做到。关注进步而非绝对水平。帮助孩子看到自己的优势领域。失败后先共情再分析给予情感安全。',c:'情绪管理课程',d:'成长目标表'},
+{t:'如何建立学习责任感',a:'责任感不是教出来的是在承担责任的过程中长出来的。当家长承担了所有学习管理的责任时孩子就没有空间发展自己的责任感。培养责任感的本质是逐步把学习的掌控权还给孩子。',b:'按年龄逐步放手：低年级家长陪在旁边但让孩子自己决定作业顺序。中年级让孩子自己制定学习计划家长只在结束时检查。高年级让孩子承担成绩的自然后果。可以给建议但不替代决策。',c:'家庭成长系统课',d:'习惯养成表'},
+{t:'元认知如何提高学习动力',a:'元认知是对自己思维过程的觉察和调控能力。当孩子学会观察自己的学习过程时他就从被动的学习者变成了主动的监控者。他知道自己什么时候在走神、什么时候需要换策略、什么时候需要求助。这种掌控感本身就是强大的动力来源。',b:'教孩子在学习前后做自我提问：我打算怎么学？我刚才学到了什么？什么方法效果最好？使用元认知监控表记录学习过程。定期回顾学习策略的效果。把成功归因于使用的策略和方法而非运气。',c:'元认知学习力课程',d:'元认知监控表'},
+{t:'家庭成长系统如何影响学习',a:'家庭不是独立个体的集合而是一个相互影响的系统。孩子的学习问题往往是家庭系统某些特征的外在表现。改变一个孩子最有效的方式往往是改变他所在的系统而非只针对孩子本人。',b:'评估当前家庭系统的特征：沟通模式、权力结构、情感氛围、规则清晰度。找到系统中最需要调整的杠杆点。从全家的角度而非孩子的角度制定改变方案。定期家庭会议追踪系统变化。',c:'家庭成长系统课',d:'家庭会议模板'},
+{t:'孩子专注力差怎么办',a:'专注力问题需要全面评估而非简单归因。可能原因包括：执行功能发育不足、环境干扰过多、睡眠不足或质量差、饮食不均衡影响脑功能、缺乏适量运动、任务与能力不匹配。多数儿童的注意力问题可以通过环境和习惯调整得到改善。',b:'优化学习环境移除所有可能的干扰物。分段学习从15分钟开始逐渐延长。保证每天至少1小时户外运动。固定就寝和起床时间。使用番茄钟可视化专注时段。完成任务后给予充分休息。',c:'专注力训练课程',d:'专注力训练手册'},
+{t:'专注力训练的科学方法',a:'有效的专注力训练基础在于执行功能的三个核心成分：抑制控制（抵抗干扰）、工作记忆（保持信息）、认知灵活性（切换任务）。这三个能力像肌肉一样可以通过训练增强。',b:'每日短时高频训练优于长时间低频训练。使用舒尔特方格训练视觉专注。正念呼吸练习增强抗干扰能力。设定明确的时间限制创造适度压力。游戏化训练保持动机。记录每日专注时长追踪进步。',c:'专注力训练课程',d:'专注力训练手册'},
+{t:'执行功能与学习效率',a:'执行功能是大脑的管理系统负责计划、组织、监控和调节行为。执行功能对学习的影响远超智商。执行功能较弱的孩子表现为：难以开始任务、容易分心、不会规划时间、做完事不检查。',b:'使用外部工具补偿执行功能不足。清单和视觉提示减少记忆负担。建立固定流程减少执行功能负荷。分解任务降低启动门槛。教孩子使用自我对话引导行为。定期运动促进执行功能发展。',c:'专注力训练课程',d:'学习规划表'},
+{t:'如何提高孩子注意力',a:'注意力不是单一能力而是包含多个维度：选择性注意、持续性注意、分配性注意。不同学习任务调用不同的注意力类型。提高注意力需要综合优化生理基础、心理状态和学习环境。',b:'确保充足睡眠和均衡营养特别是蛋白质和Omega3。每日运动后30分钟是专注力最佳时段。使用计时器创建明确的时间边界。单任务学习禁止多任务切换。劳逸结合避免注意力疲劳。',c:'专注力训练课程',d:'时间管理表'},
+{t:'学习总分心怎么办',a:'分心的直接原因通常是：任务本身太无聊或太难、环境中有即时诱惑、内在情绪状态不稳定。从脑科学角度看分心是大脑默认模式网络过度活跃的表现需要训练任务正网络来抑制。',b:'清除学习空间的所有干扰物包括手机。使用番茄工作法设定明确的学习和休息时段。最难的任务放在精力最好的时段。分心时不责怪自己温和地把注意力拉回来。记录什么情况下最容易分心找到自己的模式。',c:'专注力训练课程',d:'时间管理表'},
+{t:'电子产品对专注力的影响',a:'电子产品的设计原理就是最大化用户停留时间。快速切换的内容流训练大脑期待高频刺激导致对低速信息的不耐受。长时间使用后大脑的可塑性改变使深度阅读和持续专注变得更加困难。',b:'建立家庭媒体使用协议全家遵守。学龄儿童每日屏幕娱乐时间不超过1-2小时。睡前1小时禁止屏幕。用有趣的线下活动替代屏幕时间。教孩子自我监控屏幕使用。家长以身作则管理好自己的手机使用。',c:'专注力训练课程、亲子沟通课程',d:'家庭会议模板'},
+{t:'提高学习效率的方法',a:'学习效率取决于四个因素的协同：专注力状态、学习策略方法、时间管理技能、身体基础状态。单一因素改善效果有限需要综合提升。',b:'使用番茄工作法管理专注时段和休息。教会孩子主动学习策略：提问、总结、自我测试。用艾宾浩斯遗忘曲线安排复习间隔。保证运动睡眠营养三大基础。每周回顾学习效果调整策略。',c:'元认知学习力课程',d:'学习规划表'},
+{t:'孩子坐不住怎么办',a:'坐不住在不同年龄段有不同意义。学龄前儿童注意力时间本来就短这是正常发展。学龄儿童坐不住可能是感觉寻求的生理需求、焦虑的表现、或任务不匹配的信号。',b:'提供适当的运动机会课间充分活动。使用坐垫或站立桌满足感觉需求。分段学习减少单次静坐时间。任务难度与能力匹配避免挫败导致的逃避。观察是否在某些情境下能坐住找到差异原因。',c:'专注力训练课程',d:'专注力训练手册'},
+{t:'如何训练持续专注',a:'持续专注是可以训练的能力。核心原理是每次分心后温和地把注意力拉回目标这就是一次专注力训练。关键不是不分心而是分心后能更快地回到任务上。',b:'从短时段开始逐渐延长。使用计时器可视化专注时长。记录每日最佳专注时间找到自己的节奏。一次只专注一个任务。完成后的休息期不做高刺激活动。把训练过程变成游戏增加趣味性。',c:'专注力训练课程',d:'时间管理表'},
+{t:'时间管理与专注力',a:'时间管理和专注力是互补的能力。好的时间管理减少认知负荷从而释放更多注意力资源。好的专注力让单位时间产出更高。两者共同决定了学习的效率。',b:'教孩子使用计划表预估每项任务所需时间。先做最难的任务精力最好时攻克核心。使用番茄工作法把时间变成可见资源。每天回顾实际用时与预估的差距提高时间感知能力。留出缓冲时间应对意外。',c:'专注力训练课程',d:'学习规划表、时间管理表'},
+{t:'专注力与大脑发展',a:'儿童大脑中负责注意力的前额叶皮层到25岁才完全成熟。因此儿童的专注力有限是生理特点而非态度问题。但环境和训练可以显著影响前额叶的发育进程。',b:'理解孩子的注意力水平符合其年龄发展而非苛责。运动促进BDNF分泌支持脑发育。充足的睡眠促进脑部清理和巩固。复杂多样的学习体验刺激神经连接。减少压力暴露长期压力损害前额叶发育。',c:'专注力训练课程',d:'专注力训练手册'},
+{t:'专注力不足的表现',a:'专注力不足在不同场景有不同表现。在学习中表现为写作业拖拉、容易出错、漏题看错题。在生活中表现为丢三落四、经常找不到东西。在社交中表现为打断别人说话、不能等待。需要在多个场景持续6个月以上才能确定是注意力障碍而非偶发。',b:'详细记录孩子的专注表现在不同情境下的差异。排查睡眠运动饮食等基础因素。优化环境和任务结构后再观察。如果多场景持续存在且影响功能建议专业评估。很多注意力问题通过行为和环境调整就能改善。',c:'专注力训练课程',d:'专注力训练手册'},
+{t:'提高课堂专注力方法',a:'课堂专注力不仅取决于孩子自身也受教室环境影响。位置、同桌、教学内容难度、师生关系都影响课堂注意力。',b:'与老师沟通安排在前排减少干扰。课前5分钟预习提高课堂参与度。教孩子用简单笔记保持主动参与。课前保证充足睡眠和早餐。课间充分活动让下一节课能静下来。',c:'专注力训练课程',d:'学习规划表'},
+{t:'提高阅读专注力方法',a:'阅读专注力下降是普遍现象与碎片化信息消费习惯有关。深度阅读需要大脑维持长时间的注意力聚焦这是需要训练的。',b:'从感兴趣的书开始培养阅读耐力。设定阅读时长目标而非页数目标。创造无干扰的阅读环境。用手指或笔引导视线保持专注。读完后简要复述内容加深理解。每天固定阅读时间养成习惯。',c:'专注力训练课程',d:'习惯养成表'},
+{t:'如何减少拖延行为',a:'拖延不是懒惰而是情绪调节的问题。人们拖延是因为任务引发负面情绪而拖延提供了短暂的逃避。但长期拖延又会产生更多负面情绪形成恶性循环。',b:'把任务分解到小到不会引发抗拒的程度。使用先做5分钟策略降低启动门槛。把大任务与愉快活动配对。识别和挑战拖延时的合理化借口。把完成任务后的轻松感与拖延后的焦虑感对比记录。',c:'专注力训练课程、元认知学习力课程',d:'学习规划表'},
+{t:'如何建立专注学习环境',a:'环境设计对专注力的影响远超大多数人的认识。大脑对环境中的潜在干扰自动进行监控这会消耗注意力资源。一个专注友好的环境能大幅降低维持专注所需的意志力消耗。',b:'桌面只放当前任务需要的物品。手机放在另一个房间而非只是静音。使用降噪耳机或在安静时段学习。固定的学习位置让大脑自动切换到学习模式。自然光和适宜温度支持长时间专注。',c:'专注力训练课程',d:'学习规划表'},
+{t:'家庭教育与专注力发展',a:'家庭教育方式直接影响孩子专注力的发展。过度干预和频繁打断会破坏孩子的注意力持续性。被允许专注玩耍的孩子比总是被打断的孩子注意力发展更好。',b:'当孩子专注时不打扰即使是玩。给孩子完成任务的完整时间不中途打断。减少家庭中的背景噪音特别是电视。家长示范专注做事的榜样。避免过多安排活动留出可以专注的自由时间。',c:'家庭成长系统课',d:'习惯养成表'},
+{t:'元认知与专注力关系',a:'元认知和专注力是相互促进的关系。元认知帮助孩子意识到自己什么时候走神了从而能够主动调整。专注力又为元认知监控提供了稳定的观察对象。',b:'教孩子用自我提问监控注意力状态。走神时不批评只是注意到并拉回来。记录什么情况下容易走神找到规律。把注意力波动看作正常现象减少自我攻击。使用元认知监控表追踪专注模式。',c:'元认知学习力课程',d:'元认知监控表'},
+{t:'专注力训练案例',a:'代表性案例：9岁男孩小明上课持续走神作业拖拉严重。测评发现执行功能发育略滞后主要是抑制控制能力不足。但智商正常学习能力没问题。',b:'干预方案：每天15分钟舒尔特方格训练。用番茄钟将作业分成20分钟一段。爸妈停止写作业时的不断提醒改为只在段间检查。保证每天1小时户外运动。建立固定的作业后奖励活动。结果：6周后作业完成时间缩短40%。',c:'专注力训练课程',d:'专注力训练手册'},
+{t:'专注力提升计划',a:'一个完整的专注力提升计划包含四个阶段：评估阶段了解当前水平和具体问题。基础阶段优化睡眠运动饮食环境。训练阶段系统练习专注力技能。维持阶段建立长期习惯防止反复。',b:'第1周记录基线数据了解当前专注水平和模式。第2-3周优化环境和生活习惯打好基础。第4-8周系统训练逐步延长专注时间。第9周后建立日常维护机制。每两周评估一次调整计划。',c:'专注力训练课程',d:'专注力训练手册、时间管理表'},
+{t:'孩子拖延怎么办',a:'拖延的心理机制有三个核心因素：任务引发的负面情绪、对完成任务所需能力的自我怀疑、即时满足对延迟满足的优势。儿童由于前额叶发育不完全比成人更容易受到这三者的影响。',b:'把任务分解到小到无法拖延的单元。使用计时器创造时间紧迫感。设置完成后的即时小奖励。帮孩子识别拖延时的内心对话并挑战它。不要求完美完成允许先完成再完善。',c:'专注力训练课程',d:'学习规划表、时间管理表'},
+{t:'为什么总是拖延',a:'从脑科学角度看拖延是大脑边缘系统（寻求即时快乐）和前额叶（追求长期目标）之间的冲突。在儿童和青少年中边缘系统更占优势这是生理特点而非意志力问题。',b:'理解拖延的生理基础减少对孩子的道德评判。用外部结构弥补内部执行力不足。把长期目标分解为短期可达成的小目标。创造即时反馈让大脑边缘系统也能获得满足。建立稳定的日常流程减少决策带来的拖延。',c:'专注力训练课程',d:'时间管理表'},
+{t:'如何提高执行力',a:'执行力是把意图转化为行动的能力包含任务启动、持续执行、监控调整三个环节。儿童执行力不足是发展性特点需要通过外部支持和逐渐内化来培养。',b:'使用清单降低记忆和规划负担。建立如果-那么计划：如果放学回家那么先写数学作业。用计时器降低任务启动的心理阻力。完成后立即给自己一个微小的庆祝仪式。从每天完成一件最重要的事开始训练。',c:'专注力训练课程',d:'学习规划表、目标管理表'},
+{t:'培养自律的方法',a:'自律的心理学本质是延迟满足能力和习惯自动化的结合。沃特·米歇尔的棉花糖实验显示延迟满足能力与未来的学业和人生成就相关。但这个能力可以通过训练提升。',b:'从短时间的等待训练开始逐步延长。建立可预测的日常规律减少决策消耗。用视觉化工具追踪自律的达成。把需要自律的行为转化为自动化的习惯。避免过度依赖意志力用环境设计替代。',c:'专注力训练课程',d:'习惯养成表'},
+{t:'习惯养成科学方法',a:'习惯形成的神经基础是基底节中的习惯回路：触发信号引发自动行为然后获得奖励。新习惯的形成需要重复这个回路直到行为变为自动化通常需要21到66天。',b:'选择明确的触发信号。行为本身尽可能简单易启动。完成后给自己即时的小奖励。同一时间只培养一个习惯。使用习惯追踪表可视化进展。如果中断了一天第二天立即续上不放弃。',c:'专注力训练课程',d:'习惯养成表'},
+{t:'拖延背后的心理机制',a:'拖延的深层心理机制往往与完美主义、对失败的恐惧、对任务的反感、决策疲劳有关。拖延不是时间管理问题而是情绪管理问题。',b:'识别你的拖延触发模式。允许自己做不完美的初稿。把我不想做重新定义为我先做5分钟。完成比完美重要先完成再优化。记录每次战胜拖延的经历建立我能行的证据。',c:'元认知学习力课程',d:'学习规划表'},
+{t:'行动力不足原因',a:'行动力不足通常有四个层面原因：缺乏清晰目标、任务太大难以启动、害怕失败或评价、即时诱惑超过长期收益。需要根据具体原因制定不同策略。',b:'写下具体的下一步行动。把大目标分解为15分钟内可以完成的小步骤。区分可控与不可控因素聚焦可控部分。建立问责机制找人监督或公开承诺。',c:'元认知学习力课程',d:'目标管理表'},
+{t:'孩子磨蹭怎么办',a:'磨蹭与拖延的区别在于磨蹭更多是行为节奏慢而非主动逃避。可能是时间感知能力不足、完美主义、或者需要更多过渡时间。',b:'使用计时器帮孩子感知时间流逝。提前10分钟预告下个活动给孩子过渡。简化指令每次只说一个动作。减少催促改用视觉提示。孩子快了不评论慢了温和提醒。',c:'专注力训练课程',d:'时间管理表'},
+{t:'如何建立时间观念',a:'时间对幼儿是抽象概念需要视觉化和具体化。时间观念发展经历：能区分白天黑夜、理解先后顺序、知道星期和日期、能预估时长。',b:'用沙漏或计时器让时间可视化。建立固定的日常流程让孩子预知接下来会发生什么。教孩子预估任务需要多长时间然后实际计时对比。把重要时间点用图片贴在墙上。',c:'专注力训练课程',d:'时间管理表'},
+{t:'目标管理训练方法',a:'有效的目标管理需要SMART原则：具体、可衡量、可达成、相关的、有时限。对儿童来说还需要加上可视化、有反馈、有庆祝。',b:'从周目标开始而非学期目标。用目标管理表写下目标、分解步骤、设定检查点。每周回顾进度调整策略。完成目标的庆祝仪式强化成就感。目标由孩子自己设定而非家长指定。',c:'元认知学习力课程',d:'目标管理表'},
+{t:'如何制定学习计划',a:'好的学习计划不是把时间填满而是为重要的事留出空间并保留弹性。计划需要具体到可执行的行动而非模糊的复习数学。',b:'计划写在纸上或用计划表APP。先列出所有任务再按优先级排序。为每项任务预估时间并留出20%缓冲。最难的任务安排在精力最好的时段。每天结束时花5分钟检查并调整明天计划。',c:'元认知学习力课程',d:'学习规划表'},
+{t:'如何提高行动力',a:'行动力的核心障碍是启动。一旦开始行动惯性会带着你继续。所以提高行动力的关键不是如何坚持而是如何开始。',b:'使用2分钟规则：如果一件事2分钟内能做完就立刻做。使用5分钟启动法：告诉自己只做5分钟。把要做的事说出来制造承诺压力。消除启动障碍提前准备好需要的物品。',c:'专注力训练课程',d:'时间管理表'},
+{t:'执行功能与拖延',a:'执行功能中的任务启动能力是拖延的关键影响因素。执行功能较弱的孩子即使知道该做什么也无法启动。这看起来像态度问题实则是神经发育问题。',b:'使用外部启动提示如闹钟或家长的温和提醒。把任务的第一步设计得极其简单。建立固定的启动仪式如深呼吸三次然后开始。使用任务清单勾选完成项提供即时反馈。',c:'专注力训练课程',d:'学习规划表'},
+{t:'家庭教育与拖延',a:'家庭中父母的教养方式直接影响孩子的拖延水平。过度控制的家长无意中剥夺了孩子发展自主规划能力的机会。高批评低支持的家庭氛围使孩子用拖延来回避负面评价。',b:'给予适龄的自主权让孩子体验自然后果。减少对过程的控制增加对结果的支持。当孩子按时完成时给予真诚的肯定。家长示范自己管理任务和时间的方式。',c:'家庭成长系统课',d:'家庭会议模板'},
+{t:'如何克服完美主义拖延',a:'完美主义拖延的逻辑是如果我不确定能完美完成那就不如不做。这是固定型思维的变体——结果比过程更重要。完美主义拖延者不是懒而是对结果的要求超出了能力范围。',b:'重新定义完成的标准：完成比完美重要。允许自己做糟糕的初稿。给任务设定时间上限而非质量上限。用实验心态替代评估心态。分享你的不完美作品降低完美主义压力。',c:'情绪管理课程',d:'成长目标表'},
+{t:'培养责任感的方法',a:'责任感来自承担责任的机会和承担后的反馈。被过度保护和代劳的孩子难以发展责任感。责任感的培养需要适龄的期望和一致性。',b:'按年龄分配固定的家务和学习责任。明确期望不模糊。让孩子承担未完成责任的自然后果。当孩子完成责任时给予真诚的感谢。不因孩子做得不完美就代劳。',c:'家庭成长系统课',d:'习惯养成表'},
+{t:'自我管理能力训练',a:'自我管理能力包含时间管理、任务管理、情绪管理和行为管理四个维度。儿童和青少年的大脑决定了他们需要外部结构来辅助自我管理然后逐步内化。',b:'使用外部工具辅助管理。建立固定的日常结构和流程。从管理一个领域开始再逐步扩展。定期与孩子一起回顾自我管理的效果。逐步减少外部支持让孩子自己承担更多。',c:'元认知学习力课程',d:'学习规划表、时间管理表'},
+{t:'孩子时间管理技巧',a:'孩子的时间管理与成人不同。孩子首先需要建立时间的物理感知即多长时间能做多少事。然后才能学习规划和优先级排序。',b:'用计时器练习时间预估让孩子猜一件事要多久再实际计时。用可视化时间表展示一天的时间安排。区分必须做的事和想做的事教孩子如何平衡。留出自由时间让孩子学会安排闲暇。',c:'专注力训练课程',d:'时间管理表'},
+{t:'拖延案例分析',a:'经典案例：11岁男孩小杰作业每周拖到周日晚上才赶。分析发现三个因素：周末没有固定作业时间失去了结构、作业量太大看了就焦虑、妈妈每周日晚上都会帮他赶形成依赖。',b:'干预：建立周六上午固定的作业时间。把作业分成周六上午和周日早上两段。妈妈只在约定时间提供帮助其他时间不介入。前三周妈妈在旁边安静陪伴然后逐步退出。结果：6周后能够独立在周六完成大部分作业。',c:'专注力训练课程',d:'学习规划表'},
+{t:'30天行动力训练计划',a:'30天行动力训练的核心原理是利用习惯形成周期建立行动自动化的神经通路。前7天是起步期需要最多意志力。第8-21天行为开始自动化。第22-30天巩固成为新常态。',b:'第1天确定一个核心行动目标。第1-7天每天固定时间执行即使只做5分钟。第8-14天逐步延长时间或难度。第15-21天引入自我监控和记录。第22-30天评估效果建立长期维护计划。使用行动力追踪表可视化每日进展。',c:'专注力训练课程、元认知学习力课程',d:'习惯养成表、目标管理表'},
+{t:'孩子情绪管理差怎么办',a:'儿童情绪管理能力的发展需要经历三个阶段：情绪识别（知道这是什么情绪）、情绪表达（能用语言说出去而非用行为发泄）、情绪调节（能主动调整情绪的强度和持续时间）。很多孩子卡在了第二阶段。',b:'用情绪词汇表扩大孩子的情绪词汇量。在日常生活中示范用语言表达情绪。帮孩子在情绪平复后回顾刚才发生了什么。教一个简单的冷静方法并反复练习。家长先管理好自己的情绪做榜样。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'孩子总发脾气怎么办',a:'发脾气是孩子无法用语言有效表达内在状态时的行为表现。发脾气时大脑的杏仁核处于劫持状态前额叶理性功能暂时离线。这时候讲道理是没有用的需要先帮助孩子度过情绪风暴再处理行为问题。',b:'发脾气时先确保安全不急于教育。情绪平复后帮孩子用语言描述刚才的感受。识别发脾气的常见触发因素。教孩子提前识别情绪升级的信号。建立一个冷静角让孩子可以自己去平复。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'如何培养情绪调节能力',a:'情绪调节不是压抑情绪而是识别、接纳、表达和主动调节情绪的过程。核心能力包括：情绪觉察、冲动控制、认知重评、寻求支持。',b:'从命名情绪开始建立情绪词汇量。教一个简单的呼吸调节技术并每天练习。用冷静角替代惩罚。帮助孩子在平静时制定情绪升级时的应对计划。分享你自己调节情绪的方法和经历。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'孩子焦虑怎么办',a:'儿童焦虑常表现为反复询问确认、回避特定情境、身体不适如肚子痛头痛。焦虑的根源是对不确定性的不耐受和对威胁的过度评估。',b:'倾听和接纳焦虑不否定孩子的感受。帮孩子区分真实的危险和想象的危险。使用担忧时间技术把焦虑关进时间窗口。逐步面对回避的情境。教简单的放松技巧如腹式呼吸。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'考试焦虑如何缓解',a:'考试焦虑的根源通常不是考试本身而是对考试结果的灾难化解读。适度焦虑提升表现但过度焦虑抑制表现。需要帮孩子在认知层面和生理层面双管齐下。',b:'考前帮孩子识别和挑战灾难化想法。教呼吸调节技术考前使用。建立稳定的复习节奏而非考前突击。考前保证充足睡眠比熬夜复习更有效。把考试重新定义为检查学习效果的机会。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'如何提高孩子自信心',a:'自信心不是夸出来的而是在真实的成功体验中建立起来的。空洞的夸奖反而可能让孩子更焦虑因为要保持被夸的形象。真正的自信来自我知道我能做好因为我曾经做过。',b:'给孩子适龄的真实挑战。关注努力过程和策略而非结果和能力。避免替孩子做他能做的事。分享你的失败和成长经历。帮助孩子建立自己的优点清单。',c:'情绪管理课程',d:'成长目标表'},
+{t:'情绪与学习关系',a:'情绪和学习是深度交织的。积极适度的情绪促进学习负面过度的情绪抑制学习。这是因为情绪状态直接影响注意力的分配、记忆的编码和提取、以及学习的动机水平。',b:'创造安全的学习氛围减少学习焦虑。帮孩子把学习与积极体验关联。识别并减少学习中的挫败源。用成长型思维看待学习中的困难。保证学习间的休息和恢复时间。',c:'情绪管理课程、元认知学习力课程',d:'情绪记录表'},
+{t:'情绪失控原因分析',a:'儿童情绪失控的常见原因包括：需求未被满足、感官过度刺激、语言表达能力不足、情绪调节技能欠缺、模仿他人行为模式、寻求注意或逃避任务。',b:'记录情绪失控的模式找到触发因素。提前满足基本需求减少生理原因导致的失控。教孩子在平静时练习冷静技能。失控时保持简短指令不卷入情绪对抗。失控后复盘但不羞辱。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'家庭氛围影响情绪吗',a:'家庭情绪氛围是孩子情绪发展的土壤。长期处于高冲突、高批评、情绪表达被压抑的家庭中的孩子更容易出现情绪问题。父母的情绪调节能力是孩子情绪发展的最强预测因子之一。',b:'父母首先管理好自己的情绪状态。减少家庭中的言语冲突和冷暴力。允许家庭成员表达所有情绪但规范表达方式。建立积极情绪互动的日常习惯。定期家庭会议处理积压的情绪问题。',c:'家庭成长系统课、情绪管理课程',d:'家庭会议模板'},
+{t:'如何建立安全感',a:'安全感是孩子心理发展的基石。有安全感的孩子敢于探索、愿意尝试、能够承受挫折。安全感来自可预测的照料、及时的回应、无条件的接纳。',b:'建立稳定的日常结构和可预测的家庭环境。及时回应孩子的情绪需求即使只是确认我在听。区别接纳情绪和不接纳行为。不说你再这样我就不喜欢你了这样的条件性话语。每天固定时间的全身心陪伴。',c:'家庭成长系统课',d:'情绪记录表'},
+{t:'高敏感孩子如何教育',a:'约15-20%的儿童属于高敏感气质。他们神经系统对刺激的处理更深更多对环境变化更敏感情绪反应更强烈。高敏感不是缺陷而是在某些环境中可能更有优势的特质。',b:'理解和接纳高敏感特质不试图改变。减少环境刺激提供低刺激的休息空间。提前预告变化减少意外带来的冲击。教孩子识别自己的过度刺激信号并学会主动调节。发掘高敏感的优势如更强的共情能力和细节观察力。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'孩子容易哭怎么办',a:'哭泣是正常的情绪表达在不同年龄段有不同的发展意义。幼儿用哭来表达无法说出的需求。大孩子频繁哭泣可能是挫折承受力不足或高敏感特质的表现也可能是需要关注的信号。',b:'接纳哭泣不制止。帮孩子用语言表达替代哭泣。对高敏感孩子降低环境刺激。教简单的自我安抚方法。排查是否长期压力导致的情绪脆弱。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'如何帮助孩子表达情绪',a:'情绪表达是需要学习的技能。很多孩子不是不想表达而是不具备表达的词汇和渠道。帮助孩子学会表达是情绪管理的第一步。',b:'家长示范用语言表达自己的情绪。使用情绪词汇表和情绪卡片辅助识别。创造安全的表达空间不因孩子的情绪表达而惩罚。用画画、写作等非语言方式作为过渡。定期在家庭会议中设置情绪分享环节。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'情绪记录法使用指南',a:'情绪记录法是认知行为疗法中的核心工具适用于儿童和成人。通过记录情绪出现的情境、自动思维、情绪强度和身体反应来识别情绪模式。',b:'选择一个简单的记录格式。每天固定时间回顾当天的主要情绪事件。记录触发事件、自动思维、情绪类型和强度、身体感觉。每周回顾找出发情绪被触发的规律。根据记录调整日常安排减少负面触发因素。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'正念训练与情绪管理',a:'正念训练对儿童情绪管理的研究支持日益增多。正念帮助孩子学会观察自己的情绪和身体感受而不被立即卷入。核心技能包括聚焦注意、身体扫描、接纳不评判。',b:'从短时间的正念练习开始如1分钟呼吸觉察。使用儿童友好的引导语和APP。将正念融入日常如吃饭时感受食物。家长一起练习共同创造正念氛围。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'成长型思维与情绪',a:'成长型思维不仅影响学习也深刻影响情绪管理。固定型思维的孩子把负面情绪看作自己有问题。成长型思维的孩子把情绪看作可以学习和调节的技能。',b:'教孩子理解情绪是可以改变的而非固定特质。把情绪管理的进步归因于练习和努力。分享你学习管理情绪的故事。用暂未框架看待情绪挑战。',c:'情绪管理课程',d:'成长目标表'},
+{t:'亲子关系与情绪发展',a:'亲子关系是孩子情绪发展的第一课堂。孩子通过观察父母如何表达和调节情绪来学习情绪管理。安全的亲子关系为孩子提供了探索情绪的安全基地。',b:'父母关注自己的情绪表达方式。在孩子情绪爆发时保持冷静成为孩子的外部调节器。日常中多创造积极的情绪互动。修复关系冲突教孩子关系可以修复。',c:'亲子沟通课程',d:'家庭会议模板'},
+{t:'情绪管理案例分析',a:'代表性案例：7岁女孩小美频繁在学校哭闹被老师投诉。测评发现小美无法用语言表达自己的情绪只会用哭来释放压力。家庭环境方面父母工作忙陪伴时间少小美用哭闹来获取关注。',b:'干预：情绪词汇训练教小美识别和命名情绪。每天15分钟专门陪伴时间无条件关注。教给小美一个简单的冷静方法。老师配合在学校给小美提供表达情绪的机会。结果：4周后哭闹频率显著降低能够用语言说出我很难过。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'孩子压力过大怎么办',a:'儿童压力过大表现为睡眠困难、食欲改变、情绪波动、退行行为、身体不适。压力的来源可能是学业、同伴关系、家庭冲突或过度安排的日程。',b:'减轻孩子的日程安排留出自由时间。帮孩子区分可控和不可控的压力源。教简单的放松技巧。增加户外运动时间。创造无压力的家庭时光。如果压力来自学校与老师沟通调整。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'情绪管理训练计划',a:'一个完整的情绪管理训练计划涵盖四个阶段：教育阶段了解情绪及其功能。技能阶段学习具体的情绪管理技术。实践阶段在真实情境中应用技能。巩固阶段维持技能并预防倒退。',b:'第1-2周建立情绪词汇和情绪记录习惯。第3-4周学习冷静技术和呼吸调节。第5-6周在低压情境中练习新技能。第7-8周应用于真实挑战情境。每月回顾和调整计划。',c:'情绪管理课程',d:'情绪记录表、习惯养成表'},
+{t:'如何改善亲子关系',a:'改善亲子关系的核心是修复连接而非纠正行为。当孩子感受到被理解和接纳时行为自然会发生改变。关系修复的关键步骤是倾听、共情、不批判、给予选择权。',b:'每天至少15分钟全身心陪伴放下手机不做任何要求。多听少说先理解再建议。用我陈述表达感受不用你指责。创造一起活动的愉快时光。冲突后主动修复关系。',c:'亲子沟通课程',d:'亲子沟通模板'},
+{t:'孩子不听话怎么办',a:'孩子不听话通常是四个原因之一：指令不清晰孩子不知道要做什么、缺乏情感连接孩子不愿意配合、孩子在做自己的事被打断产生了抵触、家庭规则不一致孩子学会了选择性服从。',b:'指令要具体清晰一次只说一件事。在下指令前先确保情感连接。提前预告给过渡时间。全家执行一致的规则和后果。给孩子合理范围内的选择权。',c:'亲子沟通课程',d:'家庭规则表'},
+{t:'如何与青春期孩子沟通',a:'青春期大脑经历重大重组。边缘系统活跃推动寻求刺激和新奇而前额叶尚未成熟无法有效控制冲动。同时青少年对自主权的需求急剧增加。',b:'少说多听创造安全的表达空间。尊重隐私和边界不随意翻看手机。用协商取代命令。关注情绪背后的需求而非只看行为。保持门一直开着让孩子知道随时可以来找你。',c:'亲子沟通课程',d:'亲子沟通模板'},
+{t:'家庭教育最重要的是什么',a:'家庭教育最重要的不是教给孩子多少知识而是建立一个安全的成长环境和一套健康的家庭互动模式。孩子的自信、安全感和学习动力都建立在这个基础上。',b:'建立安全的情感连接让孩子知道不管发生什么你都在。示范而非说教你希望孩子拥有的品质。提供适龄的挑战和支持的平衡。允许犯错把失败当作学习机会。',c:'家庭成长系统课',d:'家庭会议模板'},
+{t:'如何建立高质量亲子关系',a:'高质量亲子关系的三个特征：可预测性孩子知道可以从你这里期待什么、回应性你对孩子的情感和需求做出及时回应、情感可用性你愿意并能够与孩子进行情感层面的交流。',b:'建立稳定的家庭结构和日常节奏。及时回应孩子的情绪即使只是确认我听到了。每天留出全心陪伴的时间。用身体接触传递安全感。先连接再纠正。',c:'亲子沟通课程',d:'家庭会议模板'},
+{t:'孩子顶嘴怎么办',a:'适度顶嘴其实是健康的说明孩子有自己的想法和表达意愿。需要区分顶嘴和表达不同意见。顶嘴如果是粗鲁或不尊重的需要引导表达方式而非压制表达本身。',b:'区分顶嘴和意见表达。示范如何礼貌地表达不同意见。不当场争对错等情绪平复再沟通。给孩子在合理范围内的决策权。讨论如何尊重地表达不同意见。',c:'亲子沟通课程',d:'亲子沟通模板'},
+{t:'如何减少家庭冲突',a:'家庭冲突的根源通常是沟通模式不良、角色期待不一致、压力转嫁。减少冲突不是要消除所有分歧而是建立健康的冲突处理机制。',b:'学习非暴力沟通减少指责性语言。定期家庭会议处理积压的问题。区分谁的问题不替别人解决他们的问题。冲突升级时约定暂停信号。先连接再纠正。',c:'亲子沟通课程、家庭成长系统课',d:'家庭会议模板'},
+{t:'亲子沟通技巧',a:'有效亲子沟通的核心原则：先听后说、先共情再建议、描述行为不评价人格、表达自己的感受和需要而非指责、提供选择而非命令。',b:'蹲下来和孩子在同一高度说话。用我陈述替代你指责。用开放式问题替代封闭式问题。积极倾听重复孩子说的内容确认理解。避免在同一时间处理多个问题。',c:'亲子沟通课程',d:'亲子沟通模板'},
+{t:'如何建立家庭规则',a:'有效家庭规则的四个特征：全家参与制定而非家长单方面宣布、用正向语言表述做什么而非不做什么、清晰具体可执行、一致执行不随意改变。',b:'开家庭会议共同讨论需要的规则。规则数量控制在5-7条以内。每条规则用正向语言表述。明确违反规则的合理后果。家长率先遵守示范规则的重要性。定期回顾和调整规则。',c:'亲子沟通课程',d:'家庭会议模板、家庭规则表'},
+{t:'家庭会议怎么开',a:'家庭会议是建立家庭民主和连接的有效工具。成功的家庭会议需要固定的时间和流程让每个成员都有平等的发言机会。',b:'每周固定时间15-30分钟。流程包括感谢环节、上周回顾、问题讨论、下周计划。轮流主持会议培养孩子的领导力。记录决议并追踪执行。结束后一起做一件愉快的事。',c:'亲子沟通课程',d:'家庭会议模板'},
+{t:'父母情绪如何影响孩子',a:'父母的情绪状态通过多种途径影响孩子：镜像神经元使孩子无意识模仿父母的情绪状态、长期的家庭情绪氛围塑造孩子的情感基调、父母的情绪调节方式成为孩子的模板。',b:'父母先管理好自己的情绪是给孩子最好的礼物。在孩子面前示范健康的情绪表达和调节。不在孩子面前进行激烈的夫妻冲突。如果自己情绪不好先暂停跟孩子说妈妈需要冷静一下。',c:'情绪管理课程',d:'情绪记录表'},
+{t:'家庭系统理论介绍',a:'家庭系统理论由穆瑞·鲍恩提出核心观点：家庭不是独立个体的简单相加而是一个相互影响的情绪单元。系统中一个人的变化会引发其他人的变化。',b:'理解孩子的行为可能反映了家庭系统的特征。改变系统的关键在于改变互动模式而非只针对个体。关注家庭中的三角关系模式。提升家庭成员的自我分化水平。',c:'家庭成长系统课',d:'家庭会议模板'},
+{t:'依恋关系对孩子影响',a:'依恋理论认为早期与照料者的互动模式形成内部工作模型影响一生的关系模式。安全型依恋的孩子更自信、更愿意探索、情绪调节更好。',b:'提供稳定、可预测、有回应的照料。及时回应婴儿和幼儿的情绪需求。创造安全的探索环境。修复依恋中的破裂重新建立连接。',c:'家庭成长系统课',d:'情绪记录表'},
+{t:'如何培养孩子责任感',a:'责任感是通过承担责任的机会逐渐培养的。家长过度代劳是责任感发展的最大障碍。',b:'按年龄分配固定家务和责任。明确期待不模糊。允许孩子承担自然后果。完成后给予真诚感谢。不因做得不完美就代劳。',c:'家庭成长系统课',d:'习惯养成表'},
+{t:'孩子撒谎怎么办',a:'孩子撒谎在发展阶段中很常见。幼儿可能分不清想象和现实。学龄儿童撒谎通常是为了逃避惩罚或获得关注。青少年可能为了保护隐私或维护自主权。',b:'不给孩子贴上骗子的标签。理解撒谎背后的原因。创造安全的诚实环境减少惩罚威胁。家长示范诚实。区分无害谎言和需要干预的严重撒谎。',c:'亲子沟通课程',d:'亲子沟通模板'},
+{t:'孩子沉迷手机怎么办',a:'手机沉迷需要区分真正的成瘾和过度使用。多数孩子属于后者。核心问题不是在手机上花了多少时间而是手机挤占了哪些本该有的活动。',b:'用家庭媒体协议替代单方面禁令。提供有趣的替代活动。家长以身作则管理自己的屏幕时间。将手机放在公共区域而非卧室。定期家庭会议讨论屏幕使用。',c:'专注力训练课程、亲子沟通课程',d:'家庭会议模板'},
+{t:'如何培养独立人格',a:'独立人格的培养需要在安全和支持的环境中逐步给予自主权。过度保护和控制都会抑制独立性的发展。关键在于在保护和支持之间找到动态平衡。',b:'按年龄逐步给予决策权。允许孩子为自己的选择承担后果。尊重孩子的意见即使与你的不同。鼓励孩子尝试新事物。在孩子失败时提供情感支持而非替他们解决。',c:'家庭成长系统课',d:'习惯养成表'},
+{t:'优秀家庭共同特点',a:'研究表明优秀家庭有一些共同特征：清晰而有弹性的家庭结构、开放的情感表达、有效的冲突解决机制、家庭成员之间的尊重和边界、共同的价值观和仪式。',b:'建立清晰的家庭角色和规则。创造安全的情感表达环境。学习健康的冲突解决方法。尊重每个家庭成员的独立性同时保持连接。建立家庭特有的仪式和传统。',c:'家庭成长系统课',d:'家庭会议模板'},
+{t:'家庭成长案例分析',a:'综合案例：一个典型的家庭系统改造过程。背景：10岁男孩学习动力不足父母焦虑经常争吵。核心问题：家庭系统僵化沟通以指责和防御为主。',b:'第一阶段：评估家庭系统的特征发现沟通模式和三角关系。第二阶段：建立家庭会议制度改善沟通。第三阶段：父母统一教育理念减少冲突。第四阶段：孩子参与家庭决策建立自主感。结果：6个月后家庭氛围显著改善孩子学习主动性提升。',c:'家庭成长系统课',d:'家庭会议模板'},
+{t:'家庭成长系统完整指南',a:'家庭成长系统的核心是将家庭视为一个有机的整体而非问题孩子的集合。系统的四大支柱：清晰的价值观和目标、健康的沟通模式、合理的角色和边界、持续的学习和调整。',b:'第一步评估当前家庭系统。第二步建立家庭愿景和核心价值。第三步改善沟通模式建立家庭会议。第四步明确每个家庭成员的角色责任和边界。第五步建立持续学习和优化的机制。这是一个渐进的过程需要耐心和坚持。',c:'家庭成长系统课',d:'家庭会议模板、家庭规则表'}
+];
+
+function openArticle(id){
+  var idx=id-1;
+  var d=articleData[idx];
+  if(!d){
+    document.getElementById('articleTitle').textContent='文章详情';
+    document.getElementById('articleContent').innerHTML='<p>这篇深度文章正在撰写中。</p><p><a href="#assess" style="color:var(--primary)">完成免费测评</a> | <a href="#ai" style="color:var(--primary)">使用AI成长教练</a></p>';
+  }else{
+    document.getElementById('articleTitle').textContent=d.t;
+    var tips=d.b.split('. ').filter(function(x){return x}).map(function(x,i){return '<li>'+x.replace(/^\d+\.\s*/,'')+'</li>'}).join('');
+    document.getElementById('articleContent').innerHTML='<p><strong>心理学分析：</strong>'+d.a+'</p><p><strong>行动建议：</strong></p><ol style="padding-left:20px;line-height:2.2">'+tips+'</ol><p style="margin-top:8px"><strong>推荐课程：</strong>'+d.c+' | <strong>推荐工具：</strong>'+d.d+'</p>';
+  }
+  document.getElementById('articleModal').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="家庭成长研究院 - 融合心理学、元认知与家庭教育科学，帮助6-15岁孩子家长解决学习动力、专注力、拖延、情绪管理和亲子关系问题。">
+<title>家庭成长研究院 | 让成长有方法，让教育有科学</title>
+<style>
+:root {
+  --ink: #1a1a1a; --warm: #faf8f4; --cream: #f5efe6;
+  --stone: #e0d9ce; --clay: #c4b5a0;
+  --primary: #2c5f4f; --primary-light: #3d7a65; --primary-dark: #1e4237;
+  --gold: #d4a017; --amber: #b8860b;
+  --muted: #6b6b6b; --light: #999;
+  --radius: 8px; --radius-lg: 14px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+  --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', Georgia, serif;
+  --font-sans: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--warm);line-height:1.75;-webkit-font-smoothing:antialiased}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,244,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--stone)}
+nav .ni{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 24px}
+nav .logo{font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:var(--primary);text-decoration:none;letter-spacing:.03em}
+nav .logo span{color:var(--gold)}
+nav .nl{display:flex;gap:22px;list-style:none}
+nav .nl a{text-decoration:none;color:var(--muted);font-size:.84rem;font-weight:500;transition:color .2s}
+nav .nl a:hover{color:var(--primary)}
+nav .ncta{background:var(--primary);color:#fff;padding:8px 20px;border-radius:20px;text-decoration:none;font-size:.82rem;font-weight:600;transition:background .2s}
+nav .ncta:hover{background:var(--primary-dark)}
+
+section{padding:80px 20px}
+.si{max-width:1100px;margin:0 auto}
+.sl{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary-light);margin-bottom:8px}
+.st{font-family:var(--font-serif);font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:10px}
+.sd{color:var(--muted);font-size:.95rem;max-width:520px;line-height:1.8}
+
+.btn{display:inline-block;padding:13px 28px;border-radius:24px;font-weight:700;font-size:.9rem;text-decoration:none;cursor:pointer;border:none;font-family:var(--font-sans);transition:all .2s}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(44,95,79,.25)}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 2px 8px rgba(212,160,23,.25)}
+.btn-gold:hover{background:var(--amber)}
+.btn-outline{border:1.5px solid var(--clay);color:var(--ink);background:transparent}
+.btn-outline:hover{border-color:var(--primary);background:rgba(44,95,79,.03)}
+
+#home{padding-top:140px;padding-bottom:80px;text-align:center;background:linear-gradient(180deg,#faf8f4 0%,#f0ebe0 100%)}
+#home .badge{display:inline-block;background:var(--primary);color:#fff;padding:5px 16px;border-radius:16px;font-size:.75rem;font-weight:600;letter-spacing:.06em;margin-bottom:20px}
+#home h1{font-family:var(--font-serif);font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:14px;max-width:650px;margin-left:auto;margin-right:auto}
+#home .hs{font-size:1.05rem;color:var(--muted);max-width:500px;margin:0 auto 30px;line-height:1.8}
+#home .hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+#home .hstat{margin-top:28px;font-size:.82rem;color:var(--light)}
+
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:44px}
+.pain-card{background:#fff;border-radius:var(--radius);padding:28px;border:1px solid var(--stone);transition:box-shadow .3s}
+.pain-card:hover{box-shadow:var(--shadow)}
+.pain-card .pi{font-size:1.8rem;margin-bottom:10px}
+.pain-card h4{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.pain-card p{font-size:.88rem;color:var(--muted);line-height:1.8}
+
+.flow-steps{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:44px;text-align:center}
+.flow-step{background:#fff;border-radius:var(--radius-lg);padding:30px 24px;width:180px;border:1px solid var(--stone);position:relative}
+.flow-step .fs-num{width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 12px;font-size:.9rem}
+.flow-step h4{font-size:.92rem;font-weight:700;margin-bottom:4px}
+.flow-step p{font-size:.8rem;color:var(--muted)}
+.flow-arrow{display:flex;align-items:center;color:var(--clay);font-size:1.2rem}
+
+.cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:40px}
+.cap-card{background:#fff;border-radius:var(--radius);padding:30px 20px;text-align:center;border:1px solid var(--stone);transition:all .3s}
+.cap-card:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+.cap-card .ci{font-size:2.5rem;margin-bottom:10px}
+.cap-card h4{font-size:.95rem;font-weight:700;margin-bottom:6px;color:var(--ink)}
+.cap-card p{font-size:.8rem;color:var(--muted);line-height:1.7}
+
+.course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px}
+.course-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--stone);transition:all .3s}
+.course-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.course-card.featured{border:2px solid var(--gold)}
+.course-card .cc-top{padding:28px 24px 16px}
+.course-card .cc-badge{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary-light);margin-bottom:8px;background:var(--cream);padding:3px 10px;border-radius:10px}
+.course-card h3{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.course-card .cc-desc{font-size:.85rem;color:var(--muted);line-height:1.8}
+.course-card .cc-modules{list-style:none;padding:0 24px;margin:12px 0}
+.course-card .cc-modules li{font-size:.8rem;color:var(--muted);padding:4px 0;border-bottom:1px solid var(--cream)}
+.course-card .cc-bottom{padding:16px 24px;background:var(--cream);display:flex;justify-content:space-between;align-items:center}
+.course-card .cc-price{font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--ink)}
+.course-card .cc-btn{padding:8px 20px;border-radius:20px;font-weight:600;font-size:.82rem;cursor:pointer;border:none;font-family:var(--font-sans);background:var(--primary);color:#fff;transition:all .2s}
+.course-card .cc-btn:hover{background:var(--primary-dark)}
+
+.ai-box{background:#fff;border-radius:var(--radius-lg);padding:44px 36px;border:2px solid var(--primary);text-align:center;margin-top:40px;max-width:700px;margin-left:auto;margin-right:auto}
+.ai-box h3{font-family:var(--font-serif);font-size:1.3rem;margin-bottom:6px}
+.ai-box .ai-desc{font-size:.9rem;color:var(--muted);margin-bottom:20px}
+.ai-box .ai-questions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px}
+.ai-box .ai-q{padding:8px 16px;background:var(--cream);border-radius:20px;font-size:.82rem;color:var(--ink);cursor:pointer;border:none;font-family:var(--font-sans);transition:all .2s}
+.ai-box .ai-q:hover{background:var(--primary);color:#fff}
+.ai-box .ai-input{width:100%;padding:14px 18px;border:2px solid var(--stone);border-radius:24px;font-size:.9rem;font-family:var(--font-sans);outline:none;transition:border-color .2s}
+.ai-box .ai-input:focus{border-color:var(--primary)}
+.ai-box .ai-response{margin-top:16px;background:var(--cream);border-radius:var(--radius);padding:20px;text-align:left;font-size:.88rem;line-height:1.9;display:none}
+.ai-box .ai-response.show{display:block}
+
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:40px}
+.case-card{background:#fff;border-radius:var(--radius);padding:28px;border:1px solid var(--stone)}
+.case-card .stars{color:var(--gold);font-size:.85rem;margin-bottom:8px;letter-spacing:2px}
+.case-card p{font-size:.88rem;color:var(--ink);font-style:italic;line-height:1.8}
+.case-card .cn{font-size:.8rem;color:var(--light);margin-top:10px}
+
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:36px}
+.res-card{background:#fff;border-radius:var(--radius);padding:24px 20px;text-align:center;border:1px solid var(--stone);cursor:pointer;transition:all .2s}
+.res-card:hover{border-color:var(--primary)}
+.res-card .ri{font-size:2rem;margin-bottom:8px}
+.res-card h4{font-size:.88rem;font-weight:700}
+
+.consult-card{background:#fff;border-radius:var(--radius-lg);padding:44px;border:2px solid var(--gold);display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;margin-top:36px}
+.consult-card h3{font-family:var(--font-serif);font-size:1.3rem;font-weight:700;margin-bottom:8px}
+.consult-card p{font-size:.9rem;color:var(--muted);line-height:1.9}
+.consult-card .c-side{text-align:center}
+.consult-card .c-price{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--ink)}
+.consult-card .c-unit{font-size:.82rem;color:var(--light);margin-bottom:14px}
+
+#cta{background:var(--primary);color:#fff;text-align:center}
+#cta .st{color:#fff}
+#cta .sd{color:rgba(255,255,255,.75)}
+#cta .btn-gold{margin-top:16px}
+
+footer{background:var(--ink);color:rgba(255,255,255,.5);text-align:center;padding:36px 20px;font-size:.82rem}
+footer .fb{color:#fff;font-family:var(--font-serif);font-size:1.1rem;margin-bottom:4px}
+footer .flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:10px 0}
+footer .flinks a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.78rem;transition:color .2s}
+footer .flinks a:hover{color:#fff}
+
+/* Assessment page */
+.assess-body{max-width:700px;margin:120px auto 60px;padding:0 20px}
+.quiz-q{background:#fff;border-radius:var(--radius);padding:28px;margin-bottom:16px;border:1px solid var(--stone)}
+.quiz-q h3{font-size:1rem;font-weight:700;margin-bottom:14px}
+.quiz-q .options{display:flex;flex-direction:column;gap:8px}
+.quiz-q .opt{padding:10px 16px;border:1.5px solid var(--stone);border-radius:20px;cursor:pointer;font-size:.88rem;transition:all .2s}
+.quiz-q .opt:hover,.quiz-q .opt.selected{border-color:var(--primary);background:rgba(44,95,79,.04)}
+.quiz-result{background:#fff;border-radius:var(--radius-lg);padding:40px;text-align:center;border:2px solid var(--primary);display:none}
+.quiz-result.show{display:block}
+
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal{background:#fff;border-radius:16px;padding:36px 28px;max-width:420px;width:92%;text-align:center;box-shadow:var(--shadow-lg);max-height:90vh;overflow-y:auto}
+.modal h3{font-family:var(--font-serif);font-size:1.2rem;margin-bottom:6px}
+.modal .mc{color:var(--muted);font-size:.88rem;margin-bottom:14px}
+.modal .mp{font-family:var(--font-serif);font-size:1.8rem;font-weight:700;color:var(--amber);margin-bottom:18px}
+.modal .qw{width:220px;height:220px;margin:0 auto 12px;border-radius:10px;overflow:hidden;background:var(--cream)}
+.modal .qw img{width:100%;height:100%;object-fit:contain}
+.modal .pi{font-size:.84rem;color:var(--muted);margin-bottom:8px;line-height:1.7}
+.modal .uc{background:var(--cream);display:inline-block;padding:8px 18px;border-radius:6px;font-family:monospace;font-size:1.1rem;font-weight:700;color:var(--primary);letter-spacing:.06em;margin:6px 0}
+.modal .btn-close{display:inline-block;padding:8px 24px;border:1px solid var(--stone);border-radius:20px;background:#fff;color:var(--muted);font-size:.84rem;cursor:pointer;font-family:var(--font-sans);margin-top:10px}
+
+#tools{background:var(--cream)}
+#cases{background:var(--warm)}
+#resources{background:var(--cream)}
+
+@media(max-width:768px){
+  nav .nl{display:none}
+  section{padding:56px 14px}
+  #home{padding-top:110px;padding-bottom:60px}
+  .flow-steps{flex-direction:column;align-items:center}
+  .flow-arrow{transform:rotate(90deg)}
+  .consult-card{grid-template-columns:1fr;gap:24px;padding:24px}
+  .ai-box{padding:28px 20px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="ni">
+<a href="#home" class="logo">家庭成长<span>研究院</span></a>
+<ul class="nl">
+<li><a href="#pain">痛点</a></li>
+<li><a href="#courses">课程</a></li>
+<li><a href="#assess">测评</a></li>
+<li><a href="#ai">AI教练</a></li>
+<li><a href="#cases">案例</a></li>
+<li><a href="#consult">咨询</a></li>
+<li><a href="#camp">训练营</a></li>
+<li><a href="#encyclopedia">百科</a></li>
+<li><a href="#caselib">案例</a></li>
+<li><a href="#tools">工具</a></li>
+<li><a href="#membership">会员</a></li>
+</ul>
+<a href="#assess" class="ncta">免费测评</a>
+</div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section id="home">
+<div class="si">
+<p class="badge">让成长有方法，让教育有科学</p>
+<h1>培养自主学习的孩子，<br>从改变家庭成长系统开始</h1>
+<p class="hs">融合心理学、元认知、学习科学与家庭教育的方法体系。帮助家长解决学习动力不足、专注力差、拖延、情绪管理和亲子关系问题。</p>
+<div class="hbtns">
+<a href="#assess" class="btn btn-primary">立即免费测评</a>
+<a href="#resources" class="btn btn-outline">领取成长指南</a>
+</div>
+<p class="hstat">已有 1,000+ 家庭正在使用成长系统改善学习状态与家庭关系</p>
+</div>
+</section>
+
+<!-- ════ PAIN POINTS ════ -->
+<section id="pain">
+<div class="si">
+<p class="sl">你是否正在面临这些问题</p>
+<h2 class="st">孩子的问题，往往不是孩子一个人的问题</h2>
+<p class="sd">很多家庭都在经历这些挑战。你并不缺少爱和努力，你可能只是缺少一套科学有效的方法。</p>
+<div class="pain-grid">
+<div class="pain-card"><div class="pi">😰</div><h4>孩子不愿学习</h4><p>每天写作业都像打一场仗，催了又催，吼了又吼。</p></div>
+<div class="pain-card"><div class="pi">⏰</div><h4>孩子总是拖延</h4><p>计划很多，却很难行动，作业拖到最后一刻才写。</p></div>
+<div class="pain-card"><div class="pi">🧠</div><h4>专注力不足</h4><p>学习效率低，容易分心，坐不住，上课走神。</p></div>
+<div class="pain-card"><div class="pi">📱</div><h4>沉迷电子产品</h4><p>手机平板放不下，家长越管冲突越大。</p></div>
+<div class="pain-card"><div class="pi">😡</div><h4>情绪波动大</h4><p>容易发脾气、焦虑或退缩，情绪管理能力差。</p></div>
+<div class="pain-card"><div class="pi">💔</div><h4>亲子关系紧张</h4><p>沟通越来越困难，关系越来越疏远。</p></div>
+</div>
+</div>
+</section>
+
+<!-- ════ SOLUTION ════ -->
+<section id="solution" style="background:var(--cream)">
+<div class="si">
+<p class="sl">我们的解决方案</p>
+<h2 class="st">成长不是靠催促，而是靠系统</h2>
+<p class="sd">我们帮助家庭建立一套可持续运行的成长系统，从测评到陪伴，全程科学支撑。</p>
+<div class="flow-steps">
+<div class="flow-step"><div class="fs-num">1</div><h4>成长测评</h4><p>了解孩子当前状态</p></div>
+<span class="flow-arrow">→</span>
+<div class="flow-step"><div class="fs-num">2</div><h4>AI成长分析</h4><p>发现问题的根源</p></div>
+<span class="flow-arrow">→</span>
+<div class="flow-step"><div class="fs-num">3</div><h4>课程学习</h4><p>掌握科学方法</p></div>
+<span class="flow-arrow">→</span>
+<div class="flow-step"><div class="fs-num">4</div><h4>家庭实践</h4><p>把方法落实到生活</p></div>
+<span class="flow-arrow">→</span>
+<div class="flow-step"><div class="fs-num">5</div><h4>长期陪伴</h4><p>持续优化家庭系统</p></div>
+</div>
+</div>
+</section>
+
+<!-- ════ CAPABILITIES ════ -->
+<section id="capabilities">
+<div class="si">
+<p class="sl">核心能力</p>
+<h2 class="st">真正影响孩子未来的，不是分数，而是底层能力</h2>
+<div class="cap-grid">
+<div class="cap-card"><div class="ci">🚀</div><h4>学习动力</h4><p>从被逼学习逐步走向主动学习</p></div>
+<div class="cap-card"><div class="ci">🎯</div><h4>专注力</h4><p>提高学习效率与执行能力</p></div>
+<div class="cap-card"><div class="ci">🧘</div><h4>情绪管理</h4><p>帮助孩子学会调节情绪</p></div>
+<div class="cap-card"><div class="ci">📋</div><h4>自我管理</h4><p>培养计划、行动与坚持能力</p></div>
+<div class="cap-card"><div class="ci">🌱</div><h4>成长型思维</h4><p>建立面对挑战和失败的能力</p></div>
+</div>
+</div>
+</section>
+
+<!-- ════ COURSES ════ -->
+<section id="courses" style="background:var(--cream)">
+<div class="si">
+<p class="sl">系统课程</p>
+<h2 class="st">从认知到实践，帮助家庭建立成长系统</h2>
+<div class="course-grid">
+<div class="course-card featured">
+<div class="cc-top"><span class="cc-badge">核心课程</span><h3>家庭成长系统课</h3><p class="cc-desc">帮助家长建立科学的教育框架，从学习动力到亲子关系全面覆盖。</p></div>
+<ul class="cc-modules"><li>模块1 家庭成长认知</li><li>模块2 学习动力激发</li><li>模块3 专注力训练</li><li>模块4 情绪管理</li><li>模块5 亲子沟通</li><li>模块6 家庭系统升级</li></ul>
+<div class="cc-bottom"><span class="cc-price">&yen;1,999</span><button class="cc-btn" onclick="openPay('家庭成长系统课',1999,'GROW2026')">立即加入</button></div>
+</div>
+<div class="course-card">
+<div class="cc-top"><span class="cc-badge">热门课程</span><h3>元认知学习力课程</h3><p class="cc-desc">培养孩子自主学习能力，掌握元认知思维工具。</p></div>
+<ul class="cc-modules"><li>认识元认知</li><li>思维监控训练</li><li>学习策略优化</li><li>问题解决能力</li><li>决策能力培养</li><li>终身学习习惯</li></ul>
+<div class="cc-bottom"><span class="cc-price">&yen;999</span><button class="cc-btn" onclick="openPay('元认知学习力课程',999,'META2026')">立即加入</button></div>
+</div>
+<div class="course-card">
+<div class="cc-top"><span class="cc-badge">专题课程</span><h3>专注力训练课程</h3><p class="cc-desc">提升执行功能与学习效率，科学系统的专注力训练方案。</p></div>
+<ul class="cc-modules"><li>专注力科学基础</li><li>执行功能训练</li><li>学习环境优化</li><li>时间管理技能</li><li>电子产品管理</li><li>持续专注培养</li></ul>
+<div class="cc-bottom"><span class="cc-price">&yen;1,299</span><button class="cc-btn" onclick="openPay('专注力训练课程',1299,'FOCUS2026')">立即加入</button></div>
+</div>
+<div class="course-card">
+<div class="cc-top"><span class="cc-badge">热门课程</span><h3>情绪管理课程</h3><p class="cc-desc">帮助孩子建立稳定内在状态，学会识别和调节情绪。</p></div>
+<ul class="cc-modules"><li>情绪识别与命名</li><li>情绪调节技术</li><li>压力管理方法</li><li>自信心培养</li><li>社交情绪技能</li><li>正念练习指导</li></ul>
+<div class="cc-bottom"><span class="cc-price">&yen;999</span><button class="cc-btn" onclick="openPay('情绪管理课程',999,'EMO2026')">立即加入</button></div>
+</div>
+<div class="course-card">
+<div class="cc-top"><span class="cc-badge">必修课程</span><h3>亲子沟通课程</h3><p class="cc-desc">减少家庭冲突，建立合作关系，让沟通从对抗走向连接。</p></div>
+<ul class="cc-modules"><li>沟通模式识别</li><li>非暴力沟通技术</li><li>青春期沟通策略</li><li>边界与规则设立</li><li>家庭会议方法</li><li>冲突修复技巧</li></ul>
+<div class="cc-bottom"><span class="cc-price">&yen;999</span><button class="cc-btn" onclick="openPay('亲子沟通课程',999,'TALK2026')">立即加入</button></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════ ASSESSMENT ════ -->
+<section id="assess">
+<div class="si">
+<p class="sl">免费测评</p>
+<h2 class="st">了解孩子的真实状态，从一次科学测评开始</h2>
+<p class="sd">完成测评后获得AI分析报告，了解问题根源，获得个性化成长建议。</p>
+<div class="assess-body" style="margin-top:30px">
+<div id="quiz-container">
+<div class="quiz-q"><h3>1/10 孩子每天愿意主动开始学习任务吗？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">完全不愿意，需要反复催促</div><div class="opt" onclick="selectOpt(this)">偶尔愿意，多数时候需要提醒</div><div class="opt" onclick="selectOpt(this)">大部分时候愿意，偶尔需要提醒</div><div class="opt" onclick="selectOpt(this)">非常主动，基本不需要提醒</div></div></div>
+<div class="quiz-q"><h3>2/10 孩子做作业时能够持续专注多长时间？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">不到10分钟就开始分心</div><div class="opt" onclick="selectOpt(this)">10-20分钟左右</div><div class="opt" onclick="selectOpt(this)">20-40分钟左右</div><div class="opt" onclick="selectOpt(this)">40分钟以上，能持续完成</div></div></div>
+<div class="quiz-q"><h3>3/10 孩子是否经常把任务拖到最后一刻？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">几乎每次都拖到最后</div><div class="opt" onclick="selectOpt(this)">经常拖延</div><div class="opt" onclick="selectOpt(this)">偶尔拖延</div><div class="opt" onclick="selectOpt(this)">很少拖延，能按时完成</div></div></div>
+<div class="quiz-q"><h3>4/10 孩子在使用电子产品时能否自己控制时间？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">完全不能，需要强行拿走</div><div class="opt" onclick="selectOpt(this)">需要反复提醒才能停止</div><div class="opt" onclick="selectOpt(this)">大部分时候可以自己控制</div><div class="opt" onclick="selectOpt(this)">能够主动管理使用时间</div></div></div>
+<div class="quiz-q"><h3>5/10 孩子遇到挫折或失败时的反应？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">崩溃大哭或完全放弃</div><div class="opt" onclick="selectOpt(this)">情绪低落，需要较长时间恢复</div><div class="opt" onclick="selectOpt(this)">会沮丧但能慢慢调整</div><div class="opt" onclick="selectOpt(this)">能坦然面对，从中学习</div></div></div>
+<div class="quiz-q"><h3>6/10 孩子能否清晰表达自己的情绪？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">完全不能，只会哭或发脾气</div><div class="opt" onclick="selectOpt(this)">偶尔能说，但大多时候说不清</div><div class="opt" onclick="selectOpt(this)">基本能表达主要情绪</div><div class="opt" onclick="selectOpt(this)">能准确详细描述自己的感受</div></div></div>
+<div class="quiz-q"><h3>7/10 你们之间的亲子沟通状态？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">经常争吵，沟通困难</div><div class="opt" onclick="selectOpt(this)">比较紧张，交流不多</div><div class="opt" onclick="selectOpt(this)">总体还行，偶尔有冲突</div><div class="opt" onclick="selectOpt(this)">沟通顺畅，孩子愿意分享</div></div></div>
+<div class="quiz-q"><h3>8/10 孩子有没有自己的学习目标和计划？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">完全没有目标和计划</div><div class="opt" onclick="selectOpt(this)">有模糊想法但没有计划</div><div class="opt" onclick="selectOpt(this)">有目标但执行力不足</div><div class="opt" onclick="selectOpt(this)">有清晰目标和执行计划</div></div></div>
+<div class="quiz-q"><h3>9/10 孩子对自己的评价通常是？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">很负面，常说我不行</div><div class="opt" onclick="selectOpt(this)">不太自信</div><div class="opt" onclick="selectOpt(this)">比较客观</div><div class="opt" onclick="selectOpt(this)">积极自信</div></div></div>
+<div class="quiz-q"><h3>10/10 作为家长，你在教育中最大的感受是？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">焦虑无助，不知道怎么办</div><div class="opt" onclick="selectOpt(this)">有些困惑，需要指导</div><div class="opt" onclick="selectOpt(this)">基本有方向</div><div class="opt" onclick="selectOpt(this)">有方法有信心</div></div></div>
+<button class="btn btn-primary" style="width:100%;margin-top:16px;padding:16px" onclick="showResult()">提交测评，查看分析报告</button>
+</div>
+<div class="quiz-result" id="quiz-result">
+<h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:16px">📊 学习动力初步分析报告</h3>
+<p style="font-size:.9rem;color:var(--muted);line-height:1.9;margin-bottom:16px">根据你的回答，我们初步分析如下。每个孩子的成长都是一个系统性问题，需要从多个维度综合评估。完成完整版20题测评和AI分析，可以获得更深入的个性化报告。</p>
+<div style="background:var(--cream);border-radius:var(--radius);padding:20px;text-align:left;margin-bottom:20px">
+<p style="font-size:.88rem;line-height:2"><strong>当前状态：</strong>需要系统支持<br><strong>核心建议：</strong>从学习动力和专注力两个维度同时入手<br><strong>推荐课程：</strong>家庭成长系统课 + 元认知学习力课程<br><strong>推荐资源：</strong>成长指南 + 学习动力训练表</p>
+</div>
+<button class="btn btn-gold" onclick="openPay('家庭成长系统课',1999,'GROW2026')">加入课程，开始系统成长</button>
+<button class="btn btn-outline" style="margin-top:8px" onclick="location.href='#resources'">先领取免费成长资源包</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════ AI COACH ════ -->
+<section id="ai" style="background:var(--cream)">
+<div class="si">
+<p class="sl">AI成长教练</p>
+<h2 class="st">你的专属AI成长教练，24小时在线</h2>
+<div class="ai-box">
+<h3>🤖 成长教练AI</h3>
+<p class="ai-desc">输入你在家庭教育中遇到的问题，获得分析、建议和资源推荐</p>
+<div class="ai-questions">
+<button class="ai-q" onclick="askAI('孩子不愿意写作业怎么办')">孩子不愿写作业</button>
+<button class="ai-q" onclick="askAI('孩子沉迷手机怎么办')">孩子沉迷手机</button>
+<button class="ai-q" onclick="askAI('孩子缺乏自信怎么办')">孩子缺乏自信</button>
+<button class="ai-q" onclick="askAI('孩子总是拖延怎么办')">孩子总是拖延</button>
+<button class="ai-q" onclick="askAI('孩子考试焦虑怎么办')">考试焦虑</button>
+</div>
+<input type="text" class="ai-input" id="ai-input" placeholder="输入你的问题，如：孩子专注力差怎么办？" onkeydown="if(event.key==='Enter')askAI(document.getElementById('ai-input').value)">
+<div class="ai-response" id="ai-response"></div>
+</div>
+</div>
+</section>
+
+<!-- ════ CASE STUDIES ════ -->
+<section id="cases">
+<div class="si">
+<p class="sl">真实案例</p>
+<h2 class="st">来自真实家庭的改变</h2>
+<div class="case-grid">
+<div class="case-card"><div class="stars">★★★★★</div><p>"孩子从每天拖延写作业到能够自主规划学习任务，变化非常大。原来不是孩子懒，是我们没有给对方法。"</p><div class="cn">—— 李妈妈，孩子10岁</div></div>
+<div class="case-card"><div class="stars">★★★★★</div><p>"亲子冲突明显减少了，家里氛围轻松了很多。学完课程才发现以前很多做法都是错的。"</p><div class="cn">—— 王爸爸，孩子13岁</div></div>
+<div class="case-card"><div class="stars">★★★★★</div><p>"孩子专注时间明显提升，以前坐十分钟就不行了，现在能安静学习四十分钟。学习效率提高了很多。"</p><div class="cn">—— 张妈妈，孩子8岁</div></div>
+</div>
+</div>
+</section>
+
+<!-- ════ FREE RESOURCES ════ -->
+<section id="resources">
+<div class="si">
+<p class="sl">免费资源</p>
+<h2 class="st">立即领取成长资源包</h2>
+<div class="res-grid">
+<div class="res-card" onclick="openResource(this)"><div class="ri">📘</div><h4>家庭成长指南</h4></div>
+<div class="res-card" onclick="openResource(this)"><div class="ri">📋</div><h4>学习动力训练表</h4></div>
+<div class="res-card" onclick="openResource(this)"><div class="ri">🎯</div><h4>专注力训练手册</h4></div>
+<div class="res-card" onclick="openResource(this)"><div class="ri">🧘</div><h4>情绪管理工具包</h4></div>
+<div class="res-card" onclick="openResource(this)"><div class="ri">🏠</div><h4>家庭会议模板</h4></div>
+</div>
+<div style="text-align:center;margin-top:28px">
+<button class="btn btn-primary" onclick="openPay('成长资源包（含解锁码）',0,'FREE2026')">免费领取</button>
+</div>
+</div>
+</section>
+
+<!-- ════ CONSULTATION ════ -->
+<section id="camp" style="background:var(--warm)">
+<div class="si">
+<p class="sl">训练营</p>
+<h2 class="st">21天家庭成长训练营</h2>
+<p class="sd">每天15分钟，系统提升学习动力、专注力、情绪管理和亲子沟通。适合希望快速入门的家庭。</p>
+<div style="display:grid;grid-template-columns:1fr 300px;gap:36px;align-items:start;margin-top:36px">
+<div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:20px">
+<div style="background:#fff;border-radius:8px;padding:20px;border:1px solid var(--stone)"><h4 style="font-size:.9rem;font-weight:700;margin-bottom:4px;color:var(--primary)">第1周</h4><p style="font-size:.8rem;color:var(--muted)">学习动力激活<br>家庭成长认知<br>成长型思维入门</p></div>
+<div style="background:#fff;border-radius:8px;padding:20px;border:1px solid var(--stone)"><h4 style="font-size:.9rem;font-weight:700;margin-bottom:4px;color:var(--primary)">第2周</h4><p style="font-size:.8rem;color:var(--muted)">专注力训练<br>时间管理技能<br>学习环境优化</p></div>
+<div style="background:#fff;border-radius:8px;padding:20px;border:1px solid var(--stone)"><h4 style="font-size:.9rem;font-weight:700;margin-bottom:4px;color:var(--primary)">第3周</h4><p style="font-size:.8rem;color:var(--muted)">情绪管理技术<br>亲子沟通升级<br>家庭系统巩固</p></div>
+</div>
+<h4 style="font-size:.9rem;font-weight:700;margin-bottom:8px">训练营包含</h4>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">21天每日任务</span>
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">7节音频课程</span>
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">全部工具模板</span>
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">结营证书</span>
+</div>
+</div>
+<div style="background:#fff;border-radius:12px;padding:28px 24px;border:2px solid var(--gold);text-align:center">
+<div style="font-size:2rem;font-weight:700;color:var(--amber);margin-bottom:2px">&yen;99</div>
+<div style="font-size:.82rem;color:var(--light);margin-bottom:14px">一次付费</div>
+<button class="btn btn-gold" style="width:100%;font-size:.9rem" onclick="openPay('21天家庭成长训练营',99,'CAMP2026')">立即加入训练营</button>
+<div style="font-size:.75rem;color:var(--sage);margin-top:10px">已有500+家庭完成训练</div>
+</div>
+</div>
+</div>
+</section>
+<section id="consult" style="background:var(--cream)">
+<div class="si">
+<p class="sl">专业咨询</p>
+<h2 class="st">如果你需要更深入的帮助</h2>
+<div class="consult-card">
+<div>
+<h3>家庭成长咨询</h3>
+<p>专业成长顾问为你提供个性化支持。包括：家庭成长诊断、学习问题深度分析、亲子关系咨询、成长规划制定。每次50分钟，面对面或视频进行。</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">家庭诊断</span>
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">成长规划</span>
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">50分钟/次</span>
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">完全保密</span>
+</div>
+</div>
+<div class="c-side">
+<div class="c-price">&yen;3,000</div>
+<div class="c-unit">/ 50分钟</div>
+<button class="btn btn-gold" onclick="openPay('家庭成长咨询',3000,'CONSULT2026')">预约咨询</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════ CTA ════ -->
+<section id="cta">
+<div class="si">
+<h2 class="st">每个孩子都拥有成长的潜力</h2>
+<p class="sd">成长不是等待奇迹，而是建立正确的系统。从今天开始，帮助孩子成为自主学习、自我管理、终身成长的人。</p>
+<a href="#assess" class="btn btn-gold">开始免费测评</a>
+</div>
+</section>
+
+<footer>
+<div class="fb">家庭成长研究院</div>
+<p>让成长有方法，让教育有科学</p>
+<div class="flinks">
+<a href="#home">首页</a><a href="#courses">课程中心</a><a href="#assess">免费测评</a><a href="#ai">AI教练</a><a href="#cases">案例库</a><a href="#consult">咨询预约</a>
+</div>
+<p style="margin-top:8px">&copy; 2026 家庭成长研究院</p>
+</footer>
+
+<!-- Payment Modal -->
+<div class="modal-overlay" id="payModal">
+<div class="modal">
+<h3>扫码支付</h3>
+<p class="mc" id="payCourse"></p>
+<div class="mp" id="payPrice"></div>
+<div class="qw"><img src="https://raw.githubusercontent.com/Fantaitai123/yuancognitive/main/qrcode.jpg" alt="收款码"></div>
+<p class="pi">请扫描上方二维码完成支付</p>
+<div class="uc" id="payCode" style="display:none"></div>
+<button class="btn-close" onclick="closePay()">关闭</button>
+</div>
+</div>
+
+<script>
+var resourceDB={
+'家庭成长指南':{d:'一份全面的家庭成长入门指南，帮助家长理解家庭系统如何影响孩子的学习和成长。包含：家庭成长模型概述、常见教育误区的心理学解释、建立成长型家庭的5个步骤、家庭成长自查清单。'},
+'学习动力训练表':{d:'帮助孩子建立学习规划习惯的周计划模板。包含：每日任务清单、优先级排序、时间预估、完成检查、每日反思。配合元认知学习力课程效果最佳。'},
+'专注力训练手册':{d:'基于执行功能理论的系统训练方案。包含：专注力评估量表、分段训练计划（5/10/15/25分钟）、环境优化清单、每日追踪记录表。'},
+'情绪管理工具包':{d:'帮助孩子识别、表达和调节情绪的工具集合。包含：情绪词汇表、情绪强度评估尺、STOP技术卡片、冷静角设置指南、情绪日记模板。'},
+'家庭会议模板':{d:'规范化家庭会议的完整模板。包含：会议议程模板、发言规则（不打断不评判）、感谢环节引导、问题解决流程、决议追踪表、家庭目标墙。'}
+};
+function openResource(el){
+var name=el.querySelector('h4').textContent;
+var d=resourceDB[name];
+var desc=d?d.d:'该资源详细说明正在完善中。加入课程或训练营可获取完整工具模板。';
+document.getElementById('articleTitle').textContent=name;
+document.getElementById('articleContent').innerHTML='<p>'+desc+'</p><p style="margin-top:12px"><strong>获取方式：</strong>加入对应课程或训练营即可下载完整可打印版本。</p><p><a href="#courses" style="color:var(--primary)">浏览课程</a> | <a href="#camp" style="color:var(--primary)">加入训练营</a></p>';
+document.getElementById('articleModal').classList.add('active');
+document.body.style.overflow='hidden';
+}
+function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected')}
+function showResult(){document.getElementById('quiz-container').style.display='none';document.getElementById('quiz-result').classList.add('show');document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'})}
+function openPay(name,price,code){document.getElementById('payCourse').textContent=name;document.getElementById('payPrice').textContent=price>0?'¥'+price:'免费';document.getElementById('payCode').textContent=code;document.getElementById('payCode').style.display=code&&code!='FREE2026'?'inline-block':'none';document.getElementById('payModal').classList.add('active');document.body.style.overflow='hidden'}
+function closePay(){document.getElementById('payModal').classList.remove('active');document.body.style.overflow=''}
+document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closePay()});
+
+var aiDB={
+'孩子不愿意写作业怎么办':{a:'孩子不愿写作业通常不是态度问题，而是能力或动力问题。可能原因：任务难度不匹配、缺乏自主感、没有形成习惯、家庭学习氛围紧张。',b:'1.将大任务分解为小步骤降低启动门槛。2.建立固定作业时间和地点。3.让孩子完成后获得自主选择权。4.减少催促增加具体鼓励。',c:'家庭成长系统课（模块2）、元认知学习力课程',d:'学习规划表、习惯养成表'},
+'孩子沉迷手机怎么办':{a:'手机沉迷是症状而非病因。孩子沉迷通常因为现实世界缺乏成就感、连接感或自主感。限制使用只是治标。',b:'1.与孩子协商而非单方面制定规则。2.发展线下兴趣活动。3.家长以身作则。4.建立家庭无屏幕时段。',c:'专注力训练课程、亲子沟通课程',d:'家庭会议模板、习惯养成表'},
+'孩子缺乏自信怎么办':{a:'自信不足根源：过度批评或过度保护、缺乏成功体验、将失败内化为自我评价。',b:'1.关注努力过程而非结果。2.给适龄挑战获得胜任感。3.用成长型思维反馈。4.分享你自己的失败和成长故事。',c:'情绪管理课程、家庭成长系统课',d:'成长目标表、情绪记录表'},
+'孩子总是拖延怎么办':{a:'拖延核心原因：执行功能未发育成熟、任务太模糊或太大、对任务有负面情绪、完美主义。',b:'1.使用番茄工作法分解时间。2.先做五分钟原则降低启动门槛。3.可视化任务清单。4.建立先工作后玩耍的固定顺序。',c:'专注力训练课程、元认知学习力课程',d:'学习规划表、时间管理表'},
+'孩子考试焦虑怎么办':{a:'适度焦虑正常，过度焦虑影响发挥。根源：对失败灾难化解读、家长传递的压力、缺乏应试策略。',b:'1.区分可控与不可控因素。2.教呼吸调节技术。3.考前建立稳定准备节奏。4.考后关注学到什么而非分数。',c:'情绪管理课程、元认知学习力课程',d:'情绪记录表、正念练习指导'},
+'孩子专注力差怎么办':{a:'专注力问题需要全面评估。可能原因：执行功能发育不足、环境干扰过多、睡眠不足、饮食不均衡、缺乏运动。',b:'1.优化学习环境减少干扰。2.分段学习循序渐进延长专注时间。3.保证充足睡眠和运动。4.使用计时器可视化时间。',c:'专注力训练课程',d:'学习规划表、专注力训练手册'},
+'孩子不听话怎么办':{a:'孩子不听话通常是因为：指令不清晰、缺乏连接感、孩子在测试边界、家庭规则不一致。',b:'1.确保指令简单明确一次只说一件事。2.先建立连接再给出指令。3.全家执行一致的规则。4.给孩子适当的选择权。',c:'亲子沟通课程、家庭成长系统课',d:'家庭会议模板、家庭规则表'},
+'如何与青春期孩子沟通':{a:'青春期大脑经历重大重组，情绪系统活跃而前额叶尚在发育。这是生理变化而非故意对抗。',b:'1.少说多听创造安全表达空间。2.尊重隐私和边界。3.用协商而非命令。4.关注情绪背后的需求。',c:'亲子沟通课程',d:'亲子沟通模板'},
+'孩子成绩下降怎么办':{a:'成绩下降是信号不是问题本身。需要排查：学习方法、情绪状态、家庭变化、社交关系、身体健康。',b:'1.先关注孩子的情绪状态而非成绩。2.分析具体学科的困难点。3.调整学习策略和方法。4.与老师沟通了解课堂表现。',c:'元认知学习力课程、家庭成长系统课',d:'学习规划表、目标管理表'},
+'孩子不想上学怎么办':{a:'拒学是严重信号。可能原因：学业压力过大、校园霸凌、社交困难、家庭问题、焦虑或抑郁。',b:'1.耐心倾听不评判。2.与学校沟通了解情况。3.必要时寻求专业评估。4.暂时减少学业压力先修复情绪。',c:'建议预约家庭成长咨询',d:'情绪记录表'},
+'如何提高孩子学习效率':{a:'学习效率取决于专注力、学习策略、时间管理和身体状态四个因素。',b:'1.番茄工作法管理专注时段。2.教会孩子思维导图和笔记方法。3.保证运动睡眠饮食三大基础。4.定期复习优于考前突击。',c:'元认知学习力课程、专注力训练课程',d:'学习规划表、时间管理表'},
+'孩子写作业磨蹭怎么办':{a:'磨蹭通常不是态度问题。可能是：任务太大不知从何开始、作业太难有畏难情绪、环境干扰太多、需要陪伴和支持。',b:'1.帮孩子把作业分成小块逐一完成。2.先做最简单的建立成就感。3.清除桌面和房间干扰物。4.家长在旁边安静陪伴。',c:'专注力训练课程',d:'学习规划表'},
+'如何培养孩子自律':{a:'自律是执行功能的体现。孩子的大脑前额叶到25岁才完全成熟，幼儿和儿童期的自律需要外部支持。',b:'1.建立可预测的日常惯例。2.用视觉提示代替口头催促。3.从短时段的小自律开始练习。4.完成后的自然奖励比物质奖励更有效。',c:'专注力训练课程、家庭成长系统课',d:'习惯养成表、目标管理表'},
+'孩子上课走神怎么办':{a:'上课走神原因多样：教学内容不匹配、注意力维持时间短、睡眠不足、早餐营养不足、视觉或听觉处理困难。',b:'1.保证充足睡眠和营养早餐。2.课前预习提高课堂参与度。3.教孩子用记笔记保持专注。4.与老师沟通调整座位位置。',c:'专注力训练课程',d:'专注力训练手册'},
+'孩子记忆力差怎么办':{a:'记忆力与注意力、理解深度、情绪状态和睡眠质量密切相关。单独训练记忆效果有限。',b:'1.利用艾宾浩斯遗忘曲线安排复习。2.教会理解性记忆而非死记硬背。3.使用思维导图和故事法。4.保证充足睡眠促进记忆巩固。',c:'元认知学习力课程',d:'学习规划表'},
+'如何建立家庭规则':{a:'有效家庭规则的三个特征：全家参与制定、清晰具体可执行、一致执行不随意改变。',b:'1.开家庭会议共同讨论规则。2.规则表述为做什么而非不做什么。3.家长率先遵守做榜样。4.定期回顾调整规则。',c:'亲子沟通课程、家庭成长系统课',d:'家庭会议模板、家庭规则表'},
+'孩子总发脾气怎么办':{a:'发脾气是孩子表达无法用语言说出的情绪。先理解：情绪没有对错，行为有对错。',b:'1.情绪爆发时先保证安全不急于讲道理。2.情绪平复后帮助孩子命名刚才的情绪。3.教替代表达方式。4.识别并减少触发因素。',c:'情绪管理课程',d:'情绪记录表'},
+'孩子爱哭怎么办':{a:'哭泣是正常的情绪表达。不同年龄段原因不同：幼儿可能是需求未被满足，大孩子可能是挫折承受力不足或高敏感特质。',b:'1.接纳哭泣不制止不嘲笑。2.帮孩子用语言表达替代哭泣。3.对高敏感孩子降低环境刺激。4.教简单的自我安抚方法。',c:'情绪管理课程',d:'情绪记录表'},
+'如何提高孩子自信心':{a:'自信心来自真实的成功体验和他人的积极反馈。空洞的夸奖反而伤害自信。',b:'1.给孩子适龄的真实挑战。2.关注努力和进步而非结果。3.避免替孩子做他能做的事。4.分享你的失败经历示范不完美是可以的。',c:'情绪管理课程',d:'成长目标表'},
+'孩子没有朋友怎么办':{a:'社交困难可能是社交技能不足、性格内向、被排斥或缺乏社交机会。需要区别对待。',b:'1.观察具体困难在哪里。2.创造小范围低压力社交机会。3.教基本社交技能如轮流、分享、倾听。4.不强迫社交尊重孩子的节奏。',c:'亲子沟通课程',d:'（建议预约咨询评估）'},
+'孩子被欺负怎么办':{a:'被欺负需要立即行动。区分冲突和欺负：欺负是反复的、有力量不对等的、故意的伤害行为。',b:'1.认真倾听相信孩子。2.记录具体事件和时间。3.与学校沟通要求具体措施。4.教孩子安全应对策略和寻求帮助的方法。5.必要时考虑转学。',c:'建议预约家庭成长咨询',d:'（紧急情况请联系学校和必要机构）'},
+'孩子总玩手机怎么办':{a:'手机吸引力在于即时反馈和无限内容。与其禁止不如教会管理。',b:'1.用家庭媒体协议替代单方面禁止。2.提供有趣的替代活动。3.家长管理好自己的屏幕时间。4.使用屏幕时间管理工具辅助。',c:'专注力训练课程、亲子沟通课程',d:'家庭会议模板、习惯养成表'},
+'孩子学习压力大怎么办':{a:'适度压力促进学习，过度压力损害学习。需要帮孩子找到压力与能力的平衡点。',b:'1.帮助孩子区分可控与不可控因素。2.调整期望值符合孩子当前能力。3.保证运动和休息时间。4.教简单的放松技术。',c:'情绪管理课程',d:'情绪记录表'},
+'孩子睡不着怎么办':{a:'儿童失眠常见原因：睡前屏幕时间、过度兴奋或焦虑、不规律的作息、咖啡因摄入。',b:'1.建立固定的睡前程序（洗漱、阅读、放松）。2.睡前1小时无屏幕。3.确保白天充足运动。4.教简单的放松呼吸练习。',c:'情绪管理课程',d:'习惯养成表'},
+'孩子挑食怎么办':{a:'挑食在2-6岁是发展阶段的一部分。大多数孩子会自然度过。核心原则：家长决定提供什么，孩子决定吃多少。',b:'1.定时提供多样化食物不强迫。2.家长示范享受各类食物。3.让孩子参与食物准备。4.避免用零食弥补不吃饭。',c:'家庭成长系统课',d:'习惯养成表'},
+'如何开家庭会议':{a:'家庭会议是建立家庭民主和连接的有效工具。频率建议每周一次15-30分钟。',b:'1.固定时间所有人参与。2.议程包括：感谢环节、问题讨论、下周计划。3.轮流主持会议。4.记录决议并追踪执行。',c:'亲子沟通课程',d:'家庭会议模板'},
+'孩子撒谎怎么办':{a:'孩子撒谎是发展过程中的常见行为。不同年龄的原因不同：幼儿分不清想象和现实，大孩子可能是为了避免惩罚或获得关注。',b:'1.不标签化为骗子。2.理解撒谎背后的原因。3.创造安全的说真话环境。4.家长示范诚实。5.区分严厉惩罚和自然后果。',c:'亲子沟通课程',d:'（特殊情况建议预约咨询）'},
+'孩子偷东西怎么办':{a:'儿童偷窃需要区分：幼儿不知道所有权概念、学龄儿童可能冲动控制不足、青少年可能是寻求刺激或同伴压力。',b:'1.冷静处理不打骂羞辱。2.带孩子退还物品道歉。3.理解背后原因。4.教金钱管理和愿望延迟满足。5.反复出现建议专业评估。',c:'建议预约家庭成长咨询',d:'（反复出现请寻求专业帮助）'},
+'如何树立父亲权威':{a:'父亲的角色不是权威而是安全基地。孩子需要的是可预测、有回应、有界限的父亲。',b:'1.用规则和一致性取代吼叫和惩罚。2.多陪伴少训话建立情感连接。3.尊重孩子的自主权同时守住底线。4.父母保持一致不互相拆台。',c:'家庭成长系统课、亲子沟通课程',d:'家庭会议模板'},
+'孩子总说学不会怎么办':{a:'学不会是结果。要弄清楚是能力不足、方法不对、基础薄弱还是习得性无助。',b:'1.具体分析困难在哪个知识点。2.回到孩子能理解的水平开始。3.分解步骤降低每步难度。4.用多种方式讲解同一概念。5.记录进步给孩子看到自己的成长。',c:'元认知学习力课程',d:'学习规划表'},
+'如何让孩子爱上阅读':{a:'阅读兴趣来自愉快的阅读体验而非强迫。核心：让孩子把阅读与快乐而非任务关联。',b:'1.给孩子选择书的自由包括漫画。2.家长自己经常阅读做榜样。3.创造舒适的阅读环境和时间。4.一起读讨论书的内容。5.不把阅读变成测验或任务。',c:'家庭成长系统课',d:'习惯养成表'},
+'孩子没有目标怎么办':{a:'儿童和青少年的目标感逐步发展。没有目标可能是因为：没有体验过完成目标的满足感、目标都是别人定的、害怕失败。',b:'1.从短期小目标开始建立成功体验。2.帮孩子发现自己的兴趣。3.用榜样故事而非说教。4.允许孩子探索和改变方向。',c:'元认知学习力课程',d:'目标管理表'},
+'孩子考试前不复习怎么办':{a:'考前不复习可能是：不知道如何有效复习、完美主义导致拖延、复习内容太庞大无从下手。',b:'1.教具体的复习方法而非只说去复习。2.帮孩子制定复习计划分解内容。3.从最自信的科目开始建立信心。4.考前保证充足睡眠比熬夜更有效。',c:'元认知学习力课程',d:'学习规划表'},
+'孩子学了就忘怎么办':{a:'遗忘是正常的。有效学习需要间隔重复和主动回忆而非被动重读。',b:'1.使用间隔重复法安排复习。2.教孩子自我测试而非反复阅读。3.把新知识与已知内容建立联系。4.足够睡眠帮助记忆巩固。',c:'元认知学习力课程',d:'学习规划表'},
+'孩子边学边玩怎么办':{a:'多任务切换会严重降低学习效率。大脑需要时间进入深度专注状态。',b:'1.清理学习环境移除所有干扰物。2.使用番茄钟设定专注时段。3.专注时段结束后允许充分休息。4.不让孩子在学习区域玩。',c:'专注力训练课程',d:'时间管理表'},
+'如何培养孩子责任感':{a:'责任感不是教出来的，是在承担责任的过程中长出来的。家长过度代劳是责任感最大的敌人。',b:'1.按年龄分配固定家务。2.让孩子承担行为的自然结果。3.允许孩子犯错并从中学习。4.尊重孩子做的选择和承诺。',c:'家庭成长系统课',d:'习惯养成表'},
+'孩子顶嘴怎么办':{a:'顶嘴是孩子表达自主的一种方式。适度顶嘴其实是健康的，说明孩子有自己的想法。',b:'1.区分顶嘴和表达不同意见。2.示范如何礼貌地表达不同意见。3.不当场争对错等情绪平复再谈。4.给孩子合理范围内的决策权。',c:'亲子沟通课程',d:'亲子沟通模板'},
+'如何减少家庭冲突':{a:'家庭冲突的根源通常是：沟通模式不良、角色期待不一致、压力转嫁、未解决的旧怨。',b:'1.学习非暴力沟通减少指责。2.定期家庭会议预防积怨。3.区分谁的问题不越界。4.先连接再纠正。',c:'亲子沟通课程、家庭成长系统课',d:'家庭会议模板、亲子沟通模板'},
+'孩子太依赖父母怎么办':{a:'过度依赖往往是家长无意识培养的。每次替孩子做他能做的事都是剥夺他独立的机会。',b:'1.按年龄逐步放手从简单的事情开始。2.孩子求助时先问你觉得可以怎么做。3.接受孩子做得不完美。4.肯定独立行为而非依赖行为。',c:'家庭成长系统课',d:'习惯养成表'},
+'孩子不愿与父母交流怎么办':{a:'孩子关闭沟通通常是因为：过去的沟通体验不好被批评说教、父母太忙没时间真正倾听、青春期正常需求。',b:'1.创造无压力的陪伴时间不做任何要求。2.多听少说先理解再建议。3.分享自己的事示范分享。4.尊重孩子选择分享的时机和内容。',c:'亲子沟通课程',d:'亲子沟通模板'},
+'如何培养孩子抗挫折能力':{a:'抗挫折能力不是通过制造挫折培养的，而是通过支持孩子成功度过真实挫折来培养的。',b:'1.允许孩子经历适度的失败和失望。2.失败后先共情再分析。3.帮孩子看到失败中的学习。4.分享你自己如何度过挫折的故事。',c:'情绪管理课程',d:'成长目标表'},
+'孩子学习动力突然下降':{a:'突然变化通常有具体原因：换老师、被批评、与同学冲突、学习内容变难、身体不适或睡眠不足。',b:'1.耐心了解最近发生了什么变化。2.排除身体原因。3.与老师沟通了解学校情况。4.短期内降低要求重建信心。',c:'家庭成长系统课',d:'情绪记录表'},
+'如何做好幼小衔接':{a:'幼小衔接关键是心理准备和习惯准备而非知识抢跑。',b:'1.带孩子参观小学熟悉环境。2.培养自理能力和时间意识。3.建立规律的作息。4.不过度强调学习减轻孩子压力。5.家长管理好自己的焦虑不传递给孩子。',c:'家庭成长系统课',d:'习惯养成表'},
+'孩子注意力不集中是否是多动症':{a:'注意力不集中不等于多动症。多动症是神经发育障碍需要专业诊断。多数注意力问题是环境和习惯问题。',b:'1.先排查睡眠运动饮食等基础因素。2.优化学习环境减少干扰。3.使用行为管理方法观察变化。4.如持续6个月以上且多个场景都出现建议专业评估。',c:'建议先完成专注力测评',d:'专注力训练手册'},
+'如何帮孩子选择兴趣班':{a:'兴趣班的核心是兴趣而非技能。过多排满的兴趣班反而扼杀兴趣。',b:'1.让孩子体验后自己选择。2.一次不超过2-3个留出自由时间。3.允许尝试和放弃。4.关注过程中的快乐而非成果展示。',c:'家庭成长系统课',d:'（免费测评可帮助了解孩子优势方向）'},
+'孩子学习偏科怎么办':{a:'偏科常见原因：对某科老师的喜好、早期失败经验、学科特点与孩子认知风格不匹配、认为某科不重要。',b:'1.具体了解困难在哪里而非笼统说学不好。2.从简单内容重建成功体验。3.把薄弱科与优势科建立联系。4.必要时请一对一辅导补基础。',c:'元认知学习力课程',d:'学习规划表'},
+'孩子不愿意分享学校的事':{a:'孩子不愿分享可能有：觉得家长听了会批评说教、学校没有特别的事、性格本身话少、保护自己的隐私空间。',b:'1.问具体开放性问题而非今天怎么样。2.先分享你今天的事。3.创造轻松的非正式聊天时机。4.听到不好的事控制住不立刻评判。',c:'亲子沟通课程',d:'亲子沟通模板'},
+'如何培养孩子的时间观念':{a:'时间对幼儿是抽象概念。时间观念的建立需要视觉化和日常练习。',b:'1.用计时器让时间可视化。2.建立固定的日常流程。3.教孩子预估任务所需时间。4.让孩子体验迟到或拖延的自然结果。',c:'专注力训练课程',d:'时间管理表'},
+'孩子做作业总要陪怎么办':{a:'陪伴写作业要区分支持性陪伴和依赖性陪伴。目标是逐步从陪到不陪。',b:'1.明确陪的角色是提供安全感而非代劳。2.逐渐增加物理距离。3.开始作业前一起规划步骤然后让孩子独立完成一段。4.检查时关注做对的而非揪错的。',c:'专注力训练课程、元认知学习力课程',d:'学习规划表'},
+'孩子害怕失败怎么办':{a:'害怕失败往往是习得的。可能因为过去失败后被过度批评、被与他人比较、或家长对失败过度焦虑。',b:'1.重新定义失败为学习机会。2.分享你的失败经历和收获。3.降低对完美的期待。4.先做一定会成功的小事建立我能应对的感觉。',c:'情绪管理课程',d:'成长目标表'}
+};
+function askAI(q){
+var r=document.getElementById('ai-response');
+var qq=q||document.getElementById('ai-input').value;
+if(!qq.trim())return;
+var data=aiDB[qq];
+if(!data){
+r.innerHTML='<p>这是一个很好的问题。根据我们的分析框架：</p><p><strong>问题类型：</strong>家庭教育常见问题</p><p><strong>建议：</strong>完成<strong>免费测评</strong>获得精准评估，或<strong>预约咨询</strong>进行个性化分析。</p><p style="margin-top:8px"><a href="#assess" style="color:var(--primary)">立即免费测评</a> | <a href="#consult" style="color:var(--primary)">预约深度咨询</a></p>'
+}else{
+r.innerHTML='<p><strong>问题分析：</strong>'+data.a+'</p><p><strong>成长建议：</strong>'+data.b+'</p><p><strong>推荐课程：</strong>'+data.c+'</p><p><strong>推荐工具：</strong>'+data.d+'</p><p style="margin-top:8px"><a href="#courses" style="color:var(--primary)">查看相关课程</a> | <a href="#consult" style="color:var(--primary)">预约深度咨询</a></p>'
+}
+r.classList.add('show');r.scrollIntoView({behavior:'smooth'})
+}!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="家庭成长研究院 - 融合心理学、元认知与家庭教育科学，帮助6-15岁孩子家长解决学习动力、专注力、拖延、情绪管理和亲子关系问题。">
+<title>家庭成长研究院 | 让成长有方法，让教育有科学</title>
+<style>
+:root {
+  --ink: #1a1a1a; --warm: #faf8f4; --cream: #f5efe6;
+  --stone: #e0d9ce; --clay: #c4b5a0;
+  --primary: #2c5f4f; --primary-light: #3d7a65; --primary-dark: #1e4237;
+  --gold: #d4a017; --amber: #b8860b;
+  --muted: #6b6b6b; --light: #999;
+  --radius: 8px; --radius-lg: 14px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+  --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', Georgia, serif;
+  --font-sans: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--warm);line-height:1.75;-webkit-font-smoothing:antialiased}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,244,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--stone)}
+nav .ni{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 24px}
+nav .logo{font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:var(--primary);text-decoration:none;letter-spacing:.03em}
+nav .logo span{color:var(--gold)}
+nav .nl{display:flex;gap:22px;list-style:none}
+nav .nl a{text-decoration:none;color:var(--muted);font-size:.84rem;font-weight:500;transition:color .2s}
+nav .nl a:hover{color:var(--primary)}
+nav .ncta{background:var(--primary);color:#fff;padding:8px 20px;border-radius:20px;text-decoration:none;font-size:.82rem;font-weight:600;transition:background .2s}
+nav .ncta:hover{background:var(--primary-dark)}
+
+section{padding:80px 20px}
+.si{max-width:1100px;margin:0 auto}
+.sl{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary-light);margin-bottom:8px}
+.st{font-family:var(--font-serif);font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:10px}
+.sd{color:var(--muted);font-size:.95rem;max-width:520px;line-height:1.8}
+
+.btn{display:inline-block;padding:13px 28px;border-radius:24px;font-weight:700;font-size:.9rem;text-decoration:none;cursor:pointer;border:none;font-family:var(--font-sans);transition:all .2s}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(44,95,79,.25)}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px)}
+.btn-gold{background:var(--gold);color:#fff;box-shadow:0 2px 8px rgba(212,160,23,.25)}
+.btn-gold:hover{background:var(--amber)}
+.btn-outline{border:1.5px solid var(--clay);color:var(--ink);background:transparent}
+.btn-outline:hover{border-color:var(--primary);background:rgba(44,95,79,.03)}
+
+#home{padding-top:140px;padding-bottom:80px;text-align:center;background:linear-gradient(180deg,#faf8f4 0%,#f0ebe0 100%)}
+#home .badge{display:inline-block;background:var(--primary);color:#fff;padding:5px 16px;border-radius:16px;font-size:.75rem;font-weight:600;letter-spacing:.06em;margin-bottom:20px}
+#home h1{font-family:var(--font-serif);font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;line-height:1.25;color:var(--ink);margin-bottom:14px;max-width:650px;margin-left:auto;margin-right:auto}
+#home .hs{font-size:1.05rem;color:var(--muted);max-width:500px;margin:0 auto 30px;line-height:1.8}
+#home .hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+#home .hstat{margin-top:28px;font-size:.82rem;color:var(--light)}
+
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:44px}
+.pain-card{background:#fff;border-radius:var(--radius);padding:28px;border:1px solid var(--stone);transition:box-shadow .3s}
+.pain-card:hover{box-shadow:var(--shadow)}
+.pain-card .pi{font-size:1.8rem;margin-bottom:10px}
+.pain-card h4{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.pain-card p{font-size:.88rem;color:var(--muted);line-height:1.8}
+
+.flow-steps{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:44px;text-align:center}
+.flow-step{background:#fff;border-radius:var(--radius-lg);padding:30px 24px;width:180px;border:1px solid var(--stone);position:relative}
+.flow-step .fs-num{width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 12px;font-size:.9rem}
+.flow-step h4{font-size:.92rem;font-weight:700;margin-bottom:4px}
+.flow-step p{font-size:.8rem;color:var(--muted)}
+.flow-arrow{display:flex;align-items:center;color:var(--clay);font-size:1.2rem}
+
+.cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:40px}
+.cap-card{background:#fff;border-radius:var(--radius);padding:30px 20px;text-align:center;border:1px solid var(--stone);transition:all .3s}
+.cap-card:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+.cap-card .ci{font-size:2.5rem;margin-bottom:10px}
+.cap-card h4{font-size:.95rem;font-weight:700;margin-bottom:6px;color:var(--ink)}
+.cap-card p{font-size:.8rem;color:var(--muted);line-height:1.7}
+
+.course-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px}
+.course-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--stone);transition:all .3s}
+.course-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.course-card.featured{border:2px solid var(--gold)}
+.course-card .cc-top{padding:28px 24px 16px}
+.course-card .cc-badge{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--primary-light);margin-bottom:8px;background:var(--cream);padding:3px 10px;border-radius:10px}
+.course-card h3{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.course-card .cc-desc{font-size:.85rem;color:var(--muted);line-height:1.8}
+.course-card .cc-modules{list-style:none;padding:0 24px;margin:12px 0}
+.course-card .cc-modules li{font-size:.8rem;color:var(--muted);padding:4px 0;border-bottom:1px solid var(--cream)}
+.course-card .cc-bottom{padding:16px 24px;background:var(--cream);display:flex;justify-content:space-between;align-items:center}
+.course-card .cc-price{font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--ink)}
+.course-card .cc-btn{padding:8px 20px;border-radius:20px;font-weight:600;font-size:.82rem;cursor:pointer;border:none;font-family:var(--font-sans);background:var(--primary);color:#fff;transition:all .2s}
+.course-card .cc-btn:hover{background:var(--primary-dark)}
+
+.ai-box{background:#fff;border-radius:var(--radius-lg);padding:44px 36px;border:2px solid var(--primary);text-align:center;margin-top:40px;max-width:700px;margin-left:auto;margin-right:auto}
+.ai-box h3{font-family:var(--font-serif);font-size:1.3rem;margin-bottom:6px}
+.ai-box .ai-desc{font-size:.9rem;color:var(--muted);margin-bottom:20px}
+.ai-box .ai-questions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px}
+.ai-box .ai-q{padding:8px 16px;background:var(--cream);border-radius:20px;font-size:.82rem;color:var(--ink);cursor:pointer;border:none;font-family:var(--font-sans);transition:all .2s}
+.ai-box .ai-q:hover{background:var(--primary);color:#fff}
+.ai-box .ai-input{width:100%;padding:14px 18px;border:2px solid var(--stone);border-radius:24px;font-size:.9rem;font-family:var(--font-sans);outline:none;transition:border-color .2s}
+.ai-box .ai-input:focus{border-color:var(--primary)}
+.ai-box .ai-response{margin-top:16px;background:var(--cream);border-radius:var(--radius);padding:20px;text-align:left;font-size:.88rem;line-height:1.9;display:none}
+.ai-box .ai-response.show{display:block}
+
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:40px}
+.case-card{background:#fff;border-radius:var(--radius);padding:28px;border:1px solid var(--stone)}
+.case-card .stars{color:var(--gold);font-size:.85rem;margin-bottom:8px;letter-spacing:2px}
+.case-card p{font-size:.88rem;color:var(--ink);font-style:italic;line-height:1.8}
+.case-card .cn{font-size:.8rem;color:var(--light);margin-top:10px}
+
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:36px}
+.res-card{background:#fff;border-radius:var(--radius);padding:24px 20px;text-align:center;border:1px solid var(--stone);cursor:pointer;transition:all .2s}
+.res-card:hover{border-color:var(--primary)}
+.res-card .ri{font-size:2rem;margin-bottom:8px}
+.res-card h4{font-size:.88rem;font-weight:700}
+
+.consult-card{background:#fff;border-radius:var(--radius-lg);padding:44px;border:2px solid var(--gold);display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;margin-top:36px}
+.consult-card h3{font-family:var(--font-serif);font-size:1.3rem;font-weight:700;margin-bottom:8px}
+.consult-card p{font-size:.9rem;color:var(--muted);line-height:1.9}
+.consult-card .c-side{text-align:center}
+.consult-card .c-price{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--ink)}
+.consult-card .c-unit{font-size:.82rem;color:var(--light);margin-bottom:14px}
+
+#cta{background:var(--primary);color:#fff;text-align:center}
+#cta .st{color:#fff}
+#cta .sd{color:rgba(255,255,255,.75)}
+#cta .btn-gold{margin-top:16px}
+
+footer{background:var(--ink);color:rgba(255,255,255,.5);text-align:center;padding:36px 20px;font-size:.82rem}
+footer .fb{color:#fff;font-family:var(--font-serif);font-size:1.1rem;margin-bottom:4px}
+footer .flinks{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:10px 0}
+footer .flinks a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.78rem;transition:color .2s}
+footer .flinks a:hover{color:#fff}
+
+/* Assessment page */
+.assess-body{max-width:700px;margin:120px auto 60px;padding:0 20px}
+.quiz-q{background:#fff;border-radius:var(--radius);padding:28px;margin-bottom:16px;border:1px solid var(--stone)}
+.quiz-q h3{font-size:1rem;font-weight:700;margin-bottom:14px}
+.quiz-q .options{display:flex;flex-direction:column;gap:8px}
+.quiz-q .opt{padding:10px 16px;border:1.5px solid var(--stone);border-radius:20px;cursor:pointer;font-size:.88rem;transition:all .2s}
+.quiz-q .opt:hover,.quiz-q .opt.selected{border-color:var(--primary);background:rgba(44,95,79,.04)}
+.quiz-result{background:#fff;border-radius:var(--radius-lg);padding:40px;text-align:center;border:2px solid var(--primary);display:none}
+.quiz-result.show{display:block}
+
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center}
+.modal-overlay.active{display:flex}
+.modal{background:#fff;border-radius:16px;padding:36px 28px;max-width:420px;width:92%;text-align:center;box-shadow:var(--shadow-lg);max-height:90vh;overflow-y:auto}
+.modal h3{font-family:var(--font-serif);font-size:1.2rem;margin-bottom:6px}
+.modal .mc{color:var(--muted);font-size:.88rem;margin-bottom:14px}
+.modal .mp{font-family:var(--font-serif);font-size:1.8rem;font-weight:700;color:var(--amber);margin-bottom:18px}
+.modal .qw{width:220px;height:220px;margin:0 auto 12px;border-radius:10px;overflow:hidden;background:var(--cream)}
+.modal .qw img{width:100%;height:100%;object-fit:contain}
+.modal .pi{font-size:.84rem;color:var(--muted);margin-bottom:8px;line-height:1.7}
+.modal .uc{background:var(--cream);display:inline-block;padding:8px 18px;border-radius:6px;font-family:monospace;font-size:1.1rem;font-weight:700;color:var(--primary);letter-spacing:.06em;margin:6px 0}
+.modal .btn-close{display:inline-block;padding:8px 24px;border:1px solid var(--stone);border-radius:20px;background:#fff;color:var(--muted);font-size:.84rem;cursor:pointer;font-family:var(--font-sans);margin-top:10px}
+
+#tools{background:var(--cream)}
+#cases{background:var(--warm)}
+#resources{background:var(--cream)}
+
+@media(max-width:768px){
+  nav .nl{display:none}
+  section{padding:56px 14px}
+  #home{padding-top:110px;padding-bottom:60px}
+  .flow-steps{flex-direction:column;align-items:center}
+  .flow-arrow{transform:rotate(90deg)}
+  .consult-card{grid-template-columns:1fr;gap:24px;padding:24px}
+  .ai-box{padding:28px 20px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="ni">
+<a href="#home" class="logo">家庭成长<span>研究院</span></a>
+<ul class="nl">
+<li><a href="#pain">痛点</a></li>
+<li><a href="#courses">课程</a></li>
+<li><a href="#assess">测评</a></li>
+<li><a href="#ai">AI教练</a></li>
+<li><a href="#cases">案例</a></li>
+<li><a href="#consult">咨询</a></li>
+<li><a href="#encyclopedia">百科</a></li>
+<li><a href="#caselib">案例</a></li>
+<li><a href="#tools">工具</a></li>
+<li><a href="#membership">会员</a></li>
+</ul>
+<a href="#assess" class="ncta">免费测评</a>
+</div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section id="home">
+<div class="si">
+<p class="badge">让成长有方法，让教育有科学</p>
+<h1>培养自主学习的孩子，<br>从改变家庭成长系统开始</h1>
+<p class="hs">融合心理学、元认知、学习科学与家庭教育的方法体系。帮助家长解决学习动力不足、专注力差、拖延、情绪管理和亲子关系问题。</p>
+<div class="hbtns">
+<a href="#assess" class="btn btn-primary">立即免费测评</a>
+<a href="#resources" class="btn btn-outline">领取成长指南</a>
+</div>
+<p class="hstat">已有 1,000+ 家庭正在使用成长系统改善学习状态与家庭关系</p>
+</div>
+</section>
+
+<!-- ════ PAIN POINTS ════ -->
+<section id="pain">
+<div class="si">
+<p class="sl">你是否正在面临这些问题</p>
+<h2 class="st">孩子的问题，往往不是孩子一个人的问题</h2>
+<p class="sd">很多家庭都在经历这些挑战。你并不缺少爱和努力，你可能只是缺少一套科学有效的方法。</p>
+<div class="pain-grid">
+<div class="pain-card"><div class="pi">😰</div><h4>孩子不愿学习</h4><p>每天写作业都像打一场仗，催了又催，吼了又吼。</p></div>
+<div class="pain-card"><div class="pi">⏰</div><h4>孩子总是拖延</h4><p>计划很多，却很难行动，作业拖到最后一刻才写。</p></div>
+<div class="pain-card"><div class="pi">🧠</div><h4>专注力不足</h4><p>学习效率低，容易分心，坐不住，上课走神。</p></div>
+<div class="pain-card"><div class="pi">📱</div><h4>沉迷电子产品</h4><p>手机平板放不下，家长越管冲突越大。</p></div>
+<div class="pain-card"><div class="pi">😡</div><h4>情绪波动大</h4><p>容易发脾气、焦虑或退缩，情绪管理能力差。</p></div>
+<div class="pain-card"><div class="pi">💔</div><h4>亲子关系紧张</h4><p>沟通越来越困难，关系越来越疏远。</p></div>
+</div>
+</div>
+</section>
+
+<!-- ════ SOLUTION ════ -->
+<section id="solution" style="background:var(--cream)">
+<div class="si">
+<p class="sl">我们的解决方案</p>
+<h2 class="st">成长不是靠催促，而是靠系统</h2>
+<p class="sd">我们帮助家庭建立一套可持续运行的成长系统，从测评到陪伴，全程科学支撑。</p>
+<div class="flow-steps">
+<div class="flow-step"><div class="fs-num">1</div><h4>成长测评</h4><p>了解孩子当前状态</p></div>
+<span class="flow-arrow">→</span>
+<div class="flow-step"><div class="fs-num">2</div><h4>AI成长分析</h4><p>发现问题的根源</p></div>
+<span class="flow-arrow">→</span>
+<div class="flow-step"><div class="fs-num">3</div><h4>课程学习</h4><p>掌握科学方法</p></div>
+<span class="flow-arrow">→</span>
+<div class="flow-step"><div class="fs-num">4</div><h4>家庭实践</h4><p>把方法落实到生活</p></div>
+<span class="flow-arrow">→</span>
+<div class="flow-step"><div class="fs-num">5</div><h4>长期陪伴</h4><p>持续优化家庭系统</p></div>
+</div>
+</div>
+</section>
+
+<!-- ════ CAPABILITIES ════ -->
+<section id="capabilities">
+<div class="si">
+<p class="sl">核心能力</p>
+<h2 class="st">真正影响孩子未来的，不是分数，而是底层能力</h2>
+<div class="cap-grid">
+<div class="cap-card"><div class="ci">🚀</div><h4>学习动力</h4><p>从被逼学习逐步走向主动学习</p></div>
+<div class="cap-card"><div class="ci">🎯</div><h4>专注力</h4><p>提高学习效率与执行能力</p></div>
+<div class="cap-card"><div class="ci">🧘</div><h4>情绪管理</h4><p>帮助孩子学会调节情绪</p></div>
+<div class="cap-card"><div class="ci">📋</div><h4>自我管理</h4><p>培养计划、行动与坚持能力</p></div>
+<div class="cap-card"><div class="ci">🌱</div><h4>成长型思维</h4><p>建立面对挑战和失败的能力</p></div>
+</div>
+</div>
+</section>
+
+<!-- ════ COURSES ════ -->
+<section id="courses" style="background:var(--cream)">
+<div class="si">
+<p class="sl">系统课程</p>
+<h2 class="st">从认知到实践，帮助家庭建立成长系统</h2>
+<div class="course-grid">
+<div class="course-card featured">
+<div class="cc-top"><span class="cc-badge">核心课程</span><h3>家庭成长系统课</h3><p class="cc-desc">帮助家长建立科学的教育框架，从学习动力到亲子关系全面覆盖。</p></div>
+<ul class="cc-modules"><li>模块1 家庭成长认知</li><li>模块2 学习动力激发</li><li>模块3 专注力训练</li><li>模块4 情绪管理</li><li>模块5 亲子沟通</li><li>模块6 家庭系统升级</li></ul>
+<div class="cc-bottom"><span class="cc-price">&yen;1,999</span><button class="cc-btn" onclick="openPay('家庭成长系统课',1999,'GROW2026')">立即加入</button></div>
+</div>
+<div class="course-card">
+<div class="cc-top"><span class="cc-badge">热门课程</span><h3>元认知学习力课程</h3><p class="cc-desc">培养孩子自主学习能力，掌握元认知思维工具。</p></div>
+<ul class="cc-modules"><li>认识元认知</li><li>思维监控训练</li><li>学习策略优化</li><li>问题解决能力</li><li>决策能力培养</li><li>终身学习习惯</li></ul>
+<div class="cc-bottom"><span class="cc-price">&yen;999</span><button class="cc-btn" onclick="openPay('元认知学习力课程',999,'META2026')">立即加入</button></div>
+</div>
+<div class="course-card">
+<div class="cc-top"><span class="cc-badge">专题课程</span><h3>专注力训练课程</h3><p class="cc-desc">提升执行功能与学习效率，科学系统的专注力训练方案。</p></div>
+<ul class="cc-modules"><li>专注力科学基础</li><li>执行功能训练</li><li>学习环境优化</li><li>时间管理技能</li><li>电子产品管理</li><li>持续专注培养</li></ul>
+<div class="cc-bottom"><span class="cc-price">&yen;1,299</span><button class="cc-btn" onclick="openPay('专注力训练课程',1299,'FOCUS2026')">立即加入</button></div>
+</div>
+<div class="course-card">
+<div class="cc-top"><span class="cc-badge">热门课程</span><h3>情绪管理课程</h3><p class="cc-desc">帮助孩子建立稳定内在状态，学会识别和调节情绪。</p></div>
+<ul class="cc-modules"><li>情绪识别与命名</li><li>情绪调节技术</li><li>压力管理方法</li><li>自信心培养</li><li>社交情绪技能</li><li>正念练习指导</li></ul>
+<div class="cc-bottom"><span class="cc-price">&yen;999</span><button class="cc-btn" onclick="openPay('情绪管理课程',999,'EMO2026')">立即加入</button></div>
+</div>
+<div class="course-card">
+<div class="cc-top"><span class="cc-badge">必修课程</span><h3>亲子沟通课程</h3><p class="cc-desc">减少家庭冲突，建立合作关系，让沟通从对抗走向连接。</p></div>
+<ul class="cc-modules"><li>沟通模式识别</li><li>非暴力沟通技术</li><li>青春期沟通策略</li><li>边界与规则设立</li><li>家庭会议方法</li><li>冲突修复技巧</li></ul>
+<div class="cc-bottom"><span class="cc-price">&yen;999</span><button class="cc-btn" onclick="openPay('亲子沟通课程',999,'TALK2026')">立即加入</button></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════ ASSESSMENT ════ -->
+<section id="assess">
+<div class="si">
+<p class="sl">免费测评</p>
+<h2 class="st">了解孩子的真实状态，从一次科学测评开始</h2>
+<p class="sd">完成测评后获得AI分析报告，了解问题根源，获得个性化成长建议。</p>
+<div class="assess-body" style="margin-top:30px">
+<div id="quiz-container">
+<div class="quiz-q"><h3>1/10 孩子每天愿意主动开始学习任务吗？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">完全不愿意，需要反复催促</div><div class="opt" onclick="selectOpt(this)">偶尔愿意，多数时候需要提醒</div><div class="opt" onclick="selectOpt(this)">大部分时候愿意，偶尔需要提醒</div><div class="opt" onclick="selectOpt(this)">非常主动，基本不需要提醒</div></div></div>
+<div class="quiz-q"><h3>2/10 孩子做作业时能够持续专注多长时间？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">不到10分钟就开始分心</div><div class="opt" onclick="selectOpt(this)">10-20分钟左右</div><div class="opt" onclick="selectOpt(this)">20-40分钟左右</div><div class="opt" onclick="selectOpt(this)">40分钟以上，能持续完成</div></div></div>
+<div class="quiz-q"><h3>3/10 孩子是否经常把任务拖到最后一刻？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">几乎每次都拖到最后</div><div class="opt" onclick="selectOpt(this)">经常拖延</div><div class="opt" onclick="selectOpt(this)">偶尔拖延</div><div class="opt" onclick="selectOpt(this)">很少拖延，能按时完成</div></div></div>
+<div class="quiz-q"><h3>4/10 孩子在使用电子产品时能否自己控制时间？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">完全不能，需要强行拿走</div><div class="opt" onclick="selectOpt(this)">需要反复提醒才能停止</div><div class="opt" onclick="selectOpt(this)">大部分时候可以自己控制</div><div class="opt" onclick="selectOpt(this)">能够主动管理使用时间</div></div></div>
+<div class="quiz-q"><h3>5/10 孩子遇到挫折或失败时的反应？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">崩溃大哭或完全放弃</div><div class="opt" onclick="selectOpt(this)">情绪低落，需要较长时间恢复</div><div class="opt" onclick="selectOpt(this)">会沮丧但能慢慢调整</div><div class="opt" onclick="selectOpt(this)">能坦然面对，从中学习</div></div></div>
+<div class="quiz-q"><h3>6/10 孩子能否清晰表达自己的情绪？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">完全不能，只会哭或发脾气</div><div class="opt" onclick="selectOpt(this)">偶尔能说，但大多时候说不清</div><div class="opt" onclick="selectOpt(this)">基本能表达主要情绪</div><div class="opt" onclick="selectOpt(this)">能准确详细描述自己的感受</div></div></div>
+<div class="quiz-q"><h3>7/10 你们之间的亲子沟通状态？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">经常争吵，沟通困难</div><div class="opt" onclick="selectOpt(this)">比较紧张，交流不多</div><div class="opt" onclick="selectOpt(this)">总体还行，偶尔有冲突</div><div class="opt" onclick="selectOpt(this)">沟通顺畅，孩子愿意分享</div></div></div>
+<div class="quiz-q"><h3>8/10 孩子有没有自己的学习目标和计划？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">完全没有目标和计划</div><div class="opt" onclick="selectOpt(this)">有模糊想法但没有计划</div><div class="opt" onclick="selectOpt(this)">有目标但执行力不足</div><div class="opt" onclick="selectOpt(this)">有清晰目标和执行计划</div></div></div>
+<div class="quiz-q"><h3>9/10 孩子对自己的评价通常是？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">很负面，常说我不行</div><div class="opt" onclick="selectOpt(this)">不太自信</div><div class="opt" onclick="selectOpt(this)">比较客观</div><div class="opt" onclick="selectOpt(this)">积极自信</div></div></div>
+<div class="quiz-q"><h3>10/10 作为家长，你在教育中最大的感受是？</h3><div class="options"><div class="opt" onclick="selectOpt(this)">焦虑无助，不知道怎么办</div><div class="opt" onclick="selectOpt(this)">有些困惑，需要指导</div><div class="opt" onclick="selectOpt(this)">基本有方向</div><div class="opt" onclick="selectOpt(this)">有方法有信心</div></div></div>
+<button class="btn btn-primary" style="width:100%;margin-top:16px;padding:16px" onclick="showResult()">提交测评，查看分析报告</button>
+</div>
+<div class="quiz-result" id="quiz-result">
+<h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:16px">📊 学习动力初步分析报告</h3>
+<p style="font-size:.9rem;color:var(--muted);line-height:1.9;margin-bottom:16px">根据你的回答，我们初步分析如下。每个孩子的成长都是一个系统性问题，需要从多个维度综合评估。完成完整版20题测评和AI分析，可以获得更深入的个性化报告。</p>
+<div style="background:var(--cream);border-radius:var(--radius);padding:20px;text-align:left;margin-bottom:20px">
+<p style="font-size:.88rem;line-height:2"><strong>当前状态：</strong>需要系统支持<br><strong>核心建议：</strong>从学习动力和专注力两个维度同时入手<br><strong>推荐课程：</strong>家庭成长系统课 + 元认知学习力课程<br><strong>推荐资源：</strong>成长指南 + 学习动力训练表</p>
+</div>
+<button class="btn btn-gold" onclick="openPay('家庭成长系统课',1999,'GROW2026')">加入课程，开始系统成长</button>
+<button class="btn btn-outline" style="margin-top:8px" onclick="location.href='#resources'">先领取免费成长资源包</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════ AI COACH ════ -->
+<section id="ai" style="background:var(--cream)">
+<div class="si">
+<p class="sl">AI成长教练</p>
+<h2 class="st">你的专属AI成长教练，24小时在线</h2>
+<div class="ai-box">
+<h3>🤖 成长教练AI</h3>
+<p class="ai-desc">输入你在家庭教育中遇到的问题，获得分析、建议和资源推荐</p>
+<div class="ai-questions">
+<button class="ai-q" onclick="askAI('孩子不愿意写作业怎么办')">孩子不愿写作业</button>
+<button class="ai-q" onclick="askAI('孩子沉迷手机怎么办')">孩子沉迷手机</button>
+<button class="ai-q" onclick="askAI('孩子缺乏自信怎么办')">孩子缺乏自信</button>
+<button class="ai-q" onclick="askAI('孩子总是拖延怎么办')">孩子总是拖延</button>
+<button class="ai-q" onclick="askAI('孩子考试焦虑怎么办')">考试焦虑</button>
+</div>
+<input type="text" class="ai-input" id="ai-input" placeholder="输入你的问题，如：孩子专注力差怎么办？" onkeydown="if(event.key==='Enter')askAI(document.getElementById('ai-input').value)">
+<div class="ai-response" id="ai-response"></div>
+</div>
+</div>
+</section>
+
+<!-- ════ CASE STUDIES ════ -->
+<section id="cases">
+<div class="si">
+<p class="sl">真实案例</p>
+<h2 class="st">来自真实家庭的改变</h2>
+<div class="case-grid">
+<div class="case-card"><div class="stars">★★★★★</div><p>"孩子从每天拖延写作业到能够自主规划学习任务，变化非常大。原来不是孩子懒，是我们没有给对方法。"</p><div class="cn">—— 李妈妈，孩子10岁</div></div>
+<div class="case-card"><div class="stars">★★★★★</div><p>"亲子冲突明显减少了，家里氛围轻松了很多。学完课程才发现以前很多做法都是错的。"</p><div class="cn">—— 王爸爸，孩子13岁</div></div>
+<div class="case-card"><div class="stars">★★★★★</div><p>"孩子专注时间明显提升，以前坐十分钟就不行了，现在能安静学习四十分钟。学习效率提高了很多。"</p><div class="cn">—— 张妈妈，孩子8岁</div></div>
+</div>
+</div>
+</section>
+
+<!-- ════ FREE RESOURCES ════ -->
+<section id="resources">
+<div class="si">
+<p class="sl">免费资源</p>
+<h2 class="st">立即领取成长资源包</h2>
+<div class="res-grid">
+<div class="res-card" onclick="openResource(this)"><div class="ri">📘</div><h4>家庭成长指南</h4></div>
+<div class="res-card" onclick="openResource(this)"><div class="ri">📋</div><h4>学习动力训练表</h4></div>
+<div class="res-card" onclick="openResource(this)"><div class="ri">🎯</div><h4>专注力训练手册</h4></div>
+<div class="res-card" onclick="openResource(this)"><div class="ri">🧘</div><h4>情绪管理工具包</h4></div>
+<div class="res-card" onclick="openResource(this)"><div class="ri">🏠</div><h4>家庭会议模板</h4></div>
+</div>
+<div style="text-align:center;margin-top:28px">
+<button class="btn btn-primary" onclick="openPay('成长资源包（含解锁码）',0,'FREE2026')">免费领取</button>
+</div>
+</div>
+</section>
+
+<!-- ════ CONSULTATION ════ -->
+<section id="consult" style="background:var(--cream)">
+<div class="si">
+<p class="sl">专业咨询</p>
+<h2 class="st">如果你需要更深入的帮助</h2>
+<div class="consult-card">
+<div>
+<h3>家庭成长咨询</h3>
+<p>专业成长顾问为你提供个性化支持。包括：家庭成长诊断、学习问题深度分析、亲子关系咨询、成长规划制定。每次50分钟，面对面或视频进行。</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">家庭诊断</span>
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">成长规划</span>
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">50分钟/次</span>
+<span style="font-size:.78rem;padding:5px 12px;border:1px solid var(--stone);border-radius:16px;color:var(--muted)">完全保密</span>
+</div>
+</div>
+<div class="c-side">
+<div class="c-price">&yen;3,000</div>
+<div class="c-unit">/ 50分钟</div>
+<button class="btn btn-gold" onclick="openPay('家庭成长咨询',3000,'CONSULT2026')">预约咨询</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ════ CTA ════ -->
+<section id="cta">
+<div class="si">
+<h2 class="st">每个孩子都拥有成长的潜力</h2>
+<p class="sd">成长不是等待奇迹，而是建立正确的系统。从今天开始，帮助孩子成为自主学习、自我管理、终身成长的人。</p>
+<a href="#assess" class="btn btn-gold">开始免费测评</a>
+</div>
+</section>
+
+<footer>
+<div class="fb">家庭成长研究院</div>
+<p>让成长有方法，让教育有科学</p>
+<div class="flinks">
+<a href="#home">首页</a><a href="#courses">课程中心</a><a href="#assess">免费测评</a><a href="#ai">AI教练</a><a href="#cases">案例库</a><a href="#consult">咨询预约</a>
+</div>
+<p style="margin-top:8px">&copy; 2026 家庭成长研究院</p>
+</footer>
+
+<!-- Payment Modal -->
+<div class="modal-overlay" id="payModal">
+<div class="modal">
+<h3>扫码支付</h3>
+<p class="mc" id="payCourse"></p>
+<div class="mp" id="payPrice"></div>
+<div class="qw"><img src="https://raw.githubusercontent.com/Fantaitai123/yuancognitive/main/qrcode.jpg" alt="收款码"></div>
+<p class="pi">请扫描上方二维码完成支付</p>
+<div class="uc" id="payCode" style="display:none"></div>
+<button class="btn-close" onclick="closePay()">关闭</button>
+</div>
+</div>
+
+<script>
+function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected')}
+function showResult(){document.getElementById('quiz-container').style.display='none';document.getElementById('quiz-result').classList.add('show');document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'})}
+function openPay(name,price,code){document.getElementById('payCourse').textContent=name;document.getElementById('payPrice').textContent=price>0?'¥'+price:'免费';document.getElementById('payCode').textContent=code;document.getElementById('payCode').style.display=code&&code!='FREE2026'?'inline-block':'none';document.getElementById('payModal').classList.add('active');document.body.style.overflow='hidden'}
+function closePay(){document.getElementById('payModal').classList.remove('active');document.body.style.overflow=''}
+document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closePay()});
+
+var aiDB={
+'孩子不愿意写作业怎么办':{analysis:'孩子不愿写作业通常不是态度问题，而是能力或动力问题。可能原因包括：学习任务难度与孩子能力不匹配、缺乏自主感、没有形成学习习惯、家庭学习氛围紧张。',advice:'1.将大任务分解为小步骤，降低启动门槛。2.建立固定的作业时间和地点。3.让孩子在完成任务后获得自主选择权作为自然奖励。4.减少催促和批评，增加具体的鼓励。',course:'家庭成长系统课（模块2学习动力）、元认知学习力课程',tools:'学习计划表、习惯养成表'},
+'孩子沉迷手机怎么办':{analysis:'手机沉迷是症状而非病因。孩子沉迷通常是因为现实世界缺乏成就感、连接感或自主感。限制使用时间只是治标，帮助孩子在现实中找到替代性的满足才是治本。',advice:'1.与孩子协商而非单方面制定规则。2.帮助孩子发展线下兴趣和活动。3.家长以身作则减少屏幕时间。4.建立家庭无屏幕时段。',course:'专注力训练课程、亲子沟通课程',tools:'家庭会议模板、习惯养成表'},
+'孩子缺乏自信怎么办':{analysis:'自信不足的根源通常在于：过度批评或过度保护、缺乏成功的体验、将失败内化为自我评价。',advice:'1.关注努力过程而非结果。2.给孩子适龄的挑战，让他在完成后获得胜任感。3.用成长型思维的语言反馈。4.分享你自己的失败和成长故事。',course:'情绪管理课程、家庭成长系统课',tools:'成长目标表、情绪记录表'},
+'孩子总是拖延怎么办':{analysis:'拖延在儿童中非常普遍。核心原因包括：执行功能尚未发育成熟、任务太模糊或太庞大导致无法启动、对任务有负面情绪、完美主义。',advice:'1.使用番茄工作法分解时间。2.先做五分钟原则，降低启动门槛。3.可视化任务清单，完成后打勾。4.建立先工作后玩耍的固定顺序。',course:'专注力训练课程、元认知学习力课程',tools:'学习规划表、时间管理表'},
+'孩子考试焦虑怎么办':{analysis:'适度的考试焦虑是正常的，但过度焦虑会影响发挥。根源通常在于：对失败的灾难化解读、家长无意识传递的压力、缺乏有效的应试策略。',advice:'1.帮助孩子区分可控和不可控因素。2.教孩子简单的呼吸调节技术。3.考前建立稳定的准备节奏。4.考后关注学到了什么而非分数。',course:'情绪管理课程、元认知学习力课程',tools:'情绪记录表、正念练习指导'}
+};
+function askAI(q){var r=document.getElementById('ai-response');var qq=q||document.getElementById('ai-input').value;if(!qq.trim())return;var data=aiDB[qq];if(!data){r.innerHTML='<p>这是一个很好的问题。根据我们的通用分析框架：</p><p><strong>问题类型：</strong>需要进一步评估</p><p><strong>建议：</strong>完成免费测评获得个性化分析，或预约家庭成长咨询进行深度诊断。</p><p style="margin-top:8px"><a href="#assess" style="color:var(--primary)">→ 立即免费测评</a></p>'}else{r.innerHTML='<p><strong>📋 问题分析：</strong>'+data.analysis+'</p><p><strong>💡 成长建议：</strong>'+data.advice+'</p><p><strong>📚 推荐课程：</strong>'+data.course+'</p><p><strong>🛠 推荐工具：</strong>'+data.tools+'</p><p style="margin-top:8px"><a href="#courses" style="color:var(--primary)">→ 查看相关课程</a> | <a href="#consult" style="color:var(--primary)">→ 预约深度咨询</a></p>'}r.classList.add('show');r.scrollIntoView({behavior:'smooth'})}
+
+function switchEncy(tab,btn){
+  document.querySelectorAll('.ency-panel').forEach(function(p){p.style.display='none'});
+  document.getElementById('ency-'+tab).style.display='block';
+  document.querySelectorAll('.ency-tab').forEach(function(b){b.style.background='#fff';b.style.color='var(--ink)';b.style.borderColor='var(--stone)';b.classList.remove('active')});
+  btn.style.background='var(--primary)';btn.style.color='#fff';btn.style.borderColor='var(--primary)';btn.classList.add('active');
+}
+function filterCases(cat,btn){
+  document.querySelectorAll('.case-item').forEach(function(item){item.style.display=(cat==='all'||item.dataset.cat===cat)?'block':'none'});
+  document.querySelectorAll('.case-filter').forEach(function(b){b.style.background='#fff';b.style.color='var(--ink)';b.classList.remove('active')});
+  btn.style.background='var(--primary)';btn.style.color='#fff';btn.classList.add('active');
+}
 var articleDB={
 1:{title:'孩子为什么不愿意学习',content:'<p><strong>问题：</strong>很多家长发现孩子一到学习时间就各种拖延和抗拒。</p><p><strong>心理学分析：</strong>从自我决定理论来看，人类内在动机需要三个基本需求的满足：自主感、胜任感、连接感。当学习变成被强迫的任务，自主感丧失；当学习内容太难或太容易，胜任感缺失；当学习与负面情绪捆绑，连接感断裂。</p><p><strong>深层原因：</strong>1.家庭学习氛围过于紧张，家长情绪通过镜像神经元影响孩子。2.孩子没有体验过学习的内在满足感。3.任务与能力不匹配。4.家庭系统存在未解决的冲突。</p><p><strong>行动指南：</strong>1.给孩子在学习中提供选择权。2.分解任务为可达成的小单元。3.建立固定的学习时间和空间。4.家长管理好自己的焦虑。5.定期家庭会议让孩子参与解决方案。</p>'},
 2:{title:'孩子没有学习动力怎么办',content:'<p><strong>核心观点：</strong>学习动力不是天生的，是在良好的家庭系统和教育方法中逐渐培养的。</p><p><strong>10个验证有效的方法：</strong>1.用成长型思维替代固定型思维，表扬努力而非聪明。2.帮孩子找到学习与生活的关联。3.减少外部奖励保护内在动机。4.示范终身学习的态度。5.创造学习成功体验。6.给孩子适度挑战。7.帮孩子建立掌控感。8.减少与别人比较。9.让学习变得有趣。10.耐心等待，动机培养需要时间。</p>'},
 3:{title:'如何培养孩子自主学习能力',content:'<p><strong>什么是自主学习：</strong>自主学习不是不需要帮助，而是孩子能够主动规划、执行、监控和调整自己的学习过程。</p><p><strong>培养路径：</strong>第一阶段（6-8岁）：家长陪伴建立习惯。第二阶段（9-11岁）：逐步放手让孩子自己计划。第三阶段（12岁以上）：孩子成为主要负责人，家长转为顾问。</p><p><strong>具体方法：</strong>学习规划表引导自主安排；番茄工作法管理专注时段；定期反思学习效果；建立家庭学习契约；遇到困难时先问孩子怎么解决。</p>'}
 };
-function openArticle(id){
-  var d=articleDB[id];
-  if(!d){
-    d={title:'文章详情',content:'<p>这篇深度文章正在撰写中。每篇文章包含3000字以上内容，涵盖问题现象、心理学分析、真实案例、行动步骤和FAQ。</p><p>在此期间你可以：</p><p>1. <a href="#assess" style="color:var(--primary)">完成免费测评</a>了解孩子当前状态</p><p>2. <a href="#ai" style="color:var(--primary)">使用AI成长教练</a>获得即时分析</p><p>3. <a href="#courses" style="color:var(--primary)">浏览系统课程</a></p>'}
-  }
-  document.getElementById('articleTitle').textContent=d.title;
-  document.getElementById('articleContent').innerHTML=d.content;
-  document.getElementById('articleModal').classList.add('active');
-  document.body.style.overflow='hidden';
-}
+
 document.getElementById('articleModal').addEventListener('click',function(e){if(e.target===this){this.classList.remove('active');document.body.style.overflow=''}});
 
 var caseDB={
