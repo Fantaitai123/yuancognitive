@@ -343,6 +343,30 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
+
+  .audio-player {
+    background: var(--cream); border-radius: 8px;
+    padding: 14px 18px; margin: 10px 0 6px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .audio-player .audio-icon {
+    font-size: 1.5rem; flex-shrink: 0;
+  }
+  .audio-player .audio-info { flex: 1; min-width: 0; }
+  .audio-player .audio-label {
+    font-size: 0.82rem; font-weight: 700; color: var(--deep-sage);
+    margin-bottom: 2px;
+  }
+  .audio-player .audio-filename {
+    font-size: 0.75rem; color: var(--light-muted);
+  }
+  .audio-player audio {
+    width: 100%; height: 36px; margin-top: 6px;
+  }
+  .audio-player .no-audio {
+    font-size: 0.78rem; color: var(--clay); font-style: italic;
+  }
+
 </style>
 </head>
 <body>
@@ -683,14 +707,22 @@
         </div>
         <div class="content-visible" id="visible-meta">
           <div class="lesson-module"><h4>&#128218; 元认知训练营 · 完整课程内容</h4>
-            <div class="lesson-section"><h5>第1周：觉察你的自动导航模式</h5><p>音频课1：什么是元认知——你没注意到的那个"注意者"。音频课2：自动思维记录表的使用方法。练习：连续3天每天捕捉5个场景下的自动思维，记录发生了什么、你第一时间想到了什么、身体感觉如何。只记录不分析。</p><div class="exercise-box"><h5>&#9997;&#65039; 本周练习</h5><p>准备一个笔记本。每次情绪波动时立刻记录三件事：发生了什么、你第一时间想到了什么、有什么身体感觉。目标是培养"注意到自己在想什么"的习惯。</p></div></div>
-            <div class="lesson-section"><h5>第2周：识别认知偏误</h5><p>音频课3：10种最常见的认知偏误——灾难化、非黑即白、过度泛化、读心术、情绪推理、应该陈述、标签化、个人化、心理过滤、放大/缩小。音频课4：偏误识别练习——从自动思维记录中标注每一条属于哪种偏误。练习：从上周记录中找出至少3种不同的认知偏误并标注。</p><div class="exercise-box"><h5>&#9997;&#65039; 本周练习</h5><p>重新阅读第一周的自动思维记录，用不同颜色标注不同类型的认知偏误。你可能会惊讶于偏误出现的频率。</p></div></div>
-            <div class="lesson-section"><h5>第3周：情绪与思维的分离</h5><p>音频课5：情绪不是事实——理解"我感到被抛弃"和"我被抛弃了"之间的关键区别。音频课6：情绪标签化技术——用精确的词汇替代模糊的感受描述。练习：每天3次情绪扫描，用至少3个精确词汇描述自己的情绪状态。</p></div>
-            <div class="lesson-section"><h5>第4周：追踪自动化思维</h5><p>音频课7：箭头向下技术——从表层想法追问到底层核心信念的操作步骤。音频课8：核心信念的三种类型——无能类、不可爱类、无价值类。练习：选择一条反复出现的自动思维，向下追问5层直到找到核心信念。</p><div class="exercise-box"><h5>&#9997;&#65039; 深度练习</h5><p>选一句你经常对自己说的负面话（如"我不够好"），然后问自己："如果这是真的，那意味着什么？"连续追问5次，看最后到达的核心信念是什么。</p></div></div>
-            <div class="lesson-section"><h5>第5周：认知重构实操</h5><p>音频课9：苏格拉底式提问——挑战自动思维的5个核心问题（证据是什么？有其他解释吗？最坏会发生什么？如果是朋友我会怎么说？这样想有用吗？）。音频课10：建立更灵活、更现实的替代性思维。练习：选择3条核心自动思维，逐一进行完整的认知重构。</p></div>
-            <div class="lesson-section"><h5>第6周：行为实验</h5><p>音频课11：设计行为实验的方法——用数据而非恐惧做决策。音频课12：实验评估与调整——如果结果与预测不符，如何从中学习。练习：设计并实施2个行为实验，记录预测结果vs实际结果。</p><div class="exercise-box"><h5>&#9997;&#65039; 本周练习</h5><p>选一件你因为恐惧而一直回避的事（哪怕很小），先写下你的预测（"会发生什么可怕的事"），然后去做，记录实际发生了什么。几乎每次，实际都比预测好得多。</p></div></div>
-            <div class="lesson-section"><h5>第7周：关系中的元认知</h5><p>音频课13：关系中的自动反应——为什么在亲近的人面前我们最不"理性"。音频课14：暂停技术——在冲突中创造3秒的选择空间。练习：在关系中实践"反应前暂停3秒"。</p></div>
-            <div class="lesson-section"><h5>第8周：整合与巩固</h5><p>音频课15：回顾与整合——8周旅程的核心收获梳理。音频课16：建立终身练习框架——制定个人持续成长地图，包括每周自我检查清单和长期目标。</p></div>
+            <div class="lesson-section"><h5>第1周：觉察你的自动导航模式</h5><p>音频课1：什么是元认知——你没注意到的那个"注意者"。音频课2：自动思维记录表的使用方法。练习：连续3天每天捕捉5个场景下的自动思维，记录发生了什么、你第一时间想到了什么、身体感觉如何。只记录不分析。</p><div class="exercise-box"><h5>&#9997;&#65039; 本周练习</h5><p>准备一个笔记本。每次情绪波动时立刻记录三件事：发生了什么、你第一时间想到了什么、有什么身体感觉。目标是培养"注意到自己在想什么"的习惯。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div></div>
+            <div class="lesson-section"><h5>第2周：识别认知偏误</h5><p>音频课3：10种最常见的认知偏误——灾难化、非黑即白、过度泛化、读心术、情绪推理、应该陈述、标签化、个人化、心理过滤、放大/缩小。音频课4：偏误识别练习——从自动思维记录中标注每一条属于哪种偏误。练习：从上周记录中找出至少3种不同的认知偏误并标注。</p><div class="exercise-box"><h5>&#9997;&#65039; 本周练习</h5><p>重新阅读第一周的自动思维记录，用不同颜色标注不同类型的认知偏误。你可能会惊讶于偏误出现的频率。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div></div>
+            <div class="lesson-section"><h5>第3周：情绪与思维的分离</h5><p>音频课5：情绪不是事实——理解"我感到被抛弃"和"我被抛弃了"之间的关键区别。音频课6：情绪标签化技术——用精确的词汇替代模糊的感受描述。练习：每天3次情绪扫描，用至少3个精确词汇描述自己的情绪状态。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第4周：追踪自动化思维</h5><p>音频课7：箭头向下技术——从表层想法追问到底层核心信念的操作步骤。音频课8：核心信念的三种类型——无能类、不可爱类、无价值类。练习：选择一条反复出现的自动思维，向下追问5层直到找到核心信念。</p><div class="exercise-box"><h5>&#9997;&#65039; 深度练习</h5><p>选一句你经常对自己说的负面话（如"我不够好"），然后问自己："如果这是真的，那意味着什么？"连续追问5次，看最后到达的核心信念是什么。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div></div>
+            <div class="lesson-section"><h5>第5周：认知重构实操</h5><p>音频课9：苏格拉底式提问——挑战自动思维的5个核心问题（证据是什么？有其他解释吗？最坏会发生什么？如果是朋友我会怎么说？这样想有用吗？）。音频课10：建立更灵活、更现实的替代性思维。练习：选择3条核心自动思维，逐一进行完整的认知重构。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第6周：行为实验</h5><p>音频课11：设计行为实验的方法——用数据而非恐惧做决策。音频课12：实验评估与调整——如果结果与预测不符，如何从中学习。练习：设计并实施2个行为实验，记录预测结果vs实际结果。</p><div class="exercise-box"><h5>&#9997;&#65039; 本周练习</h5><p>选一件你因为恐惧而一直回避的事（哪怕很小），先写下你的预测（"会发生什么可怕的事"），然后去做，记录实际发生了什么。几乎每次，实际都比预测好得多。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div></div>
+            <div class="lesson-section"><h5>第7周：关系中的元认知</h5><p>音频课13：关系中的自动反应——为什么在亲近的人面前我们最不"理性"。音频课14：暂停技术——在冲突中创造3秒的选择空间。练习：在关系中实践"反应前暂停3秒"。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第8周：整合与巩固</h5><p>音频课15：回顾与整合——8周旅程的核心收获梳理。音频课16：建立终身练习框架——制定个人持续成长地图，包括每周自我检查清单和长期目标。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
           </div>
         </div>
       </div>
@@ -706,12 +738,18 @@
         </div>
         <div class="content-visible" id="visible-emotion">
           <div class="lesson-module"><h4>&#128218; 情绪调节训练营 · 完整课程内容</h4>
-            <div class="lesson-section"><h5>第1周：情绪的基础语言</h5><p>音频课1：情绪不是你的敌人——重新理解情绪的功能和信号意义。音频课2：情绪词汇表——用精确的语言描述感受。练习：每天3次情绪扫描，用至少3个精确词汇描述当下状态。</p></div>
-            <div class="lesson-section"><h5>第2周：痛苦耐受（上）</h5><p>音频课3：当情绪太强烈——理解"危机生存"模式下大脑的运作方式。音频课4：STOP技术——停下、退一步、观察、有意识地行动。练习：每天练习STOP技术至少3次。</p><div class="exercise-box"><h5>&#9997;&#65039; 核心练习</h5><p>下次情绪要失控时立刻对自己说"STOP"：S-停下不动，T-退后深呼吸，O-观察发生了什么（想法和身体感觉），P-选择一个有意识的行动。</p></div></div>
-            <div class="lesson-section"><h5>第3周：痛苦耐受（下）</h5><p>音频课5：TIPP技术——用冷水或冰敷面部来快速降低生理唤醒水平。音频课6：五感接地——通过感官将注意力锚定在当下。激进接纳——接纳现实不等于认同现实。练习：在情绪高峰时使用TIPP并记录效果。</p></div>
-            <div class="lesson-section"><h5>第4周：情绪调节核心</h5><p>音频课7：累积积极情绪——短期愉悦活动与长期价值生活。音频课8：PLEASE技能——通过改善身体状态减少情绪脆弱性（治疗身体疾病、均衡饮食、避免物质滥用、充足睡眠、规律运动）。音频课9：反向行动——当情绪推动你做无效行为时，识别它并做相反的事。</p></div>
-            <div class="lesson-section"><h5>第5周：人际效能</h5><p>音频课10：DEAR MAN沟通法——描述事实、表达感受、明确需求、强化对方、保持专注、自信表达、协商让步。音频课11：在关系中保持自我尊重——FAST技能（公平、不道歉过度、坚持价值观、诚实）。</p></div>
-            <div class="lesson-section"><h5>第6周：整合</h5><p>音频课12：建立你的个人情绪急救包——针对不同情绪场景的应对方案。制定防复发计划——预警信号识别、应对策略清单、求助计划。</p></div>
+            <div class="lesson-section"><h5>第1周：情绪的基础语言</h5><p>音频课1：情绪不是你的敌人——重新理解情绪的功能和信号意义。音频课2：情绪词汇表——用精确的语言描述感受。练习：每天3次情绪扫描，用至少3个精确词汇描述当下状态。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第2周：痛苦耐受（上）</h5><p>音频课3：当情绪太强烈——理解"危机生存"模式下大脑的运作方式。音频课4：STOP技术——停下、退一步、观察、有意识地行动。练习：每天练习STOP技术至少3次。</p><div class="exercise-box"><h5>&#9997;&#65039; 核心练习</h5><p>下次情绪要失控时立刻对自己说"STOP"：S-停下不动，T-退后深呼吸，O-观察发生了什么（想法和身体感觉），P-选择一个有意识的行动。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div></div>
+            <div class="lesson-section"><h5>第3周：痛苦耐受（下）</h5><p>音频课5：TIPP技术——用冷水或冰敷面部来快速降低生理唤醒水平。音频课6：五感接地——通过感官将注意力锚定在当下。激进接纳——接纳现实不等于认同现实。练习：在情绪高峰时使用TIPP并记录效果。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第4周：情绪调节核心</h5><p>音频课7：累积积极情绪——短期愉悦活动与长期价值生活。音频课8：PLEASE技能——通过改善身体状态减少情绪脆弱性（治疗身体疾病、均衡饮食、避免物质滥用、充足睡眠、规律运动）。音频课9：反向行动——当情绪推动你做无效行为时，识别它并做相反的事。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第5周：人际效能</h5><p>音频课10：DEAR MAN沟通法——描述事实、表达感受、明确需求、强化对方、保持专注、自信表达、协商让步。音频课11：在关系中保持自我尊重——FAST技能（公平、不道歉过度、坚持价值观、诚实）。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第6周：整合</h5><p>音频课12：建立你的个人情绪急救包——针对不同情绪场景的应对方案。制定防复发计划——预警信号识别、应对策略清单、求助计划。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
           </div>
         </div>
       </div>
@@ -727,14 +765,22 @@
         </div>
         <div class="content-visible" id="visible-relation">
           <div class="lesson-module"><h4>&#128218; 关系修复训练营 · 完整课程内容</h4>
-            <div class="lesson-section"><h5>第1周：依恋理论入门</h5><p>音频课1：依恋理论简史——从哈洛的恒河猴到鲍尔比的依恋系统。音频课2：四种依恋类型的日常表现——安全型、焦虑型、回避型、混乱型的行为特征。练习：完成依恋类型自我评估问卷。</p></div>
-            <div class="lesson-section"><h5>第2周：识别你的依恋类型</h5><p>音频课3：安全型——在关系中感到安全和被回应。音频课4：焦虑型——对被抛弃的恐惧如何塑造你的行为（频繁检查、过度寻求 reassurance）。音频课5：回避型——亲密=危险的等式如何让你在关系中保持距离。练习：记录你在一段重要关系中的典型反应模式。</p></div>
-            <div class="lesson-section"><h5>第3周：原生家庭地图</h5><p>音频课6：家庭情绪系统——你学到的最早的关系课是什么。音频课7：代际传递——你父母的沟通模式如何内化为你的模式。练习：绘制你的原生家庭关系地图——每个人之间的距离、联盟和冲突线。</p><div class="exercise-box"><h5>&#9997;&#65039; 深度练习</h5><p>回答三个问题：我父母的沟通模式是怎样的？我在家里扮演什么角色（调解者、替罪羊、隐形人）？我学到关于"爱"的最早信念是什么？</p></div></div>
-            <div class="lesson-section"><h5>第4周：关系触发点</h5><p>音频课8：触发点的神经科学——为什么理性在触发瞬间失效（杏仁核劫持）。音频课9：触发点溯源——找到你的"情绪按钮"是从哪里来的。练习：识别3个主要触发点及其起源故事。</p></div>
-            <div class="lesson-section"><h5>第5周：沟通模式重塑</h5><p>音频课10：6种防御性沟通模式——指责、蔑视、防御、筑墙、讨好、超理智化，以及每种模式的替代方案。音频课11：非暴力沟通四步法——观察、感受、需要、请求。练习：用NVC框架改写3段最近的关系冲突对话。</p></div>
-            <div class="lesson-section"><h5>第6周：边界感训练</h5><p>音频课12：边界的四种类型——物理边界、情绪边界、时间边界、数字边界。音频课13：设立边界的实操步骤——识别越界、明确表达、承受不适、保持一致。练习：在一段关系中设立并维护一个新的边界。</p></div>
-            <div class="lesson-section"><h5>第7周：冲突修复</h5><p>音频课14：冲突后的修复性对话——不是道歉而是重新建立连接。音频课15：从"谁对谁错"到"发生了什么"——转换冲突视角。练习：使用修复性对话框架处理一个近期冲突。</p></div>
-            <div class="lesson-section"><h5>第8周：建立安全的关系</h5><p>音频课16：安全关系的核心特征——信任、回应性、情感可用性。制定你的个人关系成长计划，包括识别安全关系的标准和自己需要持续练习的领域。</p></div>
+            <div class="lesson-section"><h5>第1周：依恋理论入门</h5><p>音频课1：依恋理论简史——从哈洛的恒河猴到鲍尔比的依恋系统。音频课2：四种依恋类型的日常表现——安全型、焦虑型、回避型、混乱型的行为特征。练习：完成依恋类型自我评估问卷。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第2周：识别你的依恋类型</h5><p>音频课3：安全型——在关系中感到安全和被回应。音频课4：焦虑型——对被抛弃的恐惧如何塑造你的行为（频繁检查、过度寻求 reassurance）。音频课5：回避型——亲密=危险的等式如何让你在关系中保持距离。练习：记录你在一段重要关系中的典型反应模式。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第3周：原生家庭地图</h5><p>音频课6：家庭情绪系统——你学到的最早的关系课是什么。音频课7：代际传递——你父母的沟通模式如何内化为你的模式。练习：绘制你的原生家庭关系地图——每个人之间的距离、联盟和冲突线。</p><div class="exercise-box"><h5>&#9997;&#65039; 深度练习</h5><p>回答三个问题：我父母的沟通模式是怎样的？我在家里扮演什么角色（调解者、替罪羊、隐形人）？我学到关于"爱"的最早信念是什么？</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div></div>
+            <div class="lesson-section"><h5>第4周：关系触发点</h5><p>音频课8：触发点的神经科学——为什么理性在触发瞬间失效（杏仁核劫持）。音频课9：触发点溯源——找到你的"情绪按钮"是从哪里来的。练习：识别3个主要触发点及其起源故事。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第5周：沟通模式重塑</h5><p>音频课10：6种防御性沟通模式——指责、蔑视、防御、筑墙、讨好、超理智化，以及每种模式的替代方案。音频课11：非暴力沟通四步法——观察、感受、需要、请求。练习：用NVC框架改写3段最近的关系冲突对话。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第6周：边界感训练</h5><p>音频课12：边界的四种类型——物理边界、情绪边界、时间边界、数字边界。音频课13：设立边界的实操步骤——识别越界、明确表达、承受不适、保持一致。练习：在一段关系中设立并维护一个新的边界。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第7周：冲突修复</h5><p>音频课14：冲突后的修复性对话——不是道歉而是重新建立连接。音频课15：从"谁对谁错"到"发生了什么"——转换冲突视角。练习：使用修复性对话框架处理一个近期冲突。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第8周：建立安全的关系</h5><p>音频课16：安全关系的核心特征——信任、回应性、情感可用性。制定你的个人关系成长计划，包括识别安全关系的标准和自己需要持续练习的领域。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
           </div>
         </div>
       </div>
@@ -750,10 +796,14 @@
         </div>
         <div class="content-visible" id="visible-anxiety">
           <div class="lesson-module"><h4>&#128218; 焦虑管理工作坊 · 完整课程内容</h4>
-            <div class="lesson-section"><h5>第1周：理解焦虑</h5><p>音频课1：焦虑的进化起源——它如何帮助我们的祖先生存。音频课2：焦虑的神经回路——杏仁核的警报系统、前额叶的刹车功能、GABA的镇静作用。练习：绘制你的个人焦虑地图——什么情境触发什么程度的焦虑（1-10分）。</p></div>
-            <div class="lesson-section"><h5>第2周：担忧时间技术</h5><p>音频课3：区分有效担忧（能促进行动）与无效反刍（原地打转）。音频课4：建立"担忧盒子"——把焦虑关进定时器。练习：每天设置固定的"担忧时间"（20分钟），只在这段时间里允许自己担忧。其他时间一旦焦虑出现，记下来放进担忧盒子，告诉自己"不是现在"。</p><div class="exercise-box"><h5>&#9997;&#65039; 核心练习</h5><p>坚持一周：每天只允许自己在固定的20分钟里担忧。其他时间出现的焦虑想法先记下来，推迟到担忧时间再处理。一周后你会发现焦虑的总量和强度都大幅下降。</p></div></div>
-            <div class="lesson-section"><h5>第3周：暴露与反应预防</h5><p>音频课5：识别你的安全行为——那些你以为在帮你、其实在维持焦虑的行为（反复检查、寻求 reassurance、回避特定场景）。音频课6：渐进暴露——从低焦虑情境开始逐步面对你回避的事物。练习：创建个人焦虑阶梯表（从1级到10级），从第1级开始实施暴露。</p></div>
-            <div class="lesson-section"><h5>第4周：从"万一"到"就算"</h5><p>音频课7：重建与不确定性的关系——接纳"我无法控制一切"，区分可控与不可控。音频课8：制定长期维护计划——识别复发预警信号、建立日常维护习惯、制定应急方案。练习：写一封给未来自己的信——当你再次陷入焦虑时，如何提醒自己你已有的能力和资源。</p></div>
+            <div class="lesson-section"><h5>第1周：理解焦虑</h5><p>音频课1：焦虑的进化起源——它如何帮助我们的祖先生存。音频课2：焦虑的神经回路——杏仁核的警报系统、前额叶的刹车功能、GABA的镇静作用。练习：绘制你的个人焦虑地图——什么情境触发什么程度的焦虑（1-10分）。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第2周：担忧时间技术</h5><p>音频课3：区分有效担忧（能促进行动）与无效反刍（原地打转）。音频课4：建立"担忧盒子"——把焦虑关进定时器。练习：每天设置固定的"担忧时间"（20分钟），只在这段时间里允许自己担忧。其他时间一旦焦虑出现，记下来放进担忧盒子，告诉自己"不是现在"。</p><div class="exercise-box"><h5>&#9997;&#65039; 核心练习</h5><p>坚持一周：每天只允许自己在固定的20分钟里担忧。其他时间出现的焦虑想法先记下来，推迟到担忧时间再处理。一周后你会发现焦虑的总量和强度都大幅下降。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div></div>
+            <div class="lesson-section"><h5>第3周：暴露与反应预防</h5><p>音频课5：识别你的安全行为——那些你以为在帮你、其实在维持焦虑的行为（反复检查、寻求 reassurance、回避特定场景）。音频课6：渐进暴露——从低焦虑情境开始逐步面对你回避的事物。练习：创建个人焦虑阶梯表（从1级到10级），从第1级开始实施暴露。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
+            <div class="lesson-section"><h5>第4周：从"万一"到"就算"</h5><p>音频课7：重建与不确定性的关系——接纳"我无法控制一切"，区分可控与不可控。音频课8：制定长期维护计划——识别复发预警信号、建立日常维护习惯、制定应急方案。练习：写一封给未来自己的信——当你再次陷入焦虑时，如何提醒自己你已有的能力和资源。</p>
+<div class="audio-player"><div class="audio-icon">&#9654;&#65039;</div><div class="audio-info"><div class="audio-label">音频课程</div><div class="audio-filename">请将音频文件上传至GitHub仓库对应路径</div><audio controls preload="none"><source src="" type="audio/mpeg">您的浏览器不支持音频播放</audio></div></div></div>
           </div>
         </div>
       </div>
