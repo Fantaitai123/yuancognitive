@@ -496,8 +496,51 @@ document.getElementById('articleContent').innerHTML='<p>'+desc+'</p><p style="ma
 document.getElementById('articleModal').classList.add('active');
 document.body.style.overflow='hidden';
 }
-function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected')}
-function showResult(){document.getElementById('quiz-container').style.display='none';document.getElementById('quiz-result').classList.add('show');document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'})}
+function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});el.classList.add('selected')}
+function showResult(){
+  var answered=document.querySelectorAll('.opt.selected').length;
+  if(answered<10){
+    var missing=10-answered;
+    alert('还有'+missing+'道题未作答。请完成所有10道题后提交，以获得准确的个性化分析。');
+    return;
+  }
+function showResult(){
+  var opts=document.querySelectorAll('.opt.selected');
+  var score=0;
+  opts.forEach(function(o){
+    var txt=o.textContent;
+    if(txt.indexOf('完全不愿')>=0||txt.indexOf('不到10')>=0||txt.indexOf('几乎每次')>=0||txt.indexOf('完全不能')>=0||txt.indexOf('崩溃')>=0||txt.indexOf('完全不能表达')>=0||txt.indexOf('经常争吵')>=0||txt.indexOf('完全没有')>=0||txt.indexOf('很负面')>=0||txt.indexOf('焦虑无助')>=0)score+=0;
+    else if(txt.indexOf('偶尔')>=0||txt.indexOf('10-20')>=0||txt.indexOf('经常拖')>=0||txt.indexOf('反复提醒')>=0||txt.indexOf('情绪低落')>=0||txt.indexOf('大多时候说不清')>=0||txt.indexOf('比较紧张')>=0||txt.indexOf('有模糊想法')>=0||txt.indexOf('不太自信')>=0||txt.indexOf('有些困惑')>=0)score+=1;
+    else if(txt.indexOf('大部分')>=0||txt.indexOf('20-40')>=0||txt.indexOf('偶尔拖')>=0||txt.indexOf('基本能')>=0||txt.indexOf('能慢慢调整')>=0||txt.indexOf('基本能表达')>=0||txt.indexOf('总体还行')>=0||txt.indexOf('有目标但执行')>=0||txt.indexOf('比较客观')>=0||txt.indexOf('基本有方向')>=0)score+=2;
+    else score+=3;
+  });
+  var level,analysis,rec_course,rec_articles,color;
+  if(score<=8){
+    level='需要系统支持';color='#c0392b';
+    analysis='根据测评结果，孩子在多个维度上存在需要关注的挑战。这不是孩子的问题，而是说明当前的成长系统需要全面升级。学习动力、专注力、情绪管理和亲子关系之间相互影响，单点改善效果有限，建议从系统角度入手。';
+    rec_course='家庭成长系统课（1999元）——覆盖全部6大模块的系统方案';
+    rec_articles='<li><a href="#" onclick="openArticle(1)" style="color:var(--primary)">孩子为什么不愿意学习</a></li><li><a href="#" onclick="openArticle(21)" style="color:var(--primary)">孩子专注力差怎么办</a></li><li><a href="#" onclick="openArticle(81)" style="color:var(--primary)">如何改善亲子关系</a></li>';
+  }else if(score<=16){
+    level='需要重点突破';color='#d4a017';
+    analysis='测评显示孩子在某些领域表现出色，但在特定维度上需要针对性支持。建议先聚焦最薄弱的1-2个维度进行重点突破，取得成效后再扩展到其他领域。';  
+    rec_course='元认知学习力课程（999元）+ 专注力训练课程（1299元）';
+    rec_articles='<li><a href="#" onclick="openArticle(3)" style="color:var(--primary)">如何培养孩子自主学习能力</a></li><li><a href="#" onclick="openArticle(22)" style="color:var(--primary)">专注力训练的科学方法</a></li><li><a href="#" onclick="openArticle(41)" style="color:var(--primary)">孩子拖延怎么办</a></li>';
+  }else if(score<=24){
+    level='有基础，可优化';color='#2c5f4f';
+    analysis='孩子的整体状态不错，在多数维度上表现良好。当前的重点可以放在优化已有习惯和进一步发展高阶能力上，如元认知训练和自我管理能力的提升。';
+    rec_course='元认知学习力课程（999元）——培养自主学习的高阶能力';
+    rec_articles='<li><a href="#" onclick="openArticle(19)" style="color:var(--primary)">元认知如何提高学习动力</a></li><li><a href="#" onclick="openArticle(58)" style="color:var(--primary)">自我管理能力训练</a></li><li><a href="#" onclick="openArticle(5)" style="color:var(--primary)">如何激发孩子内驱力</a></li>';
+  }else{
+    level='状态良好，保持成长';color='#27ae60';
+    analysis='孩子在当前阶段表现优秀，各项核心能力发展良好。建议保持现有的成长系统，并关注即将到来的发展挑战。可以考虑通过会员体系获取持续的支持和资源。';
+    rec_course='年度会员（999元/年）——持续获取全部资源和课程';
+    rec_articles='<li><a href="#" onclick="openArticle(10)" style="color:var(--primary)">如何培养成长型思维</a></li><li><a href="#" onclick="openArticle(98)" style="color:var(--primary)">优秀家庭共同特点</a></li><li><a href="#" onclick="openArticle(100)" style="color:var(--primary)">家庭成长系统完整指南</a></li>';
+  }
+  document.getElementById('quiz-container').style.display='none';
+  document.getElementById('quiz-result').innerHTML='<h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:8px">你的测评得分：'+score+'/30</h3><div style="font-size:1.2rem;font-weight:700;color:'+color+';margin-bottom:12px">当前状态：'+level+'</div><div style="background:var(--cream);border-radius:8px;padding:20px;text-align:left;margin-bottom:16px"><p style="font-size:.88rem;line-height:2;color:var(--ink)"><strong>个性化分析：</strong>'+analysis+'</p></div><div style="text-align:left;margin-bottom:16px"><strong>推荐课程：</strong><p style="margin-top:6px;font-size:.88rem;color:var(--muted)">'+rec_course+'</p></div><div style="text-align:left;margin-bottom:16px"><strong>推荐阅读：</strong><ul style="padding-left:20px;font-size:.85rem;line-height:2.2;margin-top:6px">'+rec_articles+'</ul></div><button class="btn btn-gold" onclick="openPay(''+(score<=16?'家庭成长系统课':'元认知学习力课程')+'','+(score<=16?1999:999)+','+(score<=16?'GROW2026':'META2026')+')">加入推荐课程</button><button class="btn btn-outline" style="margin-top:8px;margin-left:8px" onclick="location.href='#ai'">咨询AI成长教练</button>';
+  document.getElementById('quiz-result').classList.add('show');
+  document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'});
+}
 function openPay(name,price,code){document.getElementById('payCourse').textContent=name;document.getElementById('payPrice').textContent=price>0?'¥'+price:'免费';document.getElementById('payCode').textContent=code;document.getElementById('payCode').style.display=code&&code!='FREE2026'?'inline-block':'none';document.getElementById('payModal').classList.add('active');document.body.style.overflow='hidden'}
 function closePay(){document.getElementById('payModal').classList.remove('active');document.body.style.overflow=''}
 document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closePay()});
@@ -560,7 +603,7 @@ var qq=q||document.getElementById('ai-input').value;
 if(!qq.trim())return;
 var data=aiDB[qq];
 if(!data){
-r.innerHTML='<p>这是一个很好的问题。根据我们的分析框架：</p><p><strong>问题类型：</strong>家庭教育常见问题</p><p><strong>建议：</strong>完成<strong>免费测评</strong>获得精准评估，或<strong>预约咨询</strong>进行个性化分析。</p><p style="margin-top:8px"><a href="#assess" style="color:var(--primary)">立即免费测评</a> | <a href="#consult" style="color:var(--primary)">预约深度咨询</a></p>'
+r.innerHTML='<p><strong>关于这个问题：</strong>虽然我们的AI知识库还在持续扩展中，但根据家庭教育的基本原则，大多数孩子的学习问题都和学习动力、专注力、情绪管理或亲子关系中的一个或多个因素相关。</p><p><strong>建议你先做以下几步：</strong></p><p>1. <a href="#assess" style="color:var(--primary)">完成10题免费测评</a>，快速定位孩子在哪个维度最需要支持。</p><p>2. <a href="#encyclopedia" style="color:var(--primary)">浏览心理学百科</a>，选择与你问题最相关的分类阅读专业分析。</p><p>3. <a href="#courses" style="color:var(--primary)">查看系统课程</a>，找到针对性的解决方案。</p><p>4. 如果问题持续超过3个月或严重影响日常生活，<a href="#consult" style="color:var(--primary)">建议预约一对一咨询</a>。</p><p style="margin-top:8px;font-size:.82rem;color:var(--light)">提示：尝试用更具体的描述重新提问，如"孩子写作业拖拉怎么办"或"孩子上课走神怎么办"。</p>'
 }else{
 r.innerHTML='<p><strong>问题分析：</strong>'+data.a+'</p><p><strong>成长建议：</strong>'+data.b+'</p><p><strong>推荐课程：</strong>'+data.c+'</p><p><strong>推荐工具：</strong>'+data.d+'</p><p style="margin-top:8px"><a href="#courses" style="color:var(--primary)">查看相关课程</a> | <a href="#consult" style="color:var(--primary)">预约深度咨询</a></p>'
 }
@@ -1000,8 +1043,51 @@ footer .flinks a:hover{color:#fff}
 </div>
 
 <script>
-function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected')}
-function showResult(){document.getElementById('quiz-container').style.display='none';document.getElementById('quiz-result').classList.add('show');document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'})}
+function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});el.classList.add('selected')}
+function showResult(){
+  var answered=document.querySelectorAll('.opt.selected').length;
+  if(answered<10){
+    var missing=10-answered;
+    alert('还有'+missing+'道题未作答。请完成所有10道题后提交，以获得准确的个性化分析。');
+    return;
+  }
+function showResult(){
+  var opts=document.querySelectorAll('.opt.selected');
+  var score=0;
+  opts.forEach(function(o){
+    var txt=o.textContent;
+    if(txt.indexOf('完全不愿')>=0||txt.indexOf('不到10')>=0||txt.indexOf('几乎每次')>=0||txt.indexOf('完全不能')>=0||txt.indexOf('崩溃')>=0||txt.indexOf('完全不能表达')>=0||txt.indexOf('经常争吵')>=0||txt.indexOf('完全没有')>=0||txt.indexOf('很负面')>=0||txt.indexOf('焦虑无助')>=0)score+=0;
+    else if(txt.indexOf('偶尔')>=0||txt.indexOf('10-20')>=0||txt.indexOf('经常拖')>=0||txt.indexOf('反复提醒')>=0||txt.indexOf('情绪低落')>=0||txt.indexOf('大多时候说不清')>=0||txt.indexOf('比较紧张')>=0||txt.indexOf('有模糊想法')>=0||txt.indexOf('不太自信')>=0||txt.indexOf('有些困惑')>=0)score+=1;
+    else if(txt.indexOf('大部分')>=0||txt.indexOf('20-40')>=0||txt.indexOf('偶尔拖')>=0||txt.indexOf('基本能')>=0||txt.indexOf('能慢慢调整')>=0||txt.indexOf('基本能表达')>=0||txt.indexOf('总体还行')>=0||txt.indexOf('有目标但执行')>=0||txt.indexOf('比较客观')>=0||txt.indexOf('基本有方向')>=0)score+=2;
+    else score+=3;
+  });
+  var level,analysis,rec_course,rec_articles,color;
+  if(score<=8){
+    level='需要系统支持';color='#c0392b';
+    analysis='根据测评结果，孩子在多个维度上存在需要关注的挑战。这不是孩子的问题，而是说明当前的成长系统需要全面升级。学习动力、专注力、情绪管理和亲子关系之间相互影响，单点改善效果有限，建议从系统角度入手。';
+    rec_course='家庭成长系统课（1999元）——覆盖全部6大模块的系统方案';
+    rec_articles='<li><a href="#" onclick="openArticle(1)" style="color:var(--primary)">孩子为什么不愿意学习</a></li><li><a href="#" onclick="openArticle(21)" style="color:var(--primary)">孩子专注力差怎么办</a></li><li><a href="#" onclick="openArticle(81)" style="color:var(--primary)">如何改善亲子关系</a></li>';
+  }else if(score<=16){
+    level='需要重点突破';color='#d4a017';
+    analysis='测评显示孩子在某些领域表现出色，但在特定维度上需要针对性支持。建议先聚焦最薄弱的1-2个维度进行重点突破，取得成效后再扩展到其他领域。';  
+    rec_course='元认知学习力课程（999元）+ 专注力训练课程（1299元）';
+    rec_articles='<li><a href="#" onclick="openArticle(3)" style="color:var(--primary)">如何培养孩子自主学习能力</a></li><li><a href="#" onclick="openArticle(22)" style="color:var(--primary)">专注力训练的科学方法</a></li><li><a href="#" onclick="openArticle(41)" style="color:var(--primary)">孩子拖延怎么办</a></li>';
+  }else if(score<=24){
+    level='有基础，可优化';color='#2c5f4f';
+    analysis='孩子的整体状态不错，在多数维度上表现良好。当前的重点可以放在优化已有习惯和进一步发展高阶能力上，如元认知训练和自我管理能力的提升。';
+    rec_course='元认知学习力课程（999元）——培养自主学习的高阶能力';
+    rec_articles='<li><a href="#" onclick="openArticle(19)" style="color:var(--primary)">元认知如何提高学习动力</a></li><li><a href="#" onclick="openArticle(58)" style="color:var(--primary)">自我管理能力训练</a></li><li><a href="#" onclick="openArticle(5)" style="color:var(--primary)">如何激发孩子内驱力</a></li>';
+  }else{
+    level='状态良好，保持成长';color='#27ae60';
+    analysis='孩子在当前阶段表现优秀，各项核心能力发展良好。建议保持现有的成长系统，并关注即将到来的发展挑战。可以考虑通过会员体系获取持续的支持和资源。';
+    rec_course='年度会员（999元/年）——持续获取全部资源和课程';
+    rec_articles='<li><a href="#" onclick="openArticle(10)" style="color:var(--primary)">如何培养成长型思维</a></li><li><a href="#" onclick="openArticle(98)" style="color:var(--primary)">优秀家庭共同特点</a></li><li><a href="#" onclick="openArticle(100)" style="color:var(--primary)">家庭成长系统完整指南</a></li>';
+  }
+  document.getElementById('quiz-container').style.display='none';
+  document.getElementById('quiz-result').innerHTML='<h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:8px">你的测评得分：'+score+'/30</h3><div style="font-size:1.2rem;font-weight:700;color:'+color+';margin-bottom:12px">当前状态：'+level+'</div><div style="background:var(--cream);border-radius:8px;padding:20px;text-align:left;margin-bottom:16px"><p style="font-size:.88rem;line-height:2;color:var(--ink)"><strong>个性化分析：</strong>'+analysis+'</p></div><div style="text-align:left;margin-bottom:16px"><strong>推荐课程：</strong><p style="margin-top:6px;font-size:.88rem;color:var(--muted)">'+rec_course+'</p></div><div style="text-align:left;margin-bottom:16px"><strong>推荐阅读：</strong><ul style="padding-left:20px;font-size:.85rem;line-height:2.2;margin-top:6px">'+rec_articles+'</ul></div><button class="btn btn-gold" onclick="openPay(''+(score<=16?'家庭成长系统课':'元认知学习力课程')+'','+(score<=16?1999:999)+','+(score<=16?'GROW2026':'META2026')+')">加入推荐课程</button><button class="btn btn-outline" style="margin-top:8px;margin-left:8px" onclick="location.href='#ai'">咨询AI成长教练</button>';
+  document.getElementById('quiz-result').classList.add('show');
+  document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'});
+}
 function openPay(name,price,code){document.getElementById('payCourse').textContent=name;document.getElementById('payPrice').textContent=price>0?'¥'+price:'免费';document.getElementById('payCode').textContent=code;document.getElementById('payCode').style.display=code&&code!='FREE2026'?'inline-block':'none';document.getElementById('payModal').classList.add('active');document.body.style.overflow='hidden'}
 function closePay(){document.getElementById('payModal').classList.remove('active');document.body.style.overflow=''}
 document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closePay()});
@@ -1625,8 +1711,51 @@ document.getElementById('articleContent').innerHTML='<p>'+desc+'</p><p style="ma
 document.getElementById('articleModal').classList.add('active');
 document.body.style.overflow='hidden';
 }
-function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected')}
-function showResult(){document.getElementById('quiz-container').style.display='none';document.getElementById('quiz-result').classList.add('show');document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'})}
+function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});el.classList.add('selected')}
+function showResult(){
+  var answered=document.querySelectorAll('.opt.selected').length;
+  if(answered<10){
+    var missing=10-answered;
+    alert('还有'+missing+'道题未作答。请完成所有10道题后提交，以获得准确的个性化分析。');
+    return;
+  }
+function showResult(){
+  var opts=document.querySelectorAll('.opt.selected');
+  var score=0;
+  opts.forEach(function(o){
+    var txt=o.textContent;
+    if(txt.indexOf('完全不愿')>=0||txt.indexOf('不到10')>=0||txt.indexOf('几乎每次')>=0||txt.indexOf('完全不能')>=0||txt.indexOf('崩溃')>=0||txt.indexOf('完全不能表达')>=0||txt.indexOf('经常争吵')>=0||txt.indexOf('完全没有')>=0||txt.indexOf('很负面')>=0||txt.indexOf('焦虑无助')>=0)score+=0;
+    else if(txt.indexOf('偶尔')>=0||txt.indexOf('10-20')>=0||txt.indexOf('经常拖')>=0||txt.indexOf('反复提醒')>=0||txt.indexOf('情绪低落')>=0||txt.indexOf('大多时候说不清')>=0||txt.indexOf('比较紧张')>=0||txt.indexOf('有模糊想法')>=0||txt.indexOf('不太自信')>=0||txt.indexOf('有些困惑')>=0)score+=1;
+    else if(txt.indexOf('大部分')>=0||txt.indexOf('20-40')>=0||txt.indexOf('偶尔拖')>=0||txt.indexOf('基本能')>=0||txt.indexOf('能慢慢调整')>=0||txt.indexOf('基本能表达')>=0||txt.indexOf('总体还行')>=0||txt.indexOf('有目标但执行')>=0||txt.indexOf('比较客观')>=0||txt.indexOf('基本有方向')>=0)score+=2;
+    else score+=3;
+  });
+  var level,analysis,rec_course,rec_articles,color;
+  if(score<=8){
+    level='需要系统支持';color='#c0392b';
+    analysis='根据测评结果，孩子在多个维度上存在需要关注的挑战。这不是孩子的问题，而是说明当前的成长系统需要全面升级。学习动力、专注力、情绪管理和亲子关系之间相互影响，单点改善效果有限，建议从系统角度入手。';
+    rec_course='家庭成长系统课（1999元）——覆盖全部6大模块的系统方案';
+    rec_articles='<li><a href="#" onclick="openArticle(1)" style="color:var(--primary)">孩子为什么不愿意学习</a></li><li><a href="#" onclick="openArticle(21)" style="color:var(--primary)">孩子专注力差怎么办</a></li><li><a href="#" onclick="openArticle(81)" style="color:var(--primary)">如何改善亲子关系</a></li>';
+  }else if(score<=16){
+    level='需要重点突破';color='#d4a017';
+    analysis='测评显示孩子在某些领域表现出色，但在特定维度上需要针对性支持。建议先聚焦最薄弱的1-2个维度进行重点突破，取得成效后再扩展到其他领域。';  
+    rec_course='元认知学习力课程（999元）+ 专注力训练课程（1299元）';
+    rec_articles='<li><a href="#" onclick="openArticle(3)" style="color:var(--primary)">如何培养孩子自主学习能力</a></li><li><a href="#" onclick="openArticle(22)" style="color:var(--primary)">专注力训练的科学方法</a></li><li><a href="#" onclick="openArticle(41)" style="color:var(--primary)">孩子拖延怎么办</a></li>';
+  }else if(score<=24){
+    level='有基础，可优化';color='#2c5f4f';
+    analysis='孩子的整体状态不错，在多数维度上表现良好。当前的重点可以放在优化已有习惯和进一步发展高阶能力上，如元认知训练和自我管理能力的提升。';
+    rec_course='元认知学习力课程（999元）——培养自主学习的高阶能力';
+    rec_articles='<li><a href="#" onclick="openArticle(19)" style="color:var(--primary)">元认知如何提高学习动力</a></li><li><a href="#" onclick="openArticle(58)" style="color:var(--primary)">自我管理能力训练</a></li><li><a href="#" onclick="openArticle(5)" style="color:var(--primary)">如何激发孩子内驱力</a></li>';
+  }else{
+    level='状态良好，保持成长';color='#27ae60';
+    analysis='孩子在当前阶段表现优秀，各项核心能力发展良好。建议保持现有的成长系统，并关注即将到来的发展挑战。可以考虑通过会员体系获取持续的支持和资源。';
+    rec_course='年度会员（999元/年）——持续获取全部资源和课程';
+    rec_articles='<li><a href="#" onclick="openArticle(10)" style="color:var(--primary)">如何培养成长型思维</a></li><li><a href="#" onclick="openArticle(98)" style="color:var(--primary)">优秀家庭共同特点</a></li><li><a href="#" onclick="openArticle(100)" style="color:var(--primary)">家庭成长系统完整指南</a></li>';
+  }
+  document.getElementById('quiz-container').style.display='none';
+  document.getElementById('quiz-result').innerHTML='<h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:8px">你的测评得分：'+score+'/30</h3><div style="font-size:1.2rem;font-weight:700;color:'+color+';margin-bottom:12px">当前状态：'+level+'</div><div style="background:var(--cream);border-radius:8px;padding:20px;text-align:left;margin-bottom:16px"><p style="font-size:.88rem;line-height:2;color:var(--ink)"><strong>个性化分析：</strong>'+analysis+'</p></div><div style="text-align:left;margin-bottom:16px"><strong>推荐课程：</strong><p style="margin-top:6px;font-size:.88rem;color:var(--muted)">'+rec_course+'</p></div><div style="text-align:left;margin-bottom:16px"><strong>推荐阅读：</strong><ul style="padding-left:20px;font-size:.85rem;line-height:2.2;margin-top:6px">'+rec_articles+'</ul></div><button class="btn btn-gold" onclick="openPay(''+(score<=16?'家庭成长系统课':'元认知学习力课程')+'','+(score<=16?1999:999)+','+(score<=16?'GROW2026':'META2026')+')">加入推荐课程</button><button class="btn btn-outline" style="margin-top:8px;margin-left:8px" onclick="location.href='#ai'">咨询AI成长教练</button>';
+  document.getElementById('quiz-result').classList.add('show');
+  document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'});
+}
 function openPay(name,price,code){document.getElementById('payCourse').textContent=name;document.getElementById('payPrice').textContent=price>0?'¥'+price:'免费';document.getElementById('payCode').textContent=code;document.getElementById('payCode').style.display=code&&code!='FREE2026'?'inline-block':'none';document.getElementById('payModal').classList.add('active');document.body.style.overflow='hidden'}
 function closePay(){document.getElementById('payModal').classList.remove('active');document.body.style.overflow=''}
 document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closePay()});
@@ -1689,7 +1818,7 @@ var qq=q||document.getElementById('ai-input').value;
 if(!qq.trim())return;
 var data=aiDB[qq];
 if(!data){
-r.innerHTML='<p>这是一个很好的问题。根据我们的分析框架：</p><p><strong>问题类型：</strong>家庭教育常见问题</p><p><strong>建议：</strong>完成<strong>免费测评</strong>获得精准评估，或<strong>预约咨询</strong>进行个性化分析。</p><p style="margin-top:8px"><a href="#assess" style="color:var(--primary)">立即免费测评</a> | <a href="#consult" style="color:var(--primary)">预约深度咨询</a></p>'
+r.innerHTML='<p><strong>关于这个问题：</strong>虽然我们的AI知识库还在持续扩展中，但根据家庭教育的基本原则，大多数孩子的学习问题都和学习动力、专注力、情绪管理或亲子关系中的一个或多个因素相关。</p><p><strong>建议你先做以下几步：</strong></p><p>1. <a href="#assess" style="color:var(--primary)">完成10题免费测评</a>，快速定位孩子在哪个维度最需要支持。</p><p>2. <a href="#encyclopedia" style="color:var(--primary)">浏览心理学百科</a>，选择与你问题最相关的分类阅读专业分析。</p><p>3. <a href="#courses" style="color:var(--primary)">查看系统课程</a>，找到针对性的解决方案。</p><p>4. 如果问题持续超过3个月或严重影响日常生活，<a href="#consult" style="color:var(--primary)">建议预约一对一咨询</a>。</p><p style="margin-top:8px;font-size:.82rem;color:var(--light)">提示：尝试用更具体的描述重新提问，如"孩子写作业拖拉怎么办"或"孩子上课走神怎么办"。</p>'
 }else{
 r.innerHTML='<p><strong>问题分析：</strong>'+data.a+'</p><p><strong>成长建议：</strong>'+data.b+'</p><p><strong>推荐课程：</strong>'+data.c+'</p><p><strong>推荐工具：</strong>'+data.d+'</p><p style="margin-top:8px"><a href="#courses" style="color:var(--primary)">查看相关课程</a> | <a href="#consult" style="color:var(--primary)">预约深度咨询</a></p>'
 }
@@ -2129,8 +2258,51 @@ footer .flinks a:hover{color:#fff}
 </div>
 
 <script>
-function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected')}
-function showResult(){document.getElementById('quiz-container').style.display='none';document.getElementById('quiz-result').classList.add('show');document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'})}
+function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(function(o){o.classList.remove('selected')});el.classList.add('selected')}
+function showResult(){
+  var answered=document.querySelectorAll('.opt.selected').length;
+  if(answered<10){
+    var missing=10-answered;
+    alert('还有'+missing+'道题未作答。请完成所有10道题后提交，以获得准确的个性化分析。');
+    return;
+  }
+function showResult(){
+  var opts=document.querySelectorAll('.opt.selected');
+  var score=0;
+  opts.forEach(function(o){
+    var txt=o.textContent;
+    if(txt.indexOf('完全不愿')>=0||txt.indexOf('不到10')>=0||txt.indexOf('几乎每次')>=0||txt.indexOf('完全不能')>=0||txt.indexOf('崩溃')>=0||txt.indexOf('完全不能表达')>=0||txt.indexOf('经常争吵')>=0||txt.indexOf('完全没有')>=0||txt.indexOf('很负面')>=0||txt.indexOf('焦虑无助')>=0)score+=0;
+    else if(txt.indexOf('偶尔')>=0||txt.indexOf('10-20')>=0||txt.indexOf('经常拖')>=0||txt.indexOf('反复提醒')>=0||txt.indexOf('情绪低落')>=0||txt.indexOf('大多时候说不清')>=0||txt.indexOf('比较紧张')>=0||txt.indexOf('有模糊想法')>=0||txt.indexOf('不太自信')>=0||txt.indexOf('有些困惑')>=0)score+=1;
+    else if(txt.indexOf('大部分')>=0||txt.indexOf('20-40')>=0||txt.indexOf('偶尔拖')>=0||txt.indexOf('基本能')>=0||txt.indexOf('能慢慢调整')>=0||txt.indexOf('基本能表达')>=0||txt.indexOf('总体还行')>=0||txt.indexOf('有目标但执行')>=0||txt.indexOf('比较客观')>=0||txt.indexOf('基本有方向')>=0)score+=2;
+    else score+=3;
+  });
+  var level,analysis,rec_course,rec_articles,color;
+  if(score<=8){
+    level='需要系统支持';color='#c0392b';
+    analysis='根据测评结果，孩子在多个维度上存在需要关注的挑战。这不是孩子的问题，而是说明当前的成长系统需要全面升级。学习动力、专注力、情绪管理和亲子关系之间相互影响，单点改善效果有限，建议从系统角度入手。';
+    rec_course='家庭成长系统课（1999元）——覆盖全部6大模块的系统方案';
+    rec_articles='<li><a href="#" onclick="openArticle(1)" style="color:var(--primary)">孩子为什么不愿意学习</a></li><li><a href="#" onclick="openArticle(21)" style="color:var(--primary)">孩子专注力差怎么办</a></li><li><a href="#" onclick="openArticle(81)" style="color:var(--primary)">如何改善亲子关系</a></li>';
+  }else if(score<=16){
+    level='需要重点突破';color='#d4a017';
+    analysis='测评显示孩子在某些领域表现出色，但在特定维度上需要针对性支持。建议先聚焦最薄弱的1-2个维度进行重点突破，取得成效后再扩展到其他领域。';  
+    rec_course='元认知学习力课程（999元）+ 专注力训练课程（1299元）';
+    rec_articles='<li><a href="#" onclick="openArticle(3)" style="color:var(--primary)">如何培养孩子自主学习能力</a></li><li><a href="#" onclick="openArticle(22)" style="color:var(--primary)">专注力训练的科学方法</a></li><li><a href="#" onclick="openArticle(41)" style="color:var(--primary)">孩子拖延怎么办</a></li>';
+  }else if(score<=24){
+    level='有基础，可优化';color='#2c5f4f';
+    analysis='孩子的整体状态不错，在多数维度上表现良好。当前的重点可以放在优化已有习惯和进一步发展高阶能力上，如元认知训练和自我管理能力的提升。';
+    rec_course='元认知学习力课程（999元）——培养自主学习的高阶能力';
+    rec_articles='<li><a href="#" onclick="openArticle(19)" style="color:var(--primary)">元认知如何提高学习动力</a></li><li><a href="#" onclick="openArticle(58)" style="color:var(--primary)">自我管理能力训练</a></li><li><a href="#" onclick="openArticle(5)" style="color:var(--primary)">如何激发孩子内驱力</a></li>';
+  }else{
+    level='状态良好，保持成长';color='#27ae60';
+    analysis='孩子在当前阶段表现优秀，各项核心能力发展良好。建议保持现有的成长系统，并关注即将到来的发展挑战。可以考虑通过会员体系获取持续的支持和资源。';
+    rec_course='年度会员（999元/年）——持续获取全部资源和课程';
+    rec_articles='<li><a href="#" onclick="openArticle(10)" style="color:var(--primary)">如何培养成长型思维</a></li><li><a href="#" onclick="openArticle(98)" style="color:var(--primary)">优秀家庭共同特点</a></li><li><a href="#" onclick="openArticle(100)" style="color:var(--primary)">家庭成长系统完整指南</a></li>';
+  }
+  document.getElementById('quiz-container').style.display='none';
+  document.getElementById('quiz-result').innerHTML='<h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:8px">你的测评得分：'+score+'/30</h3><div style="font-size:1.2rem;font-weight:700;color:'+color+';margin-bottom:12px">当前状态：'+level+'</div><div style="background:var(--cream);border-radius:8px;padding:20px;text-align:left;margin-bottom:16px"><p style="font-size:.88rem;line-height:2;color:var(--ink)"><strong>个性化分析：</strong>'+analysis+'</p></div><div style="text-align:left;margin-bottom:16px"><strong>推荐课程：</strong><p style="margin-top:6px;font-size:.88rem;color:var(--muted)">'+rec_course+'</p></div><div style="text-align:left;margin-bottom:16px"><strong>推荐阅读：</strong><ul style="padding-left:20px;font-size:.85rem;line-height:2.2;margin-top:6px">'+rec_articles+'</ul></div><button class="btn btn-gold" onclick="openPay(''+(score<=16?'家庭成长系统课':'元认知学习力课程')+'','+(score<=16?1999:999)+','+(score<=16?'GROW2026':'META2026')+')">加入推荐课程</button><button class="btn btn-outline" style="margin-top:8px;margin-left:8px" onclick="location.href='#ai'">咨询AI成长教练</button>';
+  document.getElementById('quiz-result').classList.add('show');
+  document.getElementById('quiz-result').scrollIntoView({behavior:'smooth'});
+}
 function openPay(name,price,code){document.getElementById('payCourse').textContent=name;document.getElementById('payPrice').textContent=price>0?'¥'+price:'免费';document.getElementById('payCode').textContent=code;document.getElementById('payCode').style.display=code&&code!='FREE2026'?'inline-block':'none';document.getElementById('payModal').classList.add('active');document.body.style.overflow='hidden'}
 function closePay(){document.getElementById('payModal').classList.remove('active');document.body.style.overflow=''}
 document.getElementById('payModal').addEventListener('click',function(e){if(e.target===this)closePay()});
