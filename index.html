@@ -3,24 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>元认知 | 专业心理咨询</title>
+<title>元认知 | 线上心理学课程</title>
 <style>
   :root {
     --ink: #1a1a1a;
     --warm-white: #faf7f2;
     --cream: #f5efe6;
-    --stone: #e8e0d5;
+    --stone: #e0d9ce;
     --clay: #c4b5a0;
     --sage: #7d8a76;
     --deep-sage: #4a5745;
+    --dark-sage: #3d4a39;
     --amber: #b8860b;
+    --gold: #d4a017;
     --muted: #6b6b6b;
     --light-muted: #999;
-    --radius: 4px;
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
-    --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', Georgia, serif;
-    --font-sans: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui, -apple-system, sans-serif;
+    --radius: 6px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+    --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', Georgia, serif;
+    --font-sans: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui, sans-serif;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; font-size: 16px; }
@@ -33,7 +36,7 @@
   }
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(250,247,242,0.92);
+    background: rgba(250,247,242,0.94);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--stone);
@@ -41,233 +44,261 @@
   nav .nav-inner {
     max-width: 1100px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 24px;
+    padding: 14px 24px;
   }
   nav .logo {
-    font-family: var(--font-serif);
-    font-size: 1.35rem; font-weight: 700;
+    font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700;
     color: var(--ink); letter-spacing: 0.04em; text-decoration: none;
   }
   nav .logo span { color: var(--amber); }
-  nav .nav-links { display: flex; gap: 32px; list-style: none; }
+  nav .nav-links { display: flex; gap: 28px; list-style: none; }
   nav .nav-links a {
     text-decoration: none; color: var(--muted);
-    font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+    font-size: 0.88rem; font-weight: 500; transition: color 0.2s;
   }
   nav .nav-links a:hover { color: var(--ink); }
   nav .nav-cta {
-    background: var(--deep-sage); color: #fff;
-    padding: 10px 22px; border-radius: var(--radius);
+    background: var(--gold); color: #fff;
+    padding: 9px 22px; border-radius: 20px;
     text-decoration: none; font-size: 0.85rem; font-weight: 600;
     transition: background 0.2s;
   }
-  nav .nav-cta:hover { background: #3d4a39; }
-  section { padding: 100px 24px; }
+  nav .nav-cta:hover { background: var(--amber); }
+  section { padding: 80px 24px; }
   .section-inner { max-width: 1100px; margin: 0 auto; }
-  #home { padding-top: 160px; padding-bottom: 120px; text-align: center; }
-  #home .hero-tag {
-    display: inline-block; font-size: 0.8rem; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--sage); margin-bottom: 24px;
+
+  /* ── Hero ── */
+  #home {
+    padding-top: 140px; padding-bottom: 80px;
+    text-align: center; background: linear-gradient(180deg, #faf7f2 0%, #f2ede4 100%);
+  }
+  #home .badge {
+    display: inline-block; background: var(--deep-sage); color: #fff;
+    padding: 6px 18px; border-radius: 20px; font-size: 0.8rem;
+    font-weight: 600; letter-spacing: 0.06em; margin-bottom: 24px;
   }
   #home h1 {
     font-family: var(--font-serif);
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 700; line-height: 1.25;
-    color: var(--ink); margin-bottom: 20px;
-    max-width: 700px; margin-left: auto; margin-right: auto;
+    font-size: clamp(2rem, 5vw, 3rem); font-weight: 700;
+    line-height: 1.25; color: var(--ink); margin-bottom: 16px;
+    max-width: 640px; margin-left: auto; margin-right: auto;
   }
   #home .hero-sub {
     font-size: 1.1rem; color: var(--muted);
-    max-width: 520px; margin: 0 auto 40px; line-height: 1.8;
+    max-width: 500px; margin: 0 auto 36px; line-height: 1.8;
   }
-  #home .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    display: inline-block; background: var(--deep-sage);
-    color: #fff; padding: 14px 32px; border-radius: var(--radius);
+  #home .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── Buttons ── */
+  .btn-gold {
+    display: inline-block; background: var(--gold);
+    color: #fff; padding: 14px 36px; border-radius: 24px;
     text-decoration: none; font-weight: 600; font-size: 0.95rem;
-    transition: background 0.2s, transform 0.15s;
+    transition: all 0.2s; box-shadow: 0 2px 8px rgba(212,160,23,0.25);
   }
-  .btn-primary:hover { background: #3d4a39; transform: translateY(-1px); }
+  .btn-gold:hover { background: var(--amber); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(212,160,23,0.35); }
   .btn-outline {
     display: inline-block; border: 1.5px solid var(--clay);
-    color: var(--ink); padding: 14px 32px; border-radius: var(--radius);
+    color: var(--ink); padding: 14px 36px; border-radius: 24px;
     text-decoration: none; font-weight: 600; font-size: 0.95rem;
-    transition: border-color 0.2s, background 0.2s;
+    transition: all 0.2s;
   }
   .btn-outline:hover { border-color: var(--deep-sage); background: rgba(74,87,69,0.04); }
+
+  /* ── Section Headers ── */
   .section-label {
-    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--sage); margin-bottom: 12px;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--sage); margin-bottom: 8px;
   }
   .section-title {
     font-family: var(--font-serif);
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-    font-weight: 700; line-height: 1.3;
-    color: var(--ink); margin-bottom: 16px;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700; line-height: 1.3; color: var(--ink); margin-bottom: 12px;
   }
-  .section-desc {
-    color: var(--muted); font-size: 1.05rem;
-    max-width: 560px; line-height: 1.8;
-  }
-  .features-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 40px; margin-top: 60px;
-  }
-  .feature-card { padding: 0; }
-  .feature-card .fc-number {
-    font-family: var(--font-serif); font-size: 1.1rem;
-    color: var(--clay); margin-bottom: 8px;
-  }
-  .feature-card h3 {
-    font-family: var(--font-serif); font-size: 1.25rem;
-    font-weight: 700; margin-bottom: 10px; color: var(--ink);
-  }
-  .feature-card p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
-  .quote-block {
-    background: var(--cream); padding: 80px 24px; text-align: center;
-  }
-  .quote-block blockquote {
-    font-family: var(--font-serif);
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-    font-style: italic; line-height: 1.6;
-    color: var(--ink); max-width: 620px; margin: 0 auto 16px;
-  }
-  .quote-block cite { font-style: normal; font-size: 0.9rem; color: var(--muted); }
-  #about .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 60px; align-items: start; margin-top: 60px;
-  }
-  #about .about-image {
-    aspect-ratio: 4/5; background: var(--cream);
-    border-radius: var(--radius);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--clay); font-size: 0.9rem;
-  }
-  #about .about-text h3 {
-    font-family: var(--font-serif); font-size: 1.3rem;
-    font-weight: 700; margin-bottom: 12px; color: var(--ink);
-  }
-  #about .about-text p {
-    font-size: 0.95rem; color: var(--muted); line-height: 1.9; margin-bottom: 20px;
-  }
-  #about .credentials { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
-  #about .credential {
-    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
-    color: var(--sage); padding: 8px 16px;
-    border: 1px solid var(--stone); border-radius: var(--radius);
-  }
-  #courses { background: var(--cream); }
-  .courses-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 32px; margin-top: 60px;
-  }
+  .section-desc { color: var(--muted); font-size: 1rem; max-width: 520px; line-height: 1.8; }
+
+  /* ── Course Cards ── */
+  #courses { background: var(--warm-white); }
+  .course-list { display: flex; flex-direction: column; gap: 32px; margin-top: 48px; }
   .course-card {
-    background: var(--warm-white); border-radius: var(--radius);
-    padding: 36px; box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.3s;
+    background: #fff; border-radius: 12px;
+    padding: 44px 48px; box-shadow: var(--shadow-sm);
+    border: 1px solid var(--stone);
+    transition: box-shadow 0.3s, transform 0.2s;
+    position: relative; overflow: hidden;
   }
-  .course-card:hover { box-shadow: var(--shadow-md); }
-  .course-card .course-type {
-    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--sage); margin-bottom: 12px;
+  .course-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .course-card.featured { border: 2px solid var(--gold); }
+  .course-card.featured::before {
+    content: '最受欢迎'; position: absolute; top: 16px; right: -30px;
+    background: var(--gold); color: #fff; font-size: 0.75rem; font-weight: 700;
+    padding: 4px 40px; transform: rotate(45deg); letter-spacing: 0.06em;
+  }
+  .course-card .course-grid {
+    display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start;
+  }
+  .course-card .course-header { margin-bottom: 8px; }
+  .course-card .course-badge {
+    display: inline-block; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 10px;
+    background: var(--cream); padding: 4px 12px; border-radius: 4px;
   }
   .course-card h3 {
-    font-family: var(--font-serif); font-size: 1.2rem;
-    font-weight: 700; margin-bottom: 10px; color: var(--ink);
+    font-family: var(--font-serif); font-size: 1.4rem;
+    font-weight: 700; color: var(--ink); margin-bottom: 10px;
   }
-  .course-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
-  .course-card .course-meta {
-    display: flex; justify-content: space-between; align-items: center;
-    padding-top: 16px; border-top: 1px solid var(--stone);
+  .course-card .course-tagline {
+    font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px;
   }
-  .course-card .price {
-    font-family: var(--font-serif); font-size: 1.3rem;
-    font-weight: 700; color: var(--ink);
+  .course-card .course-details {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;
   }
-  .course-card .duration { font-size: 0.85rem; color: var(--light-muted); }
-  .insights-grid {
+  .course-detail {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 0.85rem; color: var(--muted);
+  }
+  .course-detail .icon { font-size: 1rem; }
+  .course-card h4 {
+    font-family: var(--font-serif); font-size: 1rem;
+    font-weight: 700; color: var(--ink); margin-bottom: 8px; margin-top: 6px;
+  }
+  .course-card .outline {
+    list-style: none; padding: 0; margin-bottom: 16px;
+  }
+  .course-card .outline li {
+    font-size: 0.88rem; color: var(--muted); line-height: 2;
+    padding-left: 20px; position: relative;
+  }
+  .course-card .outline li::before {
+    content: ''; position: absolute; left: 0; top: 12px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--sage);
+  }
+  .course-card .who-for {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+  }
+  .who-tag {
+    font-size: 0.8rem; padding: 5px 14px;
+    border: 1px solid var(--stone); border-radius: 20px;
+    color: var(--muted);
+  }
+  .course-card .course-sidebar {
+    background: var(--cream); border-radius: 10px;
+    padding: 32px 28px; text-align: center;
+  }
+  .course-sidebar .price {
+    font-family: var(--font-serif); font-size: 2.2rem;
+    font-weight: 700; color: var(--ink); margin-bottom: 4px;
+  }
+  .course-sidebar .price-note {
+    font-size: 0.82rem; color: var(--light-muted); margin-bottom: 20px;
+  }
+  .course-sidebar .btn-buy {
+    display: block; width: 100%; background: var(--gold);
+    color: #fff; padding: 14px; border-radius: 24px;
+    text-decoration: none; font-weight: 700; font-size: 0.95rem;
+    text-align: center; transition: all 0.2s; cursor: pointer; border: none;
+    box-shadow: 0 2px 8px rgba(212,160,23,0.25);
+  }
+  .course-sidebar .btn-buy:hover { background: var(--amber); }
+  .course-sidebar .guarantee {
+    font-size: 0.78rem; color: var(--sage); margin-top: 12px;
+  }
+
+  /* ── Payment Modal ── */
+  .modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); z-index: 200;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: #fff; border-radius: 16px; padding: 40px;
+    max-width: 440px; width: 90%; text-align: center;
+    box-shadow: var(--shadow-lg);
+  }
+  .modal h3 { font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 8px; }
+  .modal .modal-course { color: var(--muted); font-size: 0.9rem; margin-bottom: 20px; }
+  .modal .modal-price { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: var(--amber); margin-bottom: 20px; }
+  .modal .qrcode-placeholder {
+    width: 220px; height: 220px; margin: 0 auto 16px;
+    border: 2px dashed var(--stone); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--light-muted); font-size: 0.85rem;
+    background: var(--cream);
+  }
+  .modal .qrcode-placeholder .inner { text-align: center; line-height: 1.8; }
+  .modal .qrcode-note {
+    font-size: 0.82rem; color: var(--muted); margin-bottom: 20px; line-height: 1.6;
+  }
+  .modal .btn-close {
+    display: inline-block; padding: 10px 32px;
+    border: 1px solid var(--stone); border-radius: 20px;
+    background: #fff; color: var(--muted); font-size: 0.9rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .modal .btn-close:hover { border-color: var(--clay); color: var(--ink); }
+
+  /* ── About (compact) ── */
+  #about { background: var(--cream); }
+  #about .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    margin-top: 40px;
+  }
+  #about .about-text h3 {
+    font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 14px;
+  }
+  #about .about-text p { font-size: 0.95rem; color: var(--muted); line-height: 1.9; margin-bottom: 16px; }
+  #about .credentials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  #about .credential {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--sage); padding: 7px 14px;
+    border: 1px solid var(--stone); border-radius: 20px; background: var(--warm-white);
+  }
+
+  /* ── Testimonials ── */
+  #results { background: var(--warm-white); }
+  .testimonial-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 32px; margin-top: 60px;
+    gap: 24px; margin-top: 40px;
   }
-  .insight-card { border-bottom: 1px solid var(--stone); padding-bottom: 28px; }
-  .insight-card .insight-date {
-    font-size: 0.8rem; color: var(--light-muted); margin-bottom: 8px;
+  .testimonial {
+    background: #fff; padding: 28px; border-radius: 10px;
+    border: 1px solid var(--stone);
   }
-  .insight-card h3 {
-    font-family: var(--font-serif); font-size: 1.15rem;
-    font-weight: 700; margin-bottom: 8px; color: var(--ink);
-    cursor: pointer; transition: color 0.2s;
-  }
-  .insight-card h3:hover { color: var(--deep-sage); }
-  .insight-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
-  .insight-card .read-more {
-    display: inline-block; margin-top: 12px;
-    font-size: 0.85rem; font-weight: 600; color: var(--deep-sage);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .insight-card .read-more:hover { color: var(--amber); }
-  #contact { background: var(--cream); }
-  .contact-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 60px; align-items: start; margin-top: 60px;
-  }
-  .contact-info h3 {
-    font-family: var(--font-serif); font-size: 1.2rem;
-    font-weight: 700; margin-bottom: 12px;
-  }
-  .contact-info p { font-size: 0.95rem; color: var(--muted); line-height: 1.9; margin-bottom: 24px; }
-  .contact-form {
-    background: var(--warm-white); padding: 36px;
-    border-radius: var(--radius); box-shadow: var(--shadow-sm);
-  }
-  .contact-form label {
-    display: block; font-size: 0.85rem; font-weight: 600;
-    color: var(--ink); margin-bottom: 6px; margin-top: 16px;
-  }
-  .contact-form label:first-of-type { margin-top: 0; }
-  .contact-form input, .contact-form textarea {
-    width: 100%; padding: 12px 14px;
-    border: 1.5px solid var(--stone); border-radius: var(--radius);
-    font-family: var(--font-sans); font-size: 0.9rem;
-    color: var(--ink); background: var(--warm-white);
-    transition: border-color 0.2s;
-  }
-  .contact-form input:focus, .contact-form textarea:focus {
-    outline: none; border-color: var(--deep-sage);
-  }
-  .contact-form textarea { min-height: 120px; resize: vertical; }
-  .contact-form button {
-    margin-top: 20px; width: 100%;
-    background: var(--deep-sage); color: #fff;
-    padding: 14px; border: none; border-radius: var(--radius);
-    font-size: 0.95rem; font-weight: 600; cursor: pointer;
-    transition: background 0.2s;
-  }
-  .contact-form button:hover { background: #3d4a39; }
+  .testimonial .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 10px; letter-spacing: 2px; }
+  .testimonial p { font-size: 0.9rem; color: var(--ink); line-height: 1.8; font-style: italic; }
+  .testimonial .name { font-size: 0.82rem; color: var(--light-muted); margin-top: 12px; }
+  .testimonial .course-ref { font-size: 0.75rem; color: var(--sage); }
+
+  /* ── FAQ ── */
+  #faq { background: var(--cream); }
+  .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 24px; }
+  .faq-item { border-bottom: 1px solid var(--stone); padding-bottom: 20px; }
+  .faq-item h4 { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .faq-item p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+
+  /* ── Footer ── */
   footer {
-    text-align: center; padding: 40px 24px;
-    border-top: 1px solid var(--stone);
-    font-size: 0.85rem; color: var(--light-muted);
+    background: var(--ink); color: rgba(255,255,255,0.6);
+    text-align: center; padding: 36px 24px; font-size: 0.85rem;
   }
-  .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-  .mobile-toggle span {
-    display: block; width: 24px; height: 2px;
-    background: var(--ink); margin: 5px 0; transition: 0.3s;
-  }
+  footer .footer-brand { color: #fff; font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 6px; }
+
   @media (max-width: 768px) {
     nav .nav-links { display: none; }
-    nav .nav-cta { display: none; }
-    .mobile-toggle { display: block; }
-    #about .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    #home { padding-top: 130px; padding-bottom: 80px; }
-    section { padding: 60px 20px; }
-    .features-grid { gap: 28px; }
+    nav .nav-cta { font-size: 0.78rem; padding: 7px 16px; }
+    section { padding: 60px 16px; }
+    #home { padding-top: 110px; padding-bottom: 60px; }
+    .course-card { padding: 28px 24px; }
+    .course-card .course-grid { grid-template-columns: 1fr; gap: 24px; }
+    .course-card.featured::before { top: 10px; right: -35px; font-size: 0.7rem; padding: 3px 36px; }
+    #about .about-inner { grid-template-columns: 1fr; gap: 28px; }
+    .course-sidebar .price { font-size: 1.8rem; }
   }
   @media print {
     nav { position: static; }
-    .btn-primary, .btn-outline, .contact-form button, .nav-cta { display: none; }
-    body { font-size: 12pt; }
+    .btn-gold, .btn-outline, .btn-buy, .nav-cta { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -280,196 +311,345 @@
   <div class="nav-inner">
     <a href="#home" class="logo">元<span>·</span>认知</a>
     <ul class="nav-links">
-      <li><a href="#home">首页</a></li>
-      <li><a href="#about">关于</a></li>
       <li><a href="#courses">课程</a></li>
-      <li><a href="#insights">洞见</a></li>
-      <li><a href="#contact">联系</a></li>
+      <li><a href="#about">关于我</a></li>
+      <li><a href="#results">学员反馈</a></li>
+      <li><a href="#faq">常见问题</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">预约咨询</a>
-    <button class="mobile-toggle" aria-label="菜单">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="#courses" class="nav-cta">查看课程</a>
   </div>
 </nav>
 
+<!-- ════ Hero ════ -->
 <section id="home">
   <div class="section-inner">
-    <p class="hero-tag">上海 · 专业心理咨询</p>
-    <h1>理解自己，<br>是改变的开始</h1>
-    <p class="hero-sub">真正的心理成长不是消除痛苦，而是获得与痛苦共处的能力。我帮助来访者建立元认知——对自己思维的觉察与理解。</p>
+    <p class="badge">系统化线上课程</p>
+    <h1>不需要每周来咨询室，<br>也能获得真正的心理成长</h1>
+    <p class="hero-sub">基于2000+小时临床经验的线上训练营。把心理咨询中最有效的工具，做成你可以自己练习的课程。</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-primary">预约咨询</a>
-      <a href="#about" class="btn-outline">了解更多</a>
+      <a href="#courses" class="btn-gold">查看全部课程</a>
+      <a href="#about" class="btn-outline">了解导师背景</a>
     </div>
   </div>
 </section>
 
-<div class="quote-block">
-  <blockquote>"觉察本身就是疗愈的开始。"</blockquote>
-  <cite>—— 卡尔·罗杰斯</cite>
+<!-- ════ Courses ════ -->
+<section id="courses">
+  <div class="section-inner">
+    <p class="section-label">线上课程</p>
+    <h2 class="section-title">选择适合你的成长路径</h2>
+    <p class="section-desc">每门课程都源自临床验证的方法论，结构清晰、可操作、有社群支持。不是听完就忘的音频课。</p>
+
+    <div class="course-list">
+
+      <!-- Course 1: Featured -->
+      <div class="course-card featured" id="course-meta">
+        <div class="course-grid">
+          <div class="course-main">
+            <div class="course-header">
+              <span class="course-badge">核心课程</span>
+              <h3>元认知训练营：思维的观察者</h3>
+              <p class="course-tagline">学会退后一步观察自己的思维，不再被自动化反应控制。这是我们咨询室中最强大的单一技术，现在做成结构化的8周线上训练。</p>
+            </div>
+            <div class="course-details">
+              <span class="course-detail"><span class="icon">📅</span> 8周</span>
+              <span class="course-detail"><span class="icon">🎧</span> 16节音频课</span>
+              <span class="course-detail"><span class="icon">📝</span> 8次练习作业</span>
+              <span class="course-detail"><span class="icon">💬</span> 专属社群</span>
+              <span class="course-detail"><span class="icon">🎥</span> 4次直播答疑</span>
+            </div>
+            <h4>课程大纲</h4>
+            <ul class="outline">
+              <li>第1周：什么是元认知——觉察你的"自动导航"模式</li>
+              <li>第2周：识别认知偏误——你的大脑在偷偷骗你</li>
+              <li>第3周：情绪与思维的分离——感受不等于事实</li>
+              <li>第4周：自动化思维的追踪——找到你的核心信念</li>
+              <li>第5周：认知重构技术——从"灾难化"到"可能性"</li>
+              <li>第6周：行为实验——在现实中检验你的假设</li>
+              <li>第7周：关系中的元认知——为什么你总是重复同样的冲突</li>
+              <li>第8周：整合与巩固——建立持续自我觉察的生活习惯</li>
+            </ul>
+            <h4>适合这样的你</h4>
+            <div class="who-for">
+              <span class="who-tag">经常陷入负面思维循环</span>
+              <span class="who-tag">对自己过于严苛</span>
+              <span class="who-tag">想做心理咨询但时间不固定</span>
+              <span class="who-tag">希望更深地理解自己</span>
+              <span class="who-tag">有一定的心理学阅读基础</span>
+            </div>
+            <h4>你将获得</h4>
+            <div class="who-for">
+              <span class="who-tag">识别自动思维的能力</span>
+              <span class="who-tag">认知重构工具箱</span>
+              <span class="who-tag">情绪调节技术</span>
+              <span class="who-tag">自我觉察日记体系</span>
+              <span class="who-tag">终身可复用的练习框架</span>
+            </div>
+          </div>
+          <div class="course-sidebar">
+            <div class="price">&yen;1,980</div>
+            <div class="price-note">一次付费 · 永久回看</div>
+            <button class="btn-buy" onclick="openPayment('元认知训练营：思维的观察者', '1980')">立即加入</button>
+            <div class="guarantee">首周不满意全额退款</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="course-card" id="course-emotion">
+        <div class="course-grid">
+          <div class="course-main">
+            <div class="course-header">
+              <span class="course-badge">热门课程</span>
+              <h3>情绪调节训练营：从失控到掌控</h3>
+              <p class="course-tagline">基于DBT辩证行为疗法的核心技能训练。如果你经常被情绪淹没、冲动行事后又后悔、在人际关系中反复爆发——这门课是为你设计的。</p>
+            </div>
+            <div class="course-details">
+              <span class="course-detail"><span class="icon">📅</span> 6周</span>
+              <span class="course-detail"><span class="icon">🎧</span> 12节音频课</span>
+              <span class="course-detail"><span class="icon">📝</span> 每日微练习</span>
+              <span class="course-detail"><span class="icon">💬</span> 专属社群</span>
+              <span class="course-detail"><span class="icon">🎥</span> 3次直播答疑</span>
+            </div>
+            <h4>课程大纲</h4>
+            <ul class="outline">
+              <li>第1周：情绪的基础语言——学会命名和识别情绪</li>
+              <li>第2周：痛苦耐受——当情绪太强烈时，如何安全度过而不破坏关系</li>
+              <li>第3周：情绪调节核心技能——从"被情绪控制"到"与情绪共处"</li>
+              <li>第4周：人际效能——在关系中既保持连接又不失去自己</li>
+              <li>第5周：冲动控制——从"做了再说"到"停下来选择"</li>
+              <li>第6周：整合——建立你自己的情绪急救包</li>
+            </ul>
+            <h4>适合这样的你</h4>
+            <div class="who-for">
+              <span class="who-tag">情绪波动大难以自控</span>
+              <span class="who-tag">冲动消费/暴食/发脾气</span>
+              <span class="who-tag">亲密关系冲突频繁</span>
+              <span class="who-tag">经常感到被情绪"淹没"</span>
+              <span class="who-tag">想要更稳定的内在状态</span>
+            </div>
+          </div>
+          <div class="course-sidebar">
+            <div class="price">&yen;1,580</div>
+            <div class="price-note">一次付费 · 永久回看</div>
+            <button class="btn-buy" onclick="openPayment('情绪调节训练营：从失控到掌控', '1580')">立即加入</button>
+            <div class="guarantee">首周不满意全额退款</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="course-card" id="course-relation">
+        <div class="course-grid">
+          <div class="course-main">
+            <div class="course-header">
+              <span class="course-badge">深度课程</span>
+              <h3>关系修复训练营：打破重复的剧本</h3>
+              <p class="course-tagline">为什么你总是被同一类型的人吸引？为什么每段关系都以相似的方式结束？这门课帮助你识别依恋模式，打破代际传递的循环。</p>
+            </div>
+            <div class="course-details">
+              <span class="course-detail"><span class="icon">📅</span> 8周</span>
+              <span class="course-detail"><span class="icon">🎧</span> 16节音频课</span>
+              <span class="course-detail"><span class="icon">📝</span> 8次深度练习</span>
+              <span class="course-detail"><span class="icon">💬</span> 专属社群</span>
+              <span class="course-detail"><span class="icon">🎥</span> 4次直播答疑</span>
+            </div>
+            <h4>课程大纲</h4>
+            <ul class="outline">
+              <li>第1周：依恋理论入门——你的关系模式是怎么形成的</li>
+              <li>第2周：识别你的依恋类型——安全型、焦虑型、回避型、混乱型</li>
+              <li>第3周：原生家庭地图——你的关系剧本从哪里来</li>
+              <li>第4周：关系中的触发点——为什么某些小事让你反应过度</li>
+              <li>第5周：沟通模式重塑——从防御到连接</li>
+              <li>第6周：边界感训练——亲密但不融合，独立但不疏离</li>
+              <li>第7周：冲突修复——吵架后如何真正和好</li>
+              <li>第8周：建立安全的关系——从理解到实践</li>
+            </ul>
+            <h4>适合这样的你</h4>
+            <div class="who-for">
+              <span class="who-tag">亲密关系总出同样的问题</span>
+              <span class="who-tag">害怕被抛弃或害怕太亲密</span>
+              <span class="who-tag">和父母的关系影响到现在</span>
+              <span class="who-tag">想要更健康的关系模式</span>
+              <span class="who-tag">愿意深入探索自己</span>
+            </div>
+          </div>
+          <div class="course-sidebar">
+            <div class="price">&yen;1,980</div>
+            <div class="price-note">一次付费 · 永久回看</div>
+            <button class="btn-buy" onclick="openPayment('关系修复训练营：打破重复的剧本', '1980')">立即加入</button>
+            <div class="guarantee">首周不满意全额退款</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 4 -->
+      <div class="course-card" id="course-anxiety">
+        <div class="course-grid">
+          <div class="course-main">
+            <div class="course-header">
+              <span class="course-badge">专题课程</span>
+              <h3>焦虑管理工作坊：从"万一"到"就算"</h3>
+              <p class="course-tagline">专门针对广泛性焦虑和过度担忧的4周密集训练。你不会学会"不想太多"，而是学会和不确定性共存。</p>
+            </div>
+            <div class="course-details">
+              <span class="course-detail"><span class="icon">📅</span> 4周</span>
+              <span class="course-detail"><span class="icon">🎧</span> 8节音频课</span>
+              <span class="course-detail"><span class="icon">📝</span> 每日焦虑日志</span>
+              <span class="course-detail"><span class="icon">💬</span> 专属社群</span>
+              <span class="course-detail"><span class="icon">🎥</span> 2次直播答疑</span>
+            </div>
+            <h4>课程大纲</h4>
+            <ul class="outline">
+              <li>第1周：理解焦虑——它是保护机制，不是缺陷</li>
+              <li>第2周：担忧时间技术——把焦虑关进笼子里</li>
+              <li>第3周：暴露与反应预防——面对你一直在回避的事</li>
+              <li>第4周：从"万一"到"就算"——重建与不确定性的关系</li>
+            </ul>
+            <h4>适合这样的你</h4>
+            <div class="who-for">
+              <span class="who-tag">过度担忧灾难性后果</span>
+              <span class="who-tag">入睡困难脑子里停不下来</span>
+              <span class="who-tag">总是做最坏的打算</span>
+              <span class="who-tag">想学具体可操作的技术</span>
+            </div>
+          </div>
+          <div class="course-sidebar">
+            <div class="price">&yen;980</div>
+            <div class="price-note">一次付费 · 永久回看</div>
+            <button class="btn-buy" onclick="openPayment('焦虑管理工作坊：从万一到就算', '980')">立即加入</button>
+            <div class="guarantee">首周不满意全额退款</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ Payment Modal ════ -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="modal">
+    <h3>扫码支付</h3>
+    <p class="modal-course" id="modalCourseName"></p>
+    <div class="modal-price" id="modalPrice"></div>
+    <div class="qrcode-placeholder">
+      <div class="inner">
+        <span style="font-size:2rem;display:block;margin-bottom:8px;">⬜</span>
+        此处添加<br>收款码图片
+      </div>
+    </div>
+    <p class="qrcode-note">支付完成后请截图，发送至公众号「元认知」备注课程名称，24小时内发送课程邀请。</p>
+    <button class="btn-close" onclick="closePayment()">关闭</button>
+  </div>
 </div>
 
-<section id="approach">
-  <div class="section-inner">
-    <p class="section-label">咨询取向</p>
-    <h2 class="section-title">你为什么选择这里</h2>
-    <p class="section-desc">每一位来访者都是独特的个体，而非等待被"修复"的问题。我的工作基于对人性复杂性的尊重。</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <p class="fc-number">01</p>
-        <h3>认知行为整合</h3>
-        <p>结合CBT的实证有效性与心理动力学对深层模式的洞察，不只缓解症状，更追溯根源。</p>
-      </div>
-      <div class="feature-card">
-        <p class="fc-number">02</p>
-        <h3>元认知训练</h3>
-        <p>核心方法论：教会来访者观察自己的思维过程。当你知道自己在想什么，就不再被思维控制。</p>
-      </div>
-      <div class="feature-card">
-        <p class="fc-number">03</p>
-        <h3>关系取向</h3>
-        <p>咨访关系本身就是治愈的载体。在安全、不评判的空间里，重新体验被理解的感觉。</p>
-      </div>
-      <div class="feature-card">
-        <p class="fc-number">04</p>
-        <h3>神经科学基础</h3>
-        <p>所有技术都有神经生物学依据。理解大脑如何运作，让改变不只是"感觉好一些"而是"真正不同"。</p>
-      </div>
-      <div class="feature-card">
-        <p class="fc-number">05</p>
-        <h3>中国文化语境</h3>
-        <p>不照搬西方理论。理解家庭系统、面子文化、含蓄表达在中国人心理生活中的独特位置。</p>
-      </div>
-      <div class="feature-card">
-        <p class="fc-number">06</p>
-        <h3>严格保密</h3>
-        <p>所有咨询内容受专业伦理和法律法规保护。你的隐私是不可妥协的底线。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- ════ About ════ -->
 <section id="about">
   <div class="section-inner">
-    <p class="section-label">关于我</p>
-    <h2 class="section-title">专业背景与理念</h2>
-    <div class="about-grid">
-      <div class="about-image">
-        咨询师照片<br>（待上传）
-      </div>
+    <p class="section-label">关于导师</p>
+    <h2 class="section-title">跟谁学</h2>
+    <div class="about-inner">
       <div class="about-text">
         <h3>樊老师 · 心理咨询师</h3>
-        <p>我是一名在上海执业的全职心理咨询师。从业以来，累计接待超过2000小时的个体咨询。我的来访者涵盖职场压力、亲密关系、自我认同、情绪困扰、创伤修复等多个领域。</p>
-        <p>我相信每个人内在都拥有自我理解与成长的资源。咨询师的角色不是给答案，而是创造一个空间——在这里，你可以安全地面对那些被回避的、被压抑的、让生活卡住的感受与想法。</p>
-        <p>我的核心方法论是<strong>元认知训练</strong>：帮助你建立对自己思维过程的觉察能力。当你能观察自己的自动化思维、情绪反应和行为模式，你就拥有了选择的空间。而选择，就是自由。</p>
+        <p>上海全职执业心理咨询师，累计个体咨询超过2000小时。受训背景涵盖认知行为治疗、辩证行为疗法、心理动力治疗。</p>
+        <p>我设计这些课程的目标很简单：把咨询室中最有效的工具提炼出来，让无法定期来咨询的人也能获得专业的心理成长支持。</p>
+        <p>这些课程不能替代一对一咨询，但它们能帮你建立自我觉察的基础——而觉察，是所有改变的前提。</p>
         <div class="credentials">
           <span class="credential">国家二级心理咨询师</span>
           <span class="credential">认知行为治疗认证</span>
+          <span class="credential">辩证行为疗法受训</span>
           <span class="credential">2000+ 咨询小时</span>
-          <span class="credential">持续接受督导</span>
+        </div>
+      </div>
+      <div class="about-text" style="display:flex;align-items:center;justify-content:center;">
+        <div style="width:100%;aspect-ratio:1;background:var(--cream);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--clay);font-size:0.9rem;">
+          导师照片<br>（待上传）
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="courses">
+<!-- ════ Testimonials ════ -->
+<section id="results">
   <div class="section-inner">
-    <p class="section-label">课程与项目</p>
-    <h2 class="section-title">系统化的心理成长路径</h2>
-    <p class="section-desc">改变不是一次顿悟，而是一个需要陪伴、练习和反馈的过程。以下项目为不同需求设计。</p>
-    <div class="courses-grid">
-      <div class="course-card">
-        <p class="course-type">个体咨询</p>
-        <h3>一对一深度咨询</h3>
-        <p>每周一次，50分钟。适合希望深入探索个人议题、建立长期改变的来访者。首诊评估后制定个性化方案。</p>
-        <div class="course-meta">
-          <span class="price">预约制</span>
-          <span class="duration">50分钟/次</span>
-        </div>
+    <p class="section-label">学员反馈</p>
+    <h2 class="section-title">他们这样说</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"我以为自己就是'想太多'的人，没办法改变的。做到第4周的时候发现，我居然能在情绪上来的时候停一下了。那个'停一下'的瞬间，改变了我很多。"</p>
+        <div class="name">—— 林小姐，32岁，产品经理</div>
+        <div class="course-ref">元认知训练营</div>
       </div>
-      <div class="course-card">
-        <p class="course-type">线上课程</p>
-        <h3>元认知入门：思维的观察者</h3>
-        <p>8周线上训练营。通过每日练习、音频引导和社群支持，建立对自动化思维的觉察能力。适合无法接受一对一咨询但希望自我成长的人群。</p>
-        <div class="course-meta">
-          <span class="price">&yen;1,980</span>
-          <span class="duration">8周 &middot; 线上</span>
-        </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"学完之后最大的改变是：我不再跟伴侣吵架时砸东西了。冷静下来之后我们还能坐下来复盘。以前觉得不可能。"</p>
+        <div class="name">—— 陈女士，28岁，设计师</div>
+        <div class="course-ref">情绪调节训练营</div>
       </div>
-      <div class="course-card">
-        <p class="course-type">线上课程</p>
-        <h3>情绪调节：从失控到掌控</h3>
-        <p>6周结构化课程。基于DBT辩证行为疗法的核心技能训练：情绪觉察、痛苦耐受、人际效能。适合情绪波动大、关系冲突频繁的人群。</p>
-        <div class="course-meta">
-          <span class="price">&yen;1,580</span>
-          <span class="duration">6周 &middot; 线上</span>
-        </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"本来只是好奇想试试，结果第2周就哭了一场——不是因为难过，而是终于理解了自己为什么总是在关系里那么焦虑。那个理解本身就治愈了一部分。"</p>
+        <div class="name">—— 王小姐，35岁，自由职业</div>
+        <div class="course-ref">关系修复训练营</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="insights">
+<!-- ════ FAQ ════ -->
+<section id="faq">
   <div class="section-inner">
-    <p class="section-label">洞见</p>
-    <h2 class="section-title">心理学随笔</h2>
-    <p class="section-desc">用平实的语言写心理学的日常应用。不贩卖焦虑，不制造术语壁垒。</p>
-    <div class="insights-grid">
-      <div class="insight-card">
-        <p class="insight-date">2026年6月</p>
-        <h3>你的潜意识在替你亏钱</h3>
-        <p>我们对金钱的态度往往不是理性的。那些不假思索的消费冲动、对收入的莫名焦虑、对讨价还价的抗拒——都是早年关系的投影。</p>
-        <a href="#" class="read-more">阅读全文 &rarr;</a>
+    <p class="section-label">常见问题</p>
+    <h2 class="section-title">你可能想知道的</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>课程和一对一咨询有什么区别？</h4>
+        <p>课程是结构化的自我成长工具，适合有动力自己练习的人。一对一咨询是个性化的深度探索，适合需要针对性帮助的人。两者可以互补——很多来访者一边咨询一边上课。</p>
       </div>
-      <div class="insight-card">
-        <p class="insight-date">2026年5月</p>
-        <h3>为什么你在关系中总是重复同样的剧本</h3>
-        <p>依恋模式形成于婴儿期，却贯穿我们一生的亲密关系。识别自己的依恋类型，是打破循环的第一步。</p>
-        <a href="#" class="read-more">阅读全文 &rarr;</a>
+      <div class="faq-item">
+        <h4>上课形式是什么样的？</h4>
+        <p>每门课程都在微信社群内进行。每周释出音频课程（15-20分钟/节），配合练习作业。直播答疑通过腾讯会议进行，可回放。所有内容可永久回看。</p>
       </div>
-      <div class="insight-card">
-        <p class="insight-date">2026年4月</p>
-        <h3>焦虑不是你的敌人</h3>
-        <p>从进化心理学角度看，焦虑是一种保护机制。问题不在于焦虑本身，而在于我们对焦虑的元评价——"我不该焦虑"才是真正的痛苦来源。</p>
-        <a href="#" class="read-more">阅读全文 &rarr;</a>
+      <div class="faq-item">
+        <h4>首周不满意真的可以退款吗？</h4>
+        <p>是的。从课程开始日起7天内，如果你觉得不适合，全额退款。不需要解释原因。</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-inner">
-    <p class="section-label">联系</p>
-    <h2 class="section-title">开始你的旅程</h2>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <h3>咨询流程</h3>
-        <p>1. 填写表单，简要说明你的咨询需求<br>2. 我会在24小时内回复，安排首次评估<br>3. 首诊评估（50分钟）：了解你的情况，确定是否适合继续工作<br>4. 制定咨询方案，确定频率与目标</p>
-        <h3 style="margin-top:32px;">咨询设置</h3>
-        <p>地点：上海市 · 具体地址预约后告知<br>方式：面对面 / 视频咨询<br>频率：通常每周一次，固定时段<br>取消规则：提前24小时通知</p>
+      <div class="faq-item">
+        <h4>可以同时报多门课程吗？</h4>
+        <p>建议一次只报一门。每门课都有每周练习任务，同时进行可能导致练习深度不够。完成一门再报下一门，效果更好。</p>
       </div>
-      <div class="contact-form">
-        <label for="name">姓名</label>
-        <input type="text" id="name" placeholder="如何称呼你" required>
-        <label for="contact-info">联系方式</label>
-        <input type="text" id="contact-info" placeholder="微信 / 手机 / 邮箱" required>
-        <label for="reason">咨询方向（可选）</label>
-        <input type="text" id="reason" placeholder="情绪困扰 / 关系问题 / 自我成长 / 其他">
-        <label for="message">简要说明</label>
-        <textarea id="message" placeholder="请简单描述你想咨询的问题，这样我能更好地准备首次评估" required></textarea>
-        <button type="submit">提交预约</button>
-        <p style="font-size:0.8rem;color:var(--light-muted);margin-top:12px;text-align:center;">提交后24小时内回复。所有信息严格保密。</p>
+      <div class="faq-item">
+        <h4>课程有证书吗？</h4>
+        <p>完成全部课程内容和作业后，会发放电子版结课证书。请注意这不是心理咨询执业资质，而是个人成长训练的完成证明。</p>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>元认知 &middot; 专业心理咨询 &copy; 2026</p>
-  <p style="margin-top:4px;">理解自己，是改变的开始。</p>
+  <div class="footer-brand">元认知</div>
+  <p>专业心理成长课程 · 基于2000+小时临床经验</p>
+  <p style="margin-top:8px;">&copy; 2026 元认知 | 理解自己，是改变的开始</p>
 </footer>
+
+<script>
+function openPayment(courseName, price) {
+  document.getElementById('modalCourseName').textContent = courseName;
+  document.getElementById('modalPrice').textContent = '¥' + price;
+  document.getElementById('paymentModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closePayment() {
+  document.getElementById('paymentModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('paymentModal').addEventListener('click', function(e) {
+  if (e.target === this) closePayment();
+});
+</script>
 
 </body>
 </html>
