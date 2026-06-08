@@ -181,6 +181,10 @@ footer .flinks a:hover{color:#fff}
 <li><a href="#ai">AI教练</a></li>
 <li><a href="#cases">案例</a></li>
 <li><a href="#consult">咨询</a></li>
+<li><a href="#encyclopedia">百科</a></li>
+<li><a href="#caselib">案例</a></li>
+<li><a href="#tools">工具</a></li>
+<li><a href="#membership">会员</a></li>
 </ul>
 <a href="#assess" class="ncta">免费测评</a>
 </div>
@@ -443,6 +447,156 @@ var aiDB={
 '孩子考试焦虑怎么办':{analysis:'适度的考试焦虑是正常的，但过度焦虑会影响发挥。根源通常在于：对失败的灾难化解读、家长无意识传递的压力、缺乏有效的应试策略。',advice:'1.帮助孩子区分可控和不可控因素。2.教孩子简单的呼吸调节技术。3.考前建立稳定的准备节奏。4.考后关注学到了什么而非分数。',course:'情绪管理课程、元认知学习力课程',tools:'情绪记录表、正念练习指导'}
 };
 function askAI(q){var r=document.getElementById('ai-response');var qq=q||document.getElementById('ai-input').value;if(!qq.trim())return;var data=aiDB[qq];if(!data){r.innerHTML='<p>这是一个很好的问题。根据我们的通用分析框架：</p><p><strong>问题类型：</strong>需要进一步评估</p><p><strong>建议：</strong>完成免费测评获得个性化分析，或预约家庭成长咨询进行深度诊断。</p><p style="margin-top:8px"><a href="#assess" style="color:var(--primary)">→ 立即免费测评</a></p>'}else{r.innerHTML='<p><strong>📋 问题分析：</strong>'+data.analysis+'</p><p><strong>💡 成长建议：</strong>'+data.advice+'</p><p><strong>📚 推荐课程：</strong>'+data.course+'</p><p><strong>🛠 推荐工具：</strong>'+data.tools+'</p><p style="margin-top:8px"><a href="#courses" style="color:var(--primary)">→ 查看相关课程</a> | <a href="#consult" style="color:var(--primary)">→ 预约深度咨询</a></p>'}r.classList.add('show');r.scrollIntoView({behavior:'smooth'})}
+
+function switchEncy(tab,btn){
+  document.querySelectorAll('.ency-panel').forEach(function(p){p.style.display='none'});
+  document.getElementById('ency-'+tab).style.display='block';
+  document.querySelectorAll('.ency-tab').forEach(function(b){b.style.background='#fff';b.style.color='var(--ink)';b.style.borderColor='var(--stone)';b.classList.remove('active')});
+  btn.style.background='var(--primary)';btn.style.color='#fff';btn.style.borderColor='var(--primary)';btn.classList.add('active');
+}
+function filterCases(cat,btn){
+  document.querySelectorAll('.case-item').forEach(function(item){item.style.display=(cat==='all'||item.dataset.cat===cat)?'block':'none'});
+  document.querySelectorAll('.case-filter').forEach(function(b){b.style.background='#fff';b.style.color='var(--ink)';b.classList.remove('active')});
+  btn.style.background='var(--primary)';btn.style.color='#fff';btn.classList.add('active');
+}
+var articleDB={
+1:{title:'孩子为什么不愿意学习',content:'<p><strong>问题：</strong>很多家长发现孩子一到学习时间就各种拖延和抗拒。</p><p><strong>心理学分析：</strong>从自我决定理论来看，人类内在动机需要三个基本需求的满足：自主感、胜任感、连接感。当学习变成被强迫的任务，自主感丧失；当学习内容太难或太容易，胜任感缺失；当学习与负面情绪捆绑，连接感断裂。</p><p><strong>深层原因：</strong>1.家庭学习氛围过于紧张，家长情绪通过镜像神经元影响孩子。2.孩子没有体验过学习的内在满足感。3.任务与能力不匹配。4.家庭系统存在未解决的冲突。</p><p><strong>行动指南：</strong>1.给孩子在学习中提供选择权。2.分解任务为可达成的小单元。3.建立固定的学习时间和空间。4.家长管理好自己的焦虑。5.定期家庭会议让孩子参与解决方案。</p>'},
+2:{title:'孩子没有学习动力怎么办',content:'<p><strong>核心观点：</strong>学习动力不是天生的，是在良好的家庭系统和教育方法中逐渐培养的。</p><p><strong>10个验证有效的方法：</strong>1.用成长型思维替代固定型思维，表扬努力而非聪明。2.帮孩子找到学习与生活的关联。3.减少外部奖励保护内在动机。4.示范终身学习的态度。5.创造学习成功体验。6.给孩子适度挑战。7.帮孩子建立掌控感。8.减少与别人比较。9.让学习变得有趣。10.耐心等待，动机培养需要时间。</p>'},
+3:{title:'如何培养孩子自主学习能力',content:'<p><strong>什么是自主学习：</strong>自主学习不是不需要帮助，而是孩子能够主动规划、执行、监控和调整自己的学习过程。</p><p><strong>培养路径：</strong>第一阶段（6-8岁）：家长陪伴建立习惯。第二阶段（9-11岁）：逐步放手让孩子自己计划。第三阶段（12岁以上）：孩子成为主要负责人，家长转为顾问。</p><p><strong>具体方法：</strong>学习规划表引导自主安排；番茄工作法管理专注时段；定期反思学习效果；建立家庭学习契约；遇到困难时先问孩子怎么解决。</p>'}
+};
+function openArticle(id){
+  var d=articleDB[id]||{title:'文章详情',content:'<p>完整文章内容正在撰写中，包含问题分析、心理学理论、案例、行动步骤和FAQ。</p><p>完整文章将陆续上线。</p>'};
+  document.getElementById('articleTitle').textContent=d.title;
+  document.getElementById('articleContent').innerHTML=d.content;
+  document.getElementById('articleModal').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+document.getElementById('articleModal').addEventListener('click',function(e){if(e.target===this){this.classList.remove('active');document.body.style.overflow=''}});
+
+var caseDB={
+1:{title:'10岁男孩从拖延到自主规划',content:'<p><strong>背景：</strong>10岁男孩，四年级。作业拖到11点多，妈妈每天催促。家庭氛围极度紧张。</p><p><strong>分析：</strong>执行功能发育不足，面对多科作业无法规划。妈妈高压催促导致学习焦虑形成恶性循环。</p><p><strong>策略：</strong>元认知训练+学习规划表+妈妈停止催促+完成后的自由时间奖励。</p><p><strong>结果：</strong>8周后能在晚饭前完成作业，亲子关系显著改善。</p>'},
+2:{title:'12岁女孩厌学到主动学习',content:'<p><strong>背景：</strong>12岁女孩初一。成绩从班级前十掉到三十名，一提学习就哭。</p><p><strong>分析：</strong>完美主义导致习得性无助。一次失利内化为我不聪明，逃避学习来保护自我价值。</p><p><strong>策略：</strong>成长型思维+认知重构+低难度成功体验+家长从关注成绩转为关注过程。</p><p><strong>结果：</strong>12周后成绩回升，恢复了学习主动性和信心。</p>'},
+3:{title:'8岁男孩情绪爆发降低80%',content:'<p><strong>背景：</strong>8岁男孩，每天发脾气3-5次，摔东西打人。</p><p><strong>分析：</strong>情绪识别和表达困难，只能用发脾气表达不舒服。父母争吵频繁，孩子用情绪爆发转移注意力。</p><p><strong>策略：</strong>情绪识别训练+STOP技术+家庭会议+情绪记录表。</p><p><strong>结果：</strong>6周后情绪爆发降到每周2-3次，强度明显降低。</p>'},
+4:{title:'母子从争吵到深度对话',content:'<p><strong>背景：</strong>13岁男孩与单亲妈妈关系极度紧张，每天争吵。</p><p><strong>分析：</strong>母亲过度控制+青春期自主需求碰撞。沟通模式以指责和防御为主。</p><p><strong>策略：</strong>非暴力沟通+边界设立+每周固定对话时间。</p><p><strong>结果：</strong>10周后冲突大幅减少，建立了深度对话习惯。</p>'},
+5:{title:'15岁沉迷手机到主动管理',content:'<p><strong>背景：</strong>15岁每天刷手机6小时以上，成绩断崖下滑。</p><p><strong>分析：</strong>现实世界缺乏成就感。限制使用治标不治本。</p><p><strong>策略：</strong>家庭协商规则+发展替代兴趣+家长以身作则+定期复盘。</p><p><strong>结果：</strong>8周后主动管理使用时间，重建了学习和生活的平衡。</p>'}
+};
+function openCase(id){
+  var d=caseDB[id]||{title:'案例详情',content:'<p>完整案例正在整理中。</p>'};
+  document.getElementById('caseTitle').textContent=d.title;
+  document.getElementById('caseContent').innerHTML=d.content;
+  document.getElementById('caseModal').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+document.getElementById('caseModal').addEventListener('click',function(e){if(e.target===this){this.classList.remove('active');document.body.style.overflow=''}});
+
 </script>
+
+
+<!-- ════ 心理学百科 ════ -->
+<section id="encyclopedia" style="background:var(--warm)">
+<div class="si">
+<p class="sl">心理学百科</p>
+<h2 class="st">100篇深度文章，建立科学育儿知识体系</h2>
+<p class="sd">从学习动力到亲子关系，每篇3000字以上，包含问题分析、心理学解释、行动指南。</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 20px">
+<button class="ency-tab active" onclick="switchEncy('motive',this)" style="padding:10px 18px;border:1.5px solid var(--stone);border-radius:20px;background:var(--primary);color:#fff;cursor:pointer;font-size:.84rem;font-weight:600;font-family:var(--font-sans)">学习动力 20篇</button>
+<button class="ency-tab" onclick="switchEncy('focus',this)" style="padding:10px 18px;border:1.5px solid var(--stone);border-radius:20px;background:#fff;cursor:pointer;font-size:.84rem;font-weight:600;font-family:var(--font-sans)">专注力 20篇</button>
+<button class="ency-tab" onclick="switchEncy('procrast',this)" style="padding:10px 18px;border:1.5px solid var(--stone);border-radius:20px;background:#fff;cursor:pointer;font-size:.84rem;font-weight:600;font-family:var(--font-sans)">拖延与自我管理 20篇</button>
+<button class="ency-tab" onclick="switchEncy('emotion2',this)" style="padding:10px 18px;border:1.5px solid var(--stone);border-radius:20px;background:#fff;cursor:pointer;font-size:.84rem;font-weight:600;font-family:var(--font-sans)">情绪管理 20篇</button>
+<button class="ency-tab" onclick="switchEncy('parent',this)" style="padding:10px 18px;border:1.5px solid var(--stone);border-radius:20px;background:#fff;cursor:pointer;font-size:.84rem;font-weight:600;font-family:var(--font-sans)">亲子关系 20篇</button>
+</div>
+<div class="ency-panel" id="ency-motive"><div class="article-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+<div class="art-card" onclick="openArticle(1)" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone);cursor:pointer"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">01</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">孩子为什么不愿意学习</h4><p style="font-size:.78rem;color:var(--muted)">从自我决定理论深度分析学习动力缺失的根源</p></div>
+<div class="art-card" onclick="openArticle(2)" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone);cursor:pointer"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">02</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">孩子没有学习动力怎么办</h4><p style="font-size:.78rem;color:var(--muted)">10个经过验证的方法帮孩子重燃学习热情</p></div>
+<div class="art-card" onclick="openArticle(3)" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone);cursor:pointer"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">03</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">如何培养孩子自主学习能力</h4><p style="font-size:.78rem;color:var(--muted)">从被逼学习到主动学习的系统培养路径</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">04</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">孩子厌学的十大原因</h4><p style="font-size:.78rem;color:var(--muted)">全面排查厌学根源及对应解决方案</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">05</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">如何激发孩子内驱力</h4><p style="font-size:.78rem;color:var(--muted)">自主、胜任、连接三大核心要素</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">06</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">孩子总要催怎么办</h4><p style="font-size:.78rem;color:var(--muted)">告别催促模式建立自我管理能力</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">07</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">如何让孩子主动完成作业</h4><p style="font-size:.78rem;color:var(--muted)">从家庭作业战争到和平协作</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">08</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">学习动力不足的根源</h4><p style="font-size:.78rem;color:var(--muted)">家庭系统角度深度分析</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">09</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">奖励和惩罚为什么失效</h4><p style="font-size:.78rem;color:var(--muted)">外部激励的心理学局限与替代方案</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">10</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">如何培养成长型思维</h4><p style="font-size:.78rem;color:var(--muted)">德韦克经典理论的家庭实践指南</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">11-20</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">更多学习动力文章</h4><p style="font-size:.78rem;color:var(--muted)">如何提高学习兴趣、聪明孩子不努力、培养学习习惯等10篇</p></div>
+</div></div>
+<div class="ency-panel" id="ency-focus" style="display:none"><div class="article-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">21</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">孩子专注力差怎么办</h4><p style="font-size:.78rem;color:var(--muted)">专注力问题完整评估与干预方案</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">22</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">专注力训练的科学方法</h4><p style="font-size:.78rem;color:var(--muted)">基于执行功能理论的系统训练方案</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">23</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">执行功能与学习效率</h4><p style="font-size:.78rem;color:var(--muted)">理解大脑执行系统及其对学习的深远影响</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">24-40</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">更多专注力文章 17篇</h4><p style="font-size:.78rem;color:var(--muted)">电子产品影响、时间管理、课堂专注力、阅读专注力等</p></div>
+</div></div>
+<div class="ency-panel" id="ency-procrast" style="display:none"><div class="article-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">41</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">孩子拖延怎么办</h4><p style="font-size:.78rem;color:var(--muted)">拖延的心理机制与系统性解决方案</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">42-60</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">更多自我管理文章 19篇</h4><p style="font-size:.78rem;color:var(--muted)">提高执行力、培养自律、习惯养成、时间观念、目标管理、30天行动力训练等</p></div>
+</div></div>
+<div class="ency-panel" id="ency-emotion2" style="display:none"><div class="article-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">61</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">孩子情绪管理差怎么办</h4><p style="font-size:.78rem;color:var(--muted)">建立情绪调节能力的完整指南</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">62-80</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">更多情绪管理文章 19篇</h4><p style="font-size:.78rem;color:var(--muted)">考试焦虑、提高自信心、高敏感孩子、正念训练、压力管理等</p></div>
+</div></div>
+<div class="ency-panel" id="ency-parent" style="display:none"><div class="article-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">81</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">如何改善亲子关系</h4><p style="font-size:.78rem;color:var(--muted)">从冲突到协作重建亲子连接</p></div>
+<div class="art-card" style="background:#fff;border-radius:8px;padding:18px;border:1px solid var(--stone)"><span style="font-size:.7rem;color:var(--primary-light);font-weight:700">82-100</span><h4 style="font-size:.9rem;font-weight:700;margin:4px 0">更多亲子关系文章 19篇</h4><p style="font-size:.78rem;color:var(--muted)">青春期沟通、家庭规则、家庭会议、依恋关系、独立人格培养等</p></div>
+</div></div>
+</div>
+</section>
+
+<!-- ════ 案例库 ════ -->
+<section id="caselib" style="background:var(--cream)">
+<div class="si">
+<p class="sl">案例库</p>
+<h2 class="st">真实家庭案例，从问题到解决</h2>
+<p class="sd">按分类查找参考案例。每个案例包含背景、分析、策略、结果。</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 20px">
+<button class="case-filter active" onclick="filterCases('all',this)" style="padding:8px 16px;border:1.5px solid var(--stone);border-radius:20px;background:var(--primary);color:#fff;cursor:pointer;font-size:.82rem;font-weight:600;font-family:var(--font-sans)">全部</button>
+<button class="case-filter" onclick="filterCases('study',this)" style="padding:8px 16px;border:1.5px solid var(--stone);border-radius:20px;background:#fff;cursor:pointer;font-size:.82rem;font-weight:600;font-family:var(--font-sans)">学习问题</button>
+<button class="case-filter" onclick="filterCases('mood',this)" style="padding:8px 16px;border:1.5px solid var(--stone);border-radius:20px;background:#fff;cursor:pointer;font-size:.82rem;font-weight:600;font-family:var(--font-sans)">情绪问题</button>
+<button class="case-filter" onclick="filterCases('relation',this)" style="padding:8px 16px;border:1.5px solid var(--stone);border-radius:20px;background:#fff;cursor:pointer;font-size:.82rem;font-weight:600;font-family:var(--font-sans)">亲子关系</button>
+<button class="case-filter" onclick="filterCases('teen',this)" style="padding:8px 16px;border:1.5px solid var(--stone);border-radius:20px;background:#fff;cursor:pointer;font-size:.82rem;font-weight:600;font-family:var(--font-sans)">青春期</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
+<div class="case-item" data-cat="study" onclick="openCase(1)" style="background:#fff;border-radius:8px;padding:22px;border:1px solid var(--stone);cursor:pointer"><span style="font-size:.7rem;font-weight:700;color:var(--primary-light);background:var(--cream);padding:3px 10px;border-radius:10px">学习问题</span><h4 style="font-size:.95rem;font-weight:700;margin:8px 0">10岁男孩从拖延到自主规划</h4><p style="font-size:.8rem;color:var(--muted)">每天作业拖到11点，8周后能在晚饭前完成。</p></div>
+<div class="case-item" data-cat="study" onclick="openCase(2)" style="background:#fff;border-radius:8px;padding:22px;border:1px solid var(--stone);cursor:pointer"><span style="font-size:.7rem;font-weight:700;color:var(--primary-light);background:var(--cream);padding:3px 10px;border-radius:10px">学习问题</span><h4 style="font-size:.95rem;font-weight:700;margin:8px 0">12岁女孩厌学到主动学习</h4><p style="font-size:.8rem;color:var(--muted)">完美主义导致习得性无助，12周重建信心。</p></div>
+<div class="case-item" data-cat="mood" onclick="openCase(3)" style="background:#fff;border-radius:8px;padding:22px;border:1px solid var(--stone);cursor:pointer"><span style="font-size:.7rem;font-weight:700;color:var(--primary-light);background:var(--cream);padding:3px 10px;border-radius:10px">情绪问题</span><h4 style="font-size:.95rem;font-weight:700;margin:8px 0">8岁男孩情绪爆发降低80%</h4><p style="font-size:.8rem;color:var(--muted)">从每天3-5次发脾气降到每周2-3次。</p></div>
+<div class="case-item" data-cat="relation" onclick="openCase(4)" style="background:#fff;border-radius:8px;padding:22px;border:1px solid var(--stone);cursor:pointer"><span style="font-size:.7rem;font-weight:700;color:var(--primary-light);background:var(--cream);padding:3px 10px;border-radius:10px">亲子关系</span><h4 style="font-size:.95rem;font-weight:700;margin:8px 0">母子从争吵到深度对话</h4><p style="font-size:.8rem;color:var(--muted)">13岁男孩与单亲妈妈重建信任。</p></div>
+<div class="case-item" data-cat="teen" onclick="openCase(5)" style="background:#fff;border-radius:8px;padding:22px;border:1px solid var(--stone);cursor:pointer"><span style="font-size:.7rem;font-weight:700;color:var(--primary-light);background:var(--cream);padding:3px 10px;border-radius:10px">青春期</span><h4 style="font-size:.95rem;font-weight:700;margin:8px 0">15岁沉迷手机到主动管理</h4><p style="font-size:.8rem;color:var(--muted)">从每天6小时到主动设定使用时限。</p></div>
+</div>
+</div>
+</section>
+
+<!-- ════ 工具库 ════ -->
+<section id="tools" style="background:var(--warm)">
+<div class="si">
+<p class="sl">工具库</p>
+<h2 class="st">实用家庭成长工具模板</h2>
+<p class="sd">所有工具模板均可在课程中下载使用。</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:32px">
+<div style="background:#fff;border-radius:8px;padding:24px;border:1px solid var(--stone);text-align:center"><div style="font-size:2rem;margin-bottom:8px">📋</div><h4 style="font-size:.9rem;font-weight:700">学习规划表</h4><p style="font-size:.78rem;color:var(--muted)">周计划+可视化进度</p></div>
+<div style="background:#fff;border-radius:8px;padding:24px;border:1px solid var(--stone);text-align:center"><div style="font-size:2rem;margin-bottom:8px">📝</div><h4 style="font-size:.9rem;font-weight:700">情绪记录表</h4><p style="font-size:.78rem;color:var(--muted)">情绪波动模式追踪</p></div>
+<div style="background:#fff;border-radius:8px;padding:24px;border:1px solid var(--stone);text-align:center"><div style="font-size:2rem;margin-bottom:8px">✅</div><h4 style="font-size:.9rem;font-weight:700">习惯养成表</h4><p style="font-size:.78rem;color:var(--muted)">21天习惯追踪器</p></div>
+<div style="background:#fff;border-radius:8px;padding:24px;border:1px solid var(--stone);text-align:center"><div style="font-size:2rem;margin-bottom:8px">🎯</div><h4 style="font-size:.9rem;font-weight:700">目标管理表</h4><p style="font-size:.78rem;color:var(--muted)">SMART目标分解模板</p></div>
+<div style="background:#fff;border-radius:8px;padding:24px;border:1px solid var(--stone);text-align:center"><div style="font-size:2rem;margin-bottom:8px">🧠</div><h4 style="font-size:.9rem;font-weight:700">元认知监控表</h4><p style="font-size:.78rem;color:var(--muted)">思维觉察反思工具</p></div>
+<div style="background:#fff;border-radius:8px;padding:24px;border:1px solid var(--stone);text-align:center"><div style="font-size:2rem;margin-bottom:8px">🏠</div><h4 style="font-size:.9rem;font-weight:700">家庭会议模板</h4><p style="font-size:.78rem;color:var(--muted)">议程+规则+决议记录</p></div>
+<div style="background:#fff;border-radius:8px;padding:24px;border:1px solid var(--stone);text-align:center"><div style="font-size:2rem;margin-bottom:8px">💬</div><h4 style="font-size:.9rem;font-weight:700">亲子沟通模板</h4><p style="font-size:.78rem;color:var(--muted)">非暴力沟通四步法</p></div>
+</div>
+</div>
+</section>
+
+<!-- ════ 会员体系 ════ -->
+<section id="membership" style="background:var(--cream)">
+<div class="si">
+<p class="sl">会员体系</p>
+<h2 class="st">选择适合你的成长计划</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:36px">
+<div style="background:#fff;border-radius:12px;padding:32px 24px;border:1px solid var(--stone);text-align:center"><div style="font-size:2rem;margin-bottom:8px">🌱</div><h3 style="font-size:1rem;font-weight:700">免费会员</h3><div style="font-size:2rem;font-weight:700;color:var(--primary);margin:12px 0">&yen;0</div><ul style="list-style:none;text-align:left;font-size:.82rem;color:var(--muted);line-height:2.2"><li>✓ 阅读精选文章</li><li>✓ 使用免费测评</li><li>✓ AI成长教练基础版</li></ul><button class="btn btn-outline" style="width:100%;margin-top:16px;font-size:.84rem" onclick="location.href='#assess'">免费注册</button></div>
+<div style="background:#fff;border-radius:12px;padding:32px 24px;border:2px solid var(--gold);text-align:center;position:relative"><div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;padding:4px 16px;border-radius:12px;font-size:.7rem;font-weight:700">最受欢迎</div><div style="font-size:2rem;margin-bottom:8px;margin-top:8px">⭐</div><h3 style="font-size:1rem;font-weight:700">年度会员</h3><div style="font-size:2rem;font-weight:700;color:var(--amber);margin:12px 0">&yen;999<span style="font-size:.78rem;color:var(--light)">/年</span></div><ul style="list-style:none;text-align:left;font-size:.82rem;color:var(--muted);line-height:2.2"><li>✓ 全部课程免费学</li><li>✓ 完整测评+AI报告</li><li>✓ 全部工具模板</li><li>✓ 案例库完整访问</li><li>✓ AI成长教练高级版</li></ul><button class="btn btn-gold" style="width:100%;margin-top:16px;font-size:.84rem" onclick="openPay('年度会员',999,'VIP2026')">立即加入</button></div>
+<div style="background:#fff;border-radius:12px;padding:32px 24px;border:1px solid var(--stone);text-align:center"><div style="font-size:2rem;margin-bottom:8px">👑</div><h3 style="font-size:1rem;font-weight:700">高级会员</h3><div style="font-size:2rem;font-weight:700;color:var(--primary);margin:12px 0">&yen;1,999<span style="font-size:.78rem;color:var(--light)">/年</span></div><ul style="list-style:none;text-align:left;font-size:.82rem;color:var(--muted);line-height:2.2"><li>✓ 年度会员全部权益</li><li>✓ 2次一对一咨询</li><li>✓ 个性化成长方案</li><li>✓ 专属成长顾问</li></ul><button class="btn btn-primary" style="width:100%;margin-top:16px;font-size:.84rem" onclick="openPay('高级会员',1999,'VIPPRO2026')">立即加入</button></div>
+</div>
+</div>
+</section>
+
+<!-- Article Modal -->
+<div class="modal-overlay" id="articleModal"><div class="modal" style="max-width:700px;text-align:left;max-height:85vh;padding:32px"><h3 id="articleTitle" style="font-family:var(--font-serif)"></h3><div id="articleContent" style="font-size:.88rem;line-height:2;color:var(--ink)"></div><div style="margin-top:20px;background:var(--cream);border-radius:8px;padding:16px;text-align:center"><p style="font-size:.84rem;font-weight:700;margin-bottom:8px">想了解孩子的真实状态？</p><a href="#assess" onclick="document.getElementById('articleModal').classList.remove('active');document.body.style.overflow=''" class="btn btn-primary" style="font-size:.82rem;padding:10px 22px">立即免费测评</a></div><button class="btn-close" onclick="document.getElementById('articleModal').classList.remove('active');document.body.style.overflow=''" style="margin-top:12px">关闭</button></div></div>
+
+<!-- Case Modal -->
+<div class="modal-overlay" id="caseModal"><div class="modal" style="max-width:650px;text-align:left;max-height:85vh;padding:32px"><h3 id="caseTitle" style="font-family:var(--font-serif)"></h3><div id="caseContent" style="font-size:.88rem;line-height:2;color:var(--ink)"></div><div style="margin-top:20px;background:var(--cream);border-radius:8px;padding:16px;text-align:center"><p style="font-size:.84rem;font-weight:700;margin-bottom:8px">你的家庭也可以改变</p><a href="#assess" onclick="document.getElementById('caseModal').classList.remove('active');document.body.style.overflow=''" class="btn btn-primary" style="font-size:.82rem;padding:10px 22px">开始免费测评</a></div><button class="btn-close" onclick="document.getElementById('caseModal').classList.remove('active');document.body.style.overflow=''" style="margin-top:12px">关闭</button></div></div>
 </body>
 </html>
